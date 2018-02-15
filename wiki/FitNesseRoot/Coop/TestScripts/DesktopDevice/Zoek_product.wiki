@@ -1,25 +1,40 @@
 ---
 Test
 ---
+!***> local scenarios
+
+|scenario|Open website         |
+|open    |https://test.coop.nl/|
+
+|scenario|Zoek naar boter                                                                                                                    |
+|enter   |boter                                    |as                                    |css=#SearchTerm                                   |
+|click   |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span|
+|click   |css=#productListContainer > article:nth-child(1) > div > a > div > picture > img                                                   |
+
+|scenario|Zet tijd voor bestelling                                                                                                                                                         |
+|click   |css=#main > div > div > div > section > article > div > div.primeDetails.gi.b0_12.b3_12.b3_push_01.m-0 > fieldset > div > div:nth-child(2) > div > span.step.plus > span.stepItem|
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step1 > form > a                                                                         |
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step1 > div.storeSelector__searchResults > div > section.storeSelector__storeDetails > a |
+|click   |xpath=//*[@id="wrapper"]/div[3]/section/section[2]/section/div/div[1]/a/span[2]                                                                                                  |
+|select  |22-02-2018                                              |for                                             |css=#OrderData_DeliveryDate                                            |
+|select  |17:00-18:00                                             |for                                             |css=#OrderData_DeliveryTime                                            |
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step3._is_active > section > ul > li > div:nth-child(3) > a                              |
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step4._is_active > div > a                                                               |
+
+*!
+
+
 |script                                                                                                                                                                                     |
-|open     |https://test.coop.nl/                                                                                                                                                            |
-|enter    |boter                                                   |as                                              |css=#SearchTerm                                                        |
-|click    |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span                                              |
-|click    |css=#productListContainer > article:nth-child(1) > div > a > div > picture > img                                                                                                 |
-|click    |css=#main > div > div > div > section > article > div > div.primeDetails.gi.b0_12.b3_12.b3_push_01.m-0 > fieldset > div > div:nth-child(2) > div > span.step.plus > span.stepItem|
-|click    |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step1 > form > a                                                                         |
-|click    |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step1 > div.storeSelector__searchResults > div > section.storeSelector__storeDetails > a |
-|click    |xpath=//*[@id="wrapper"]/div[3]/section/section[2]/section/div/div[1]/a/span[2]                                                                                                  |
-|select   |22-02-2018                                              |for                                             |css=#OrderData_DeliveryDate                                            |
-|select   |17:00-18:00                                             |for                                             |css=#OrderData_DeliveryTime                                            |
-|click    |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step3._is_active > section > ul > li > div:nth-child(3) > a                              |
-|click    |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step4._is_active > div > a                                                               |
-|enter    |brood                                                   |as                                              |css=#SearchTerm                                                        |
+|Open website                                                                                                                                                                               |
+|Zoek naar boter                                                                                                                                                                            |
+|Zet tijd voor bestelling                                                                                                                                                                   |
+|enter    |brood                                                   |as                                                   |css=#SearchTerm                                                   |
 |click    |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span                                              |
 |scroll to|css=#productListContainer > article:nth-child(1) > div > header > h2 > a                                                                                                         |
 |click    |css=#productListContainer > article:nth-child(5) > div > a > div > picture.img > img                                                                                             |
 |click    |css=#main > div > div > div > section > article > div > div.primeDetails.gi.b0_12.b3_12.b3_push_01.m-0 > fieldset > div > div:nth-child(2) > div > span.step.plus > span.stepItem|
 |click    |css=#wrapper > header > div.header-navbar > div > ul > li:nth-child(3) > a > span                                                                                                |
 |click    |xpath=//*[@id="main"]/div/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/div/ul[1]/li[1]/div/div/div/div/div/div[1]/div/a                                           |
-|enter    |boter                                                   |as                                              |css=#SearchTerm                                                        |
+|enter    |boter                                                   |as                                                   |css=#SearchTerm                                                   |
+|click    |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span                                              |
 |wait     |5                                                       |seconds                                                                                                                 |
