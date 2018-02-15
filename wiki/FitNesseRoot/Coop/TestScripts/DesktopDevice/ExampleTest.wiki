@@ -1,0 +1,7 @@
+|scenario|print hello world|
+|note    |hello world      |
+
+|script            |
+|open    |${URL}   |
+|print hello world |
+|plaats een bericht|

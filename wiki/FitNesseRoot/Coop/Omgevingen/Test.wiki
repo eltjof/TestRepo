@@ -1,0 +1,22 @@
+---
+Suite
+SymbolicLinks
+  TestScripts: .Example.TestScripts
+Test: no
+---
+!*** Gegevens
+!*> Defines
+!define URL {!-http://www.google.nl-!}
+!define USERNAME {!-username-!}
+!define PASSWORD {!-password-!}
+
+*!
+
+|'''Gegevens                          '''|
+|Url                  |${URL}            |
+|Gebruikersnaam       |${USERNAME}       |
+|Wachtwoord           |${PASSWORD}       |
+
+*!
+
+!contents -R2 -g -p -f -h

@@ -1,0 +1,6 @@
+---
+Suite
+SymbolicLinks
+  TestScripts: .Example.TestScripts
+---
+!contents -R2 -g -p -f -h

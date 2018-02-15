@@ -1,0 +1,7 @@
+|script                 |
+|click|Boodschappen doen|
+|click|Fruit            |
+|click|Appels           |
+|click|Zoete appels     |
+|click|Elstar appels    |
+|wait |5    |seconds    |
