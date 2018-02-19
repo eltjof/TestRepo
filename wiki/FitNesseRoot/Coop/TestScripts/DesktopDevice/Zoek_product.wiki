@@ -21,20 +21,29 @@ Test
 |click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step3._is_active > section > ul > li > div:nth-child(3) > a                              |
 |click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step4._is_active > div > a                                                               |
 
-*!
-
-
-|script                                                                                                                                                                                     |
-|Open website                                                                                                                                                                               |
-|Zoek naar boter                                                                                                                                                                            |
-|Zet tijd voor bestelling                                                                                                                                                                   |
+|scenario |Doe brood in boodschappenwagen                                                                                                                                                   |
 |enter    |brood                                                   |as                                                   |css=#SearchTerm                                                   |
 |click    |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span                                              |
 |scroll to|css=#productListContainer > article:nth-child(1) > div > header > h2 > a                                                                                                         |
 |click    |css=#productListContainer > article:nth-child(5) > div > a > div > picture.img > img                                                                                             |
 |click    |css=#main > div > div > div > section > article > div > div.primeDetails.gi.b0_12.b3_12.b3_push_01.m-0 > fieldset > div > div:nth-child(2) > div > span.step.plus > span.stepItem|
 |click    |css=#wrapper > header > div.header-navbar > div > ul > li:nth-child(3) > a > span                                                                                                |
-|click    |xpath=//*[@id="main"]/div/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/div/ul[1]/li[1]/div/div/div/div/div/div[1]/div/a                                           |
-|enter    |boter                                                   |as                                                   |css=#SearchTerm                                                   |
-|click    |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span                                              |
-|wait     |5                                                       |seconds                                                                                                                 |
+
+|scenario|Verwijder boter uit boodschappenwagen                                                                                                 |
+|click   |xpath=//*[@id="main"]/div/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/div/ul[1]/li[1]/div/div/div/div/div/div[1]/div/a|
+
+|scenario|Doe boter in boodschappenwagen                                                                                                     |
+|enter   |boter                                    |as                                    |css=#SearchTerm                                   |
+|click   |css=#wrapper > header > div.container.cf > div > div.b0_12.b4_10.b4_push_03 > div > div > div.header-search > div > form > a > span|
+
+*!
+
+
+|script                               |
+|Open website                         |
+|Zoek naar boter                      |
+|Zet tijd voor bestelling             |
+|Doe brood in boodschappenwagen       |
+|Verwijder boter uit boodschappenwagen|
+|Doe boter in boodschappenwagen       |
+|wait        |5        |seconds       |
