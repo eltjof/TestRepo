@@ -1,7 +1,7 @@
 ---
 Suite
 SymbolicLinks
-  TestScripts: .Example.TestScripts
+  TestScripts: .Coop.TestScripts
 Test: no
 ---
 !*** Gegevens

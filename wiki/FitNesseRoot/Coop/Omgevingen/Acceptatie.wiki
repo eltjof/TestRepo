@@ -1,6 +1,6 @@
 ---
 Suite
 SymbolicLinks
-  TestScripts: .Example.TestScripts
+  TestScripts: .Coop.TestScripts
 ---
 !contents -R2 -g -p -f -h

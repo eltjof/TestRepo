@@ -37,7 +37,7 @@
         <dependency>
             <groupId>nl.hsac</groupId>
             <artifactId>hsac-fitnesse-fixtures</artifactId>
-            <version>3.15.0</version>
+            <version>3.17.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
@@ -203,37 +203,31 @@
                             <name>internetexplorerdriver</name>
                             <platform>windows</platform>
                             <bit>32</bit>
-                            <version>3.4.0</version>
                         </driver>
                         <driver>
                             <name>edgedriver</name>
                             <platform>windows</platform>
                             <bit>64</bit>
-                            <version>5.16299</version>
                         </driver>
                         <driver>
                             <name>chromedriver</name>
                             <platform>windows</platform>
                             <bit>32</bit>
-                            <version>2.35</version>
                         </driver>
                         <driver>
                             <name>chromedriver</name>
                             <platform>mac</platform>
                             <bit>64</bit>
-                            <version>2.35</version>
                         </driver>
                         <driver>
                             <name>geckodriver</name>
                             <platform>windows</platform>
                             <bit>32</bit>
-                            <version>0.19.1</version>
                         </driver>
                         <driver>
                             <name>geckodriver</name>
                             <platform>mac</platform>
                             <bit>64</bit>
-                            <version>0.19.1</version>
                         </driver>
                     </drivers>
                     <skip>${webdriver.download.skip}</skip>
@@ -335,7 +329,7 @@
                     <dependency>
                         <groupId>nl.hsac</groupId>
                         <artifactId>hsac-fitnesse-fixtures</artifactId>
-                        <version>3.15.0</version>
+                        <version>3.17.0</version>
                         <classifier>standalone</classifier>
                         <type>zip</type>
                     </dependency>
