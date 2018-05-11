@@ -1,1 +1,1 @@
-|scenario|
+!define URL_Test_B2B_10 {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-COOPBusiness-Site/nl_NL/-/EUR/ViewOCICatalog-Start?&USERNAME=eltjof@specialisterren.nl&PASSWORD=Coop2018&HOOK_URL=http://Procare/ProCare/net/Order/ProcessCallOCI/64/ProqWindowFB903C2CE3614B9483262F04C89000D8/10045/80.aspx&StoreID=3319&CustomerID=3319-00001-!}

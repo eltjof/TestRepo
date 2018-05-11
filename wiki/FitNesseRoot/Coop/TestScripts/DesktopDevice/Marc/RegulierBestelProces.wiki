@@ -1,3 +1,10 @@
 ---
 Test
 ---
+
+|script                                          |
+|open            |${URL_Test_B2B_10}             |
+|wait for visible|Home                           |
+|ensure          |is visible|Welkom Eltjo Folk...|
+|ensure          |is visible|Winsum (frl), Meamerterdyk|
+
