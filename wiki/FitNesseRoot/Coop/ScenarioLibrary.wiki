@@ -4,3 +4,20 @@
 |scenario|Wis browser geschiedenis|
 |delete all cookies               |
 |clear local storage              |
+
+!define xpathProductTitle {!-//div[header[h2[@title="@productNaam"]]]-!}
+!define xpathProductStepMin {${xpathProductTitle}!-//span[@class="step min"]-!}
+!define xpathProductStepPlus {${xpathProductTitle}!-//span[@class="step plus"]-!}
+!define xpathProductInput {${xpathProductTitle}!-//input-!}
+
+|scenario |Klik min 1 bij product|productNaam|
+|scroll to|xpath=${xpathProductStepMin}      |
+|click    |xpath=${xpathProductStepMin}      |
+
+|scenario |Klik plus 1 bij product|productNaam|
+|scroll to|xpath=${xpathProductStepPlus}      |
+|click    |xpath=${xpathProductStepPlus}      |
+
+|scenario |Controleer aantal bij product|productNaam               |is|productAantal|
+|scroll to|xpath=${xpathProductInput}                                               |
+|check    |value of                     |xpath=${xpathProductInput}|@productAantal  |
