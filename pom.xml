@@ -31,23 +31,23 @@
         <dependency>
             <groupId>org.fitnesse</groupId>
             <artifactId>fitnesse</artifactId>
-            <version>20161106</version>
+            <version>20180127</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>nl.hsac</groupId>
             <artifactId>hsac-fitnesse-fixtures</artifactId>
-            <version>3.17.0</version>
+            <version>3.22.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-            <version>1.0.6</version>
+            <version>1.0.7</version>
         </dependency>
         <dependency>
             <groupId>com.github.tcnh</groupId>
             <artifactId>fitnesse-autocomplete-responder</artifactId>
-            <version>1.0.5</version>
+            <version>1.0.8</version>
         </dependency>
 
         <dependency>
@@ -78,7 +78,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -106,7 +106,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
+                <version>2.20.1</version>
                 <configuration>
                     <excludes>
                         <!-- this test actually runs fitnesse tests
@@ -161,7 +161,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>1.5.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -202,32 +202,26 @@
                         <driver>
                             <name>internetexplorerdriver</name>
                             <platform>windows</platform>
-                            <bit>32</bit>
                         </driver>
                         <driver>
                             <name>edgedriver</name>
                             <platform>windows</platform>
-                            <bit>64</bit>
                         </driver>
                         <driver>
                             <name>chromedriver</name>
                             <platform>windows</platform>
-                            <bit>32</bit>
                         </driver>
                         <driver>
                             <name>chromedriver</name>
                             <platform>mac</platform>
-                            <bit>64</bit>
                         </driver>
                         <driver>
                             <name>geckodriver</name>
                             <platform>windows</platform>
-                            <bit>32</bit>
                         </driver>
                         <driver>
                             <name>geckodriver</name>
                             <platform>mac</platform>
-                            <bit>64</bit>
                         </driver>
                     </drivers>
                     <skip>${webdriver.download.skip}</skip>
@@ -278,13 +272,13 @@
                                 <artifactItem>
                                     <groupId>com.github.tcnh</groupId>
                                     <artifactId>fitnesse-bootstrap-plus-theme</artifactId>
-                                    <version>1.0.6</version>
+                                    <version>1.0.7</version>
                                     <overWrite>true</overWrite>
                                 </artifactItem>
                                 <artifactItem>
                                     <groupId>com.github.tcnh</groupId>
                                     <artifactId>fitnesse-autocomplete-responder</artifactId>
-                                    <version>1.0.5</version>
+                                    <version>1.0.8</version>
                                     <overWrite>true</overWrite>
                                 </artifactItem>
                             </artifactItems>
@@ -329,7 +323,7 @@
                     <dependency>
                         <groupId>nl.hsac</groupId>
                         <artifactId>hsac-fitnesse-fixtures</artifactId>
-                        <version>3.17.0</version>
+                        <version>3.22.0</version>
                         <classifier>standalone</classifier>
                         <type>zip</type>
                     </dependency>
