@@ -1,2 +1,6 @@
 |scenario|plaats een bericht|
 |note    |plaats bericht    |
+
+|scenario|Wis browser geschiedenis|
+|delete all cookies               |
+|clear local storage              |
