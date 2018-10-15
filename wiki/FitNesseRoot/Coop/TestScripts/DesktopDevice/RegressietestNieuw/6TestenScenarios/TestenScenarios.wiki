@@ -1,0 +1,14 @@
+|script                                                                                             |
+|                           |scenario                                                               |
+|Open Frontstore                                                                                    |
+|                           |scenario                                                               |
+|Inloggen Frontstore                                                                                |
+|                           |scenario                                                               |
+|Gebruikersnaam             |${GN_ACCOUNTCHROME}|Wachtwoord   |${WW_TESTACCOUNT}      |inloggen     |
+|                           |scenario                                                               |
+|zoek supermarkt            |6883EW                                                                 |
+|                           |scenario                                                               |
+|Kies hier boodschappen doen|2110               |Is Zichtbaar |Velp                                 |
+|                           |Scenario                                                               |
+|artikel                    |1                  |van categorie|Groenten en aardappelen|in winkelmand|
+|Maak screenshot nieuwste mail mailtrap                                                             |

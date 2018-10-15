@@ -1,23 +1,204 @@
-|scenario|plaats een bericht|
-|note    |plaats bericht    |
+scn 1             
+|scenario|Open Frontstore|
+|open    |${URL_FRONTEND}|
 
-|scenario|Wis browser geschiedenis|
-|delete all cookies               |
-|clear local storage              |
+scn2       
 
-!define xpathProductTitle {!-//div[header[h2[@title="@productNaam"]]]-!}
-!define xpathProductStepMin {${xpathProductTitle}!-//span[@class="step min"]-!}
-!define xpathProductStepPlus {${xpathProductTitle}!-//span[@class="step plus"]-!}
-!define xpathProductInput {${xpathProductTitle}!-//input-!}
+|scenario  |Inloggen Frontstore            |
+|hover over|Mijn Coop|in|css=.header-navbar|
+|click     |Inloggen |in|css=.navbar-sub   |
 
-|scenario |Klik min 1 bij product|productNaam|
-|scroll to|xpath=${xpathProductStepMin}      |
-|click    |xpath=${xpathProductStepMin}      |
+scn 3
 
-|scenario |Klik plus 1 bij product|productNaam|
-|scroll to|xpath=${xpathProductStepPlus}      |
-|click    |xpath=${xpathProductStepPlus}      |
+|scenario|Gebruikersnaam |gebruikersnaam|Wachtwoord|wachtwoord|inloggen|
+|enter   |@gebruikersnaam|as            |xpath=//*[@id="email"]        |
+|enter   |@wachtwoord    |as            |xpath=//*[@id="wachtwoord"]   |
+|click   |Inloggen       |in            |css=.actions.gi               |
 
-|scenario |Controleer aantal bij product|productNaam               |is|productAantal|
-|scroll to|xpath=${xpathProductInput}                                               |
-|check    |value of                     |xpath=${xpathProductInput}|@productAantal  |
+scn 4
+
+|scenario|zoek supermarkt|postcode       |
+|click   |Zoek supermarkt                |
+|enter   |@postcode      |as|id=fc_search|
+|click   |id=btnSearch                   |
+
+scn 5
+
+|scenario|Kies hier boodschappen doen|storeID|Is Zichtbaar|winkel          |
+|click   |Hier boodschappen doen     |in     |css=#store_@storeID          |
+|ensure  |is visible                 |@winkel|in          |css=.navbar-item|
+
+scn 6
+
+|scenario  |artikel     |artikelvolgnr|van categorie        |categorie       |in winkelmand       |
+|hover over|Boodschappen|in           |id=header-mainnav                                          |
+|click     |@categorie                                                                            |
+|click     |+           |in           |xpath=//article[@artikelvolgnr]//span[!-@data-plusbutton-!]|
+|check pending requests                                                                           |
+
+scn 7
+
+|scenario  |artikel     |artikelvolgnr|van categorie       |categorie       |uit winkelmand      |
+|hover over|Boodschappen|in           |id=header-mainnav                                         |
+|click     |@categorie                                                                           |
+|click     |-           |in           |xpath=//article[@artikelvolgnr]//span[!-@data-minbutton-!]|
+|check pending requests                                                                          |
+
+scn 8
+
+|scenario|artikel         |artikelzoeknaam|product|productnaam|in winkelmand|
+|enter   |@artikelzoeknaam|as             |id=SearchTerm                    |
+|click   |@productnaam    |in             |css=.productTitle                |
+|click   |Toevoegen                                                         |
+
+scn 9
+
+|scenario          |sluit storeselectorpopup          |
+|is visible on page|Kies jouw Coop winkel             |
+|is visible on page|Voer hier je postcode in          |
+|click             |in|css=.storeSelector__closeButton|
+
+scn 10
+
+|scenario          |controleer notificatie en winkellink                                                                                                                                                 |
+|check             |value of                   |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
+|click             |xpath=.//a[text()='winkel']|in                      |css=.alertMessage--error                                                                                                        |
+|is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                                             |
+
+scn 11
+
+|scenario              |Controleer of er boodschappen in winkelmandje zitten en verwijder ze|
+|click                 |Mijn boodschappen      |in                   |css=.header-navbar    |
+|$timeout=             |seconds before timeout                                              |
+|seconds before timeout|5                                                                   |
+|$tmp=                 |click if available     |Alle boodschappen verwijderen               |
+|seconds before timeout|$timeout                                                            |
+|ensure                |is visible             |Alle boodschappen verwijderen               |
+|click                 |Alle boodschappen verwijderen                                       |
+|check pending requests                                                                     |
+|check                 |value of               |css=.icon-basket     |0                     |
+
+scn 12
+
+|scenario|Kies een postcode|postcode|kies een winkel in storeselectorpopup stap 1|winkel                        |
+|enter   |@postcode        |as      |css=..storeSelector__userLocation                                          |
+|click   |css=.icon-search                                                                                      |
+|ensure  |is visible       |@winkel |in                                          |css=.storeSelector__storesList|
+|click   |@winkel          |in      |css=..storeSelector__storesList                                            |
+|click   |Kies deze winkel                                                                                      |
+
+scn 13
+
+|scenario|kies Service
+
+
+
+
+|scenario|Open Backoffice|
+|open    |${URL_BACKEND} |
+
+
+
+|scenario|Inloggen Backoffice                                               |
+|enter   |${GN_BACKEND}    |as|xpath=//*[@id="LoginForm_Login"]             |
+|enter   |${WW_BACKEND}    |as|xpath=//*[@id="LoginForm_Password"]          |
+|enter   |${DOMAIN_BACKEND}|as|xpath=//*[@id="LoginForm_RegistrationDomain"]|
+|click   |css=.loginbutton                                                  |
+
+
+
+|scenario|Zoek laatste bestelnummer in Backoffice                                                                                                                           |
+|open    |https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=|
+|show    |take screenshot                                                                   |laatste order                                                                  |
+
+
+
+|scenario||Maak screenshot nieuwste mail klantbevestiging|
+|open    |${URL_GOOGLEMAIL}                              |
+
+
+
+
+
+|scenario |Maak screenshot nieuwste mail mailtrap                              |
+|open     |${URL_MAILTRAP}                                                     |
+|click    |css=.google-signup                                                  |
+|enter    |${GN_GOOGLEMAIL}     |as  |name=identifier                          |
+|click    |Volgende                                                            |
+|enter    |${WW_GOOGLEMAIL}     |as  |name=password                            |
+|click    |Volgende                                                            |
+|         |click                |css=.login-action                             |
+|         |click                |css=.icon--shared-inbox                       |
+|         |click                |COOP                                          |
+|click    |css=ul.messages_list li:nth-child(1)                                |
+|show     |take screenshot      |Mailtrap                                      |
+|$url=    |value of attribute   |href|on|css=.attachments_list_region .data-row|
+|$pdfFile=|download content from|$url                                          |
+|show     |pdf text             |$pdfFile                                      |
+
+
+
+
+
+
+
+|scenario|Waarde teller lister|lister                  |van artikel|volgnr                  |Waarde teller basket|basket|
+|check   |value of            |css=[data-quantityinput]|in         |xpath=//article[@volgnr]|@lister                    |
+|check   |value of            |css=.icon-basket        |@basket                                                         |
+
+
+
+
+
+
+
+|scenario              |van categorie|categorie|kies filtercategorie|filtercategorie|in label|label|
+|hover over            |Boodschappen |in       |id=header-mainnav                                  |
+|click                 |@categorie                                                                 |
+|click                 |@label       |in       |xpath=//span[text()='@filtercategorie']/..         |
+|is visible on page    |Jouw selectie                                                              |
+|is visible on page    |@label       |in       |xpath=//span[text()='Jouw selectie']/..            |
+|is visible on page    |Wis alles    |in       |xpath=//span[text()='Jouw selectie']/..            |
+|click                 |Wis alles    |in       |xpath=//span[text()='Jouw selectie']/..            |
+|is not visible on page|xpath=//span[text()='Jouw selectie']/..                                    |
+
+
+
+B2B
+
+|scenario|Log in als B2 B klant zonder account                            |
+|open    |${URL_B2B_zonder_account}                                       |
+|ensure  |is visible|Let op u bent uitgelogd!|in|css=.featherlight-content|
+
+
+
+|scenario|Log in als B2 B klant                                      |
+|open    |${URL_B2B_met_account}                                     |
+|ensure  |is visible|Winsum (frl), Meamerterdyk|in|css=.header-navbar|
+|ensure  |is visible|Welkom Eltjo Folkersma    |in|css=.header-navbar|
+
+
+
+|scenario|Controleer artikelen B2 B                      |
+|click   |Mijn boodschappen|in    |css=.header-navbar    |
+|ensure  |is visible       |Alle boodschappen verwijderen|
+|ensure  |is visible       |Bestelling laten bezorgen    |
+
+
+
+|scenario|Bestelling plaatsen B2 B                                                                    |
+|click   |xpath=//*[@id="OrderData_DeliveryDate"]                                                     |
+|click   |xpath=//*[@id="OrderData_DeliveryDate"]/option[3]|in|xpath=//*[@id="OrderData_DeliveryDate"]|
+|click   |xpath=//*[@id="OrderData_Remarks"]                                                          |
+|enter   |b2b testorder                                    |as|Uw opmerking                           |
+|ensure  |is visible                                       |WINSUM (FRL) Meamerterdyk 5               |
+|ensure  |is visible                                       |Bestelling afronden                       |
+|click   |Bestelling afronden                                                                         |
+|ensure  |is visible                                       |procare                                   |
+
+
+
+{{{
+|check|value of|css=[data-quantityinput]|in|xpath=//article[@artikelvolgnr]|@hoeveelheidNaToevoegenLister|
+|check|value of|css=.icon-basket        |@hoeveelheidNaToevoegenBasket                                   |
+}}}
