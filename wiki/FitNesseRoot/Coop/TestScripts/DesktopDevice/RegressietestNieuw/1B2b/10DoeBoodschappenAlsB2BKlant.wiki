@@ -2,106 +2,41 @@
 Help: Testen Flow als B2B klant
 Test
 ---
-|Script                                                                                                                                                                 |
-|Log in als B2 B klant zonder account                                                                                                                                   |
-|Log in als B2 B klant                                                                                                                                                  |
-|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                   |
-|artikel               |1                      |van categorie                                    |Groenten en aardappelen   |in winkelmand                              |
-|Waarde teller lister  |1                      |van artikel                                      |1                         |Waarde teller basket |1                    |
-|#                     |check                  |value of                                         |css=[data-quantityinput]  |in                   |xpath=//article[1] |1|
-|#                     |check                  |value of                                         |css=.icon-basket          |1                                          |
-|click                 |Mijn boodschappen      |in                                               |css=.header-navbar                                                    |
-|ensure                |is visible             |Bestelling laten bezorgen                                                                                               |
-|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                   |
-|$timeout=             |seconds before timeout                                                                                                                          |
-|seconds before timeout|5                                                                                                                                               |
-|$tmp=                 |click if available     |!-Winsum (frl), Meamerterdyk-!                   |in                        |css=.header-navbar                         |
-|seconds before timeout|$timeout                                                                                                                                        |
-|ensure                |is visible             |Helaas, er zit momenteel niets in je winkelmand!                                                                        |
-|artikel               |1                      |van categorie                                    |Groenten en aardappelen   |in winkelmand                              |
-|Waarde teller lister  |1                      |van artikel                                      |1                         |Waarde teller basket |1                    |
-|artikel               |2                      |van categorie                                    |Groenten en aardappelen   |in winkelmand                              |
-|Waarde teller lister  |1                      |van artikel                                      |2                         |Waarde teller basket |2                    |
-|artikel               |3                      |van categorie                                    |Groenten en aardappelen   |in winkelmand                              |
-|Waarde teller lister  |1                      |van artikel                                      |3                         |Waarde teller basket |3                    |
-|artikel               |3                      |van categorie                                    |Groenten en aardappelen   |uit winkelmand                             |
-|Waarde teller lister  |0                      |van artikel                                      |3                         |Waarde teller basket |2                    |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Groenten en aardappelen                                                                                                 |
-|#                     |click                  |+                                                |in                        |xpath=//article[1]//span[@data-plusbutton] |
-|#                     |check pending requests                                                                                                                          |
-|#                     |check                  |value of                                         |css=[data-quantityinput]  |in                   |xpath=//article[1] |1|
-|#                     |check                  |value of                                         |css=.icon-basket          |1                                          |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Groenten en aardappelen                                                                                                 |
-|#                     |click                  |+                                                |in                        |xpath=//article[2]//span[@data-plusbutton] |
-|#                     |check pending requests                                                                                                                          |
-|#                     |check                  |value of                                         |css=[data-quantityinput]  |in                   |xpath=//article[2] |1|
-|#                     |check                  |value of                                         |css=.icon-basket          |2                                          |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Groenten en aardappelen                                                                                                 |
-|#                     |click                  |+                                                |in                        |xpath=//article[3]//span[@data-plusbutton] |
-|#                     |check pending requests                                                                                                                          |
-|#                     |check                  |value of                                         |css=[data-quantityinput]  |in                   |xpath=//article[3] |1|
-|#                     |check                  |value of                                         |css=.icon-basket          |3                                          |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Groenten en aardappelen                                                                                                 |
-|#                     |click                  |-                                                |in                        |xpath=//article[3]//span[@data-minbutton]  |
-|#                     |check pending requests                                                                                                                          |
-|#                     |check                  |value of                                         |css=[data-quantityinput]  |in                   |xpath=//article[3] |0|
-|#                     |check                  |value of                                         |css=.icon-basket          |2                                          |
-|#                     |filter                                                                                                                                          |
-|van categorie         |Groenten en aardappelen|kies filtercategorie                             |Merken                    |in label             |Iglo                 |
-|van categorie         |Fruit                  |kies filtercategorie                             |Land van Herkomst         |in label             |Frankrijk            |
-|van categorie         |Dranken                |kies filtercategorie                             |Inhoud                    |in label             |1000 ml              |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Groenten en aardappelen                                                                                                 |
-|#                     |click                  |Iglo                                             |in                        |xpath=//span[text()='Merken']/..           |
-|#                     |is visible on page     |Jouw selectie                                                                                                           |
-|#                     |is visible on page     |Iglo                                             |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is visible on page     |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |click                  |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is not visible on page |xpath=//span[text()='Jouw selectie']/..                                                                                 |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Fruit                                                                                                                   |
-|#                     |click                  |Frankrijk                                        |in                        |xpath=//span[text()='Land van Herkomst']/..|
-|#                     |is visible on page     |Jouw selectie                                                                                                           |
-|#                     |is visible on page     |Frankrijk                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is visible on page     |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |click                  |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is not visible on page |xpath=//span[text()='Jouw selectie']/..                                                                                 |
-|#                     |hover over             |Boodschappen                                     |in                        |id=header-mainnav                          |
-|#                     |click                  |Dranken                                                                                                                 |
-|#                     |click                  |1000 ml                                          |in                        |xpath=//span[text()='Inhoud']/..           |
-|#                     |is visible on page     |Jouw selectie                                                                                                           |
-|#                     |is visible on page     |1000 ml                                          |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is visible on page     |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |click                  |Wis alles                                        |in                        |xpath=//span[text()='Jouw selectie']/..    |
-|#                     |is not visible on page |xpath=//span[text()='Jouw selectie']/..                                                                                 |
-|Controleer artikelen B2 B                                                                                                                                              |
-|#                     |click                  |Mijn boodschappen                                |in                        |css=.header-navbar                         |
-|#                     |ensure                 |is visible                                       |Alle boodschappen verwijderen                                         |
-|#                     |ensure                 |is visible                                       |Bestelling laten bezorgen                                             |
-|Bestelling plaatsen B2 B                                                                                                                                               |
-|#                     |click                  |xpath=//*[@id="OrderData_DeliveryDate"]                                                                                 |
-|#                     |click                  |xpath=//*[@id="OrderData_DeliveryDate"]/option[3]|in                        |xpath=//*[@id="OrderData_DeliveryDate"]    |
-|#                     |click                  |xpath=//*[@id="OrderData_Remarks"]                                                                                      |
-|#                     |enter                  |b2b testorder                                    |as                        |Uw opmerking                               |
-|#                     |ensure                 |is visible                                       |WINSUM (FRL) Meamerterdyk 5                                           |
-|#                     |ensure                 |is visible                                       |Bestelling afronden                                                   |
-|#                     |ensure                 |is visible                                       |procare                                                               |
-|Open Backoffice                                                                                                                                                        |
-|Inloggen Backoffice                                                                                                                                                    |
-|Zoek laatste bestelnummer in Backoffice                                                                                                                                |
-|Log in als B2 B klant                                                                                                                                                  |
-|#                     |open                   |${URL_B2B_met_account}                                                                                                  |
-|#                     |ensure                 |is visible                                       |Winsum (frl), Meamerterdyk|in                   |css=.header-navbar   |
-|#                     |ensure                 |is visible                                       |Welkom Eltjo Folkersma    |in                   |css=.header-navbar   |
-|Controleer artikelen B2 B                                                                                                                                              |
-|Bestelling plaatsen B2 B                                                                                                                                               |
-|Open Backoffice                                                                                                                                                        |
-|Inloggen Backoffice                                                                                                                                                    |
-|Zoek laatste bestelnummer in Backoffice                                                                                                                                |
+|Script                                                                                                                              |
+|Log in als B2 B klant zonder account                                                                                                |
+|Log in als B2 B klant                                                                                                               |
+|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                |
+|artikel               |1                      |van categorie                 |Groenten en aardappelen|in winkelmand                 |
+|Waarde teller lister  |1                      |van artikel                   |1                      |Waarde teller basket|1        |
+|click                 |Mijn boodschappen      |in                            |css=.header-navbar                                    |
+|ensure                |is visible             |Bestelling laten bezorgen                                                            |
+|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                |
+|$timeout=             |seconds before timeout                                                                                       |
+|seconds before timeout|5                                                                                                            |
+|$tmp=                 |click if available     |!-Winsum (frl), Meamerterdyk-!|in                     |css=.header-navbar            |
+|seconds before timeout|$timeout                                                                                                     |
+|ensure                |is visible             |Helaas, er zit momenteel niets in je winkelmand!                                     |
+|artikel               |1                      |van categorie                 |Groenten en aardappelen|in winkelmand                 |
+|Waarde teller lister  |1                      |van artikel                   |1                      |Waarde teller basket|1        |
+|artikel               |2                      |van categorie                 |Groenten en aardappelen|in winkelmand                 |
+|Waarde teller lister  |1                      |van artikel                   |2                      |Waarde teller basket|2        |
+|artikel               |3                      |van categorie                 |Groenten en aardappelen|in winkelmand                 |
+|Waarde teller lister  |1                      |van artikel                   |3                      |Waarde teller basket|3        |
+|artikel               |3                      |van categorie                 |Groenten en aardappelen|uit winkelmand                |
+|Waarde teller lister  |0                      |van artikel                   |3                      |Waarde teller basket|2        |
+|van categorie         |Groenten en aardappelen|kies filtercategorie          |Merken                 |in label            |Iglo     |
+|van categorie         |Fruit                  |kies filtercategorie          |Land van Herkomst      |in label            |Frankrijk|
+|van categorie         |Dranken                |kies filtercategorie          |Inhoud                 |in label            |1000 ml  |
+|Controleer of er artikelen in winkelmand zitten B2 B                                                                                |
+|Bestelling plaatsen B2 B                                                                                                            |
+|Inloggen Backoffice                                                                                                                 |
+|Zoek laatste bestelnummer in Backoffice                                                                                             |
+|Log in als B2 B klant                                                                                                               |
+|Controleer of er artikelen in winkelmand zitten B2 B                                                                                |
+|Bestelling plaatsen B2 B                                                                                                            |
+|Open Backoffice                                                                                                                     |
+|Inloggen Backoffice                                                                                                                 |
+|Zoek laatste bestelnummer in Backoffice                                                                                             |
 
 
 

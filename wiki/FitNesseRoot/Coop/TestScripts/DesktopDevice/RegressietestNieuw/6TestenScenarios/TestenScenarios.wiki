@@ -1,14 +1,20 @@
-|script                                                                                             |
-|                           |scenario                                                               |
-|Open Frontstore                                                                                    |
-|                           |scenario                                                               |
-|Inloggen Frontstore                                                                                |
-|                           |scenario                                                               |
-|Gebruikersnaam             |${GN_ACCOUNTCHROME}|Wachtwoord   |${WW_TESTACCOUNT}      |inloggen     |
-|                           |scenario                                                               |
-|zoek supermarkt            |6883EW                                                                 |
-|                           |scenario                                                               |
-|Kies hier boodschappen doen|2110               |Is Zichtbaar |Velp                                 |
-|                           |Scenario                                                               |
-|artikel                    |1                  |van categorie|Groenten en aardappelen|in winkelmand|
-|Maak screenshot nieuwste mail mailtrap                                                             |
+|script                                                                                                                                                                   |
+|Open Frontstore                                                                                                                                                          |
+|Inloggen Frontstore                                                                                                                                                      |
+|Gebruikersnaam                           |coopecommerce.testen+CHP001@gmail.com|Wachtwoord       |TEST1234               |inloggen                                       |
+|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                     |
+|zoek supermarkt                          |Velp                                                                                                                           |
+|Kies hier boodschappen doen              |2110                                 |Is Zichtbaar     |Velp                                                                   |
+|artikel                                  |1                                    |van categorie    |Groenten en aardappelen|in winkelmand                                  |
+|sluit storeselectorpopup                                                                                                                                                 |
+|controleer of er artikelen in winkelmand zitten                                                                                                                          |
+|controleer of bestelgrens is bereikt                                                                                                                                     |
+|pas aantal aan om bestelgrens te bereiken|50                                   |van artikel      |1                      |van categorie|Groenten en aardappelen|in lister|
+|                                         |click                                |Mijn boodschappen|in                     |css=.header-navbar                             |
+|                                         |ga verder naar bestellen                                                                                                       |
+|                                         |vul checkout in en plaats bestelling                                                                                           |
+|                                         |controleer bestelling en leg bestelnummer vast                                                                                 |
+|                                         |Open Backoffice                                                                                                                |
+|                                         |Inloggen Backoffice                                                                                                            |
+|                                         |Zoek laatste bestelnummer in Backoffice                                                                                        |
+|                                         |Maak screenshot nieuwste mail mailtrap                                                                                         |

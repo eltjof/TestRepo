@@ -2,13 +2,17 @@
 Help: Testen Flow via Basket Storeselector, als bestaande particuliere klant
 Test
 ---
-|Script                                                       |
-|open      |${URL_FRONTEND}                                   |
-|hover over|Mijn Coop                                         |
-|click     |Inloggen           |in|css=.navbar-sub            |
-|enter     |${GN_ACCOUNTCHROME}|as|xpath=//*[@id="email"]     |
-|enter     |${WW_TESTACCOUNT}  |as|xpath=//*[@id="wachtwoord"]|
-|click     |Inloggen           |in|css=.actions.gi            |
+|Script                                                                                                               |
+|Open Frontstore                                                                                                      |
+|Inloggen Frontstore                                                                                                  |
+|Gebruikersnaam             |coopecommerce.testen+CHP001@gmail.com|Wachtwoord   |TEST1234               |inloggen     |
+|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                 |
+|zoek supermarkt            |Velp                                                                                     |
+|Kies hier boodschappen doen|2110                                 |Is Zichtbaar |Velp                                 |
+|artikel                    |1                                    |van categorie|Groenten en aardappelen|in winkelmand|
+|click                      |css=.storeSelector__closeButton                                                          |
+|controleer of er artikelen in winkelmand zitten                                                                      |
+|controleer of bestelgrens is bereikt                                                                                 |
 
 {{{
 |artikel|1       |van categorie           |Groenten en aardappelen|in winkelmand       |

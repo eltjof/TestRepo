@@ -1,0 +1,23 @@
+---
+Test
+---
+|script                                                                                      |
+|open              |https://test2.autoflex10.nl/autoflex/servoy-webclient/ss/s/autoflex_cloud|
+|enter             |!-ChefReg-!                        |as              |id=id1b             |
+|enter             |1234Chef                           |as              |id=id1a             |
+|click             |id=id6                                                                   |
+|click             |RELATIES                                                                 |
+|click             |Relaties                                                                 |
+|click             |css=.fa-plus                                                             |
+|click             |css=.w_close                                                             |
+|enter             |test                               |as              |name=34             |
+|enter             |test                               |as              |name=33             |
+|click             |name=62                                                                  |
+|type              |test                                                                     |
+|press             |Tab                                                                      |
+|press             |Tab                                                                      |
+|click             |css=.fa-check                                                            |
+|click             |name=vUserImage                                                          |
+|click             |Uitloggen                                                                |
+|is visible on page|opnieuw in te loggen.              |                                     |
+|wait              |5                                  |seconds                              |

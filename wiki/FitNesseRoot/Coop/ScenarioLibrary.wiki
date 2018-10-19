@@ -1,6 +1,7 @@
 scn 1             
 |scenario|Open Frontstore|
 |open    |${URL_FRONTEND}|
+|check pending requests  |
 
 scn2       
 
@@ -10,10 +11,13 @@ scn2
 
 scn 3
 
-|scenario|Gebruikersnaam |gebruikersnaam|Wachtwoord|wachtwoord|inloggen|
-|enter   |@gebruikersnaam|as            |xpath=//*[@id="email"]        |
-|enter   |@wachtwoord    |as            |xpath=//*[@id="wachtwoord"]   |
-|click   |Inloggen       |in            |css=.actions.gi               |
+|scenario|Gebruikersnaam    |gebruikersnaam|Wachtwoord|wachtwoord|inloggen|
+|enter   |@gebruikersnaam   |as            |xpath=//*[@id="email"]        |
+|enter   |@wachtwoord       |as            |xpath=//*[@id="wachtwoord"]   |
+|press   |Tab                                                             |
+|click   |Inloggen          |in            |css=.actions.gi               |
+|check pending requests                                                   |
+|ensure  |is visible on page|Welkom                                       |
 
 scn 4
 
@@ -48,24 +52,30 @@ scn 8
 
 |scenario|artikel         |artikelzoeknaam|product|productnaam|in winkelmand|
 |enter   |@artikelzoeknaam|as             |id=SearchTerm                    |
-|click   |@productnaam    |in             |css=.productTitle                |
+|click   |@productnaam    |in             |css=.searchResultList            |
 |click   |Toevoegen                                                         |
 
 scn 9
 
-|scenario          |sluit storeselectorpopup          |
-|is visible on page|Kies jouw Coop winkel             |
-|is visible on page|Voer hier je postcode in          |
-|click             |in|css=.storeSelector__closeButton|
+|scenario          |sluit storeselectorpopup       |
+|is visible on page|Voer hier je postcode in       |
+|click             |css=.storeSelector__closeButton|
 
 scn 10
+
+|scenario|Waarde teller lister|lister                  |van artikel|volgnr                  |Waarde teller basket|basket|
+|check   |value of            |css=[data-quantityinput]|in         |xpath=//article[@volgnr]|@lister                    |
+|check   |value of            |css=.icon-basket        |@basket                                                         |
+
+
+scn 11
 
 |scenario          |controleer notificatie en winkellink                                                                                                                                                 |
 |check             |value of                   |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
 |click             |xpath=.//a[text()='winkel']|in                      |css=.alertMessage--error                                                                                                        |
 |is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                                             |
 
-scn 11
+scn 12
 
 |scenario              |Controleer of er boodschappen in winkelmandje zitten en verwijder ze|
 |click                 |Mijn boodschappen      |in                   |css=.header-navbar    |
@@ -73,25 +83,85 @@ scn 11
 |seconds before timeout|5                                                                   |
 |$tmp=                 |click if available     |Alle boodschappen verwijderen               |
 |seconds before timeout|$timeout                                                            |
-|ensure                |is visible             |Alle boodschappen verwijderen               |
-|click                 |Alle boodschappen verwijderen                                       |
-|check pending requests                                                                     |
+|check pending requests twice                                                               |
 |check                 |value of               |css=.icon-basket     |0                     |
-
-scn 12
-
-|scenario|Kies een postcode|postcode|kies een winkel in storeselectorpopup stap 1|winkel                        |
-|enter   |@postcode        |as      |css=..storeSelector__userLocation                                          |
-|click   |css=.icon-search                                                                                      |
-|ensure  |is visible       |@winkel |in                                          |css=.storeSelector__storesList|
-|click   |@winkel          |in      |css=..storeSelector__storesList                                            |
-|click   |Kies deze winkel                                                                                      |
 
 scn 13
 
-|scenario|kies Service
+|scenario|Kies een postcode|postcode|kies een winkel in storeselectorpopup stap 1|winkel                        |
+|enter   |@postcode        |as      |css=.storeSelector__userLocation                                           |
+|click   |css=.btn--submitLocation                                                                              |
+|ensure  |is visible       |@winkel |in                                          |css=.storeSelector__storesList|
+|click   |@winkel          |in      |css=.storeSelector__storesList                                             |
+|click   |Kies deze winkel                                                                                      |
+
+scn 14
+
+|scenario|kies een service in storeselectorpopup stap2|service|
+|click   |@service                                            |
+
+scn 15
+
+|scenario|kiesservicedag in  storeselectorpopup stap3|dagvolgnr|kies servicetijdslot in storeselectorpopup stap3|tijdslotvolgnr|
+|click   |xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                                      |
+|click   |xpath=//select[@id="OrderData_DeliveryTime"]/option[@tijdslotvolgnr]                                                 |
+
+scn 16
+
+|scenario|ga door naar de winkelmand na storeselectorpopup stap 3|
+|click   |css=.btn--redirect                                     |
+|ensure  |is visible        |Alle boodschappen verwijderen       |
+
+scn 17
+|scenario|controleer of er artikelen in winkelmand zitten|
+|click   |Mijn boodschappen|in    |css=.header-navbar    |
+|ensure  |is visible       |Alle boodschappen verwijderen|
+
+scn 18
+
+|scenario|controleer of bestelgrens is bereikt    |
+|ensure  |is visible        |css=.orderMessage    |
+|        |click if available|Verder naar bestellen|
+
+scn 19
+
+|scenario  |pas aantal aan om bestelgrens te bereiken|aantal|van artikel|artikelvolgnr|van categorie|categorie|in lister|
+|hover over|Boodschappen                             |in    |id=header-mainnav                                          |
+|click     |@categorie                                                                                                  |
+|enter     |@aantal                                  |as    |xpath=//article[@artikelvolgnr]//span[!-@value-!]          |
+|check pending requests                                                                                                 |
+
+scn 20
+
+|scenario|ga verder naar bestellen     |
+|click   |Verder naar bestellen        |
+|check pending requests                |
+|ensure  |is visible|Aanvullende opties|
+
+scn 21
+
+|scenario|vul checkout in en plaats bestelling                                           |
+|ensure  |value of |id=checked|checked|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
+|        |//*[@id="OrderData_DeliverySimilarProducts"]                                   |
+|        |//*[@id="OrderData_HandInEmptyBottles"]                                        |
+|        |//*[@id="fc_coupon"]                                                           |
+|enter   |Testorder|as        |Uw opmerking                                              |
+|click   |xpath=//*[@id="OrderData_TermsAndConditions"]                                  |
+|click   |Bestelling plaatsen                                                            |
+|check pending requests                                                                  |
+
+scn 22
+
+|scenario|controleer bestelling en leg bestelnummer vast                    |
+|ensure  |is visible on page          |Bedankt voor je bestelling!          |
+|        |vastleggen Je bestelling met nummer 211000017259 wordt bezorgd op:|
+|        |vastleggen vrijdag 19 oktober tussen 09:00-12:00 uur              |
+|        |vastleggen Zeskant 108 108, 5044 jj, Tilburg                      |
+|show    |take screenshot             |bestelling frontend                  |
 
 
+|scenario|sluit storeselectorpopup        |
+|click   |css=.storeSelector__closeButton||
 
 
 |scenario|Open Backoffice|
@@ -113,8 +183,8 @@ scn 13
 
 
 
-|scenario||Maak screenshot nieuwste mail klantbevestiging|
-|open    |${URL_GOOGLEMAIL}                              |
+|scenario|Maak screenshot nieuwste mail klantbevestiging|
+|open    |${URL_GOOGLEMAIL}                             |
 
 
 
@@ -138,20 +208,6 @@ scn 13
 
 
 
-
-
-
-
-|scenario|Waarde teller lister|lister                  |van artikel|volgnr                  |Waarde teller basket|basket|
-|check   |value of            |css=[data-quantityinput]|in         |xpath=//article[@volgnr]|@lister                    |
-|check   |value of            |css=.icon-basket        |@basket                                                         |
-
-
-
-
-
-
-
 |scenario              |van categorie|categorie|kies filtercategorie|filtercategorie|in label|label|
 |hover over            |Boodschappen |in       |id=header-mainnav                                  |
 |click                 |@categorie                                                                 |
@@ -162,9 +218,13 @@ scn 13
 |click                 |Wis alles    |in       |xpath=//span[text()='Jouw selectie']/..            |
 |is not visible on page|xpath=//span[text()='Jouw selectie']/..                                    |
 
+|scenario|check pending requests twice|
+|check pending requests               |
+|wait    |1          |seconds         |
+|check pending requests               |
 
 
-B2B
+B2 B
 
 |scenario|Log in als B2 B klant zonder account                            |
 |open    |${URL_B2B_zonder_account}                                       |
@@ -179,10 +239,10 @@ B2B
 
 
 
-|scenario|Controleer artikelen B2 B                      |
-|click   |Mijn boodschappen|in    |css=.header-navbar    |
-|ensure  |is visible       |Alle boodschappen verwijderen|
-|ensure  |is visible       |Bestelling laten bezorgen    |
+|scenario|Controleer of er artikelen in winkelmand zitten B2 B|
+|click   |Mijn boodschappen  |in      |css=.header-navbar     |
+|ensure  |is visible         |Alle boodschappen verwijderen   |
+|ensure  |is visible         |Bestelling laten bezorgen       |
 
 
 
@@ -201,4 +261,29 @@ B2B
 {{{
 |check|value of|css=[data-quantityinput]|in|xpath=//article[@artikelvolgnr]|@hoeveelheidNaToevoegenLister|
 |check|value of|css=.icon-basket        |@hoeveelheidNaToevoegenBasket                                   |
+
+stepper plus
+//*[@id="productListContainer"]/article[1]/div/footer/div/div[2]/div[2]/span[2]/span
+|click|+|in|xpath=//article[1]//span[!-@data-plusbutton-!]|
+
+waarde product LISTER (aantal)
+
+
+
+
+//*[@id="productListContainer"]/article[1]/div/footer/div/div[2]/div[2]/input
+
+
+
+waarde product BASKET (aantal)
+
+//*[@id="main"]/div[1]/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/div/ul[1]/li/div/div/div/div/div/div[3]/div/input
+
+$x("//div[@class='gi b0_06 b3_06']/div/input")
+
+
+waarde basket Subtotaal incl. btw
+//*[@id="main"]/div[1]/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/footer/div[1]/div[2]/div
+
+
 }}}
