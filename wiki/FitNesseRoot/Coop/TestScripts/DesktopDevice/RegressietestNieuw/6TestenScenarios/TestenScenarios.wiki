@@ -1,20 +1,22 @@
-|script                                                                                                                                                                   |
-|Open Frontstore                                                                                                                                                          |
-|Inloggen Frontstore                                                                                                                                                      |
-|Gebruikersnaam                           |coopecommerce.testen+CHP001@gmail.com|Wachtwoord       |TEST1234               |inloggen                                       |
-|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                     |
-|zoek supermarkt                          |Velp                                                                                                                           |
-|Kies hier boodschappen doen              |2110                                 |Is Zichtbaar     |Velp                                                                   |
-|artikel                                  |1                                    |van categorie    |Groenten en aardappelen|in winkelmand                                  |
-|sluit storeselectorpopup                                                                                                                                                 |
-|controleer of er artikelen in winkelmand zitten                                                                                                                          |
-|controleer of bestelgrens is bereikt                                                                                                                                     |
-|pas aantal aan om bestelgrens te bereiken|50                                   |van artikel      |1                      |van categorie|Groenten en aardappelen|in lister|
-|                                         |click                                |Mijn boodschappen|in                     |css=.header-navbar                             |
-|                                         |ga verder naar bestellen                                                                                                       |
-|                                         |vul checkout in en plaats bestelling                                                                                           |
-|                                         |controleer bestelling en leg bestelnummer vast                                                                                 |
-|                                         |Open Backoffice                                                                                                                |
-|                                         |Inloggen Backoffice                                                                                                            |
-|                                         |Zoek laatste bestelnummer in Backoffice                                                                                        |
-|                                         |Maak screenshot nieuwste mail mailtrap                                                                                         |
+|script                                                                                                                                                                     |
+|Open Frontstore                                                                                                                                                            |
+|Inloggen Frontstore                                                                                                                                                        |
+|Gebruikersnaam                                |coopecommerce.testen+CHP001@gmail.com|Wachtwoord                                      |TEST1234               |inloggen     |
+|Controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                       |
+|artikel                                       |10                                   |van categorie                                   |Groenten en aardappelen|in winkelmand|
+|kies een postcode in storeselectorpopup stap 1|6883ew                               |kies een winkel                                 |Velp                                 |
+|kies een service in storeselectorpopup stap 2 |Ophalen                                                                                                                     |
+|kies servicedag in storeselectorpopup stap 3  |2                                    |kies servicetijdslot in storeselectorpopup stap3|2                                    |
+|sluit storeselectorpopup                                                                                                                                                   |
+|check pending requests twice                                                                                                                                               |
+|artikel                                       |4                                    |van categorie                                   |Dranken                |in winkelmand|
+|artikel                                       |4                                    |van categorie                                   |Dranken                |in winkelmand|
+|artikel                                       |4                                    |van categorie                                   |Dranken                |in winkelmand|
+|controleer of er artikelen in winkelmand zitten                                                                                                                            |
+|vul checkout in en plaats bestelling                                                                                                                                       |
+|controleer bestelling en leg bestelnummer vast                                                                                                                             |
+|Open Backoffice                                                                                                                                                            |
+|Inloggen Backoffice                                                                                                                                                        |
+|wait                                          |30                                   |seconds                                                                               |
+|Zoek laatste bestelnummer in Backoffice                                                                                                                                    |
+|Maak screenshot nieuwste mail mailtrap                                                                                                                                     |

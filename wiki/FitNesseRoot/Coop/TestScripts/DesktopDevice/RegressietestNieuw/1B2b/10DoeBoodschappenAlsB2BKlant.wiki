@@ -25,8 +25,11 @@ Test
 |artikel               |3                      |van categorie                 |Groenten en aardappelen|uit winkelmand                |
 |Waarde teller lister  |0                      |van artikel                   |3                      |Waarde teller basket|2        |
 |van categorie         |Groenten en aardappelen|kies filtercategorie          |Merken                 |in label            |Iglo     |
+|wis filter                                                                                                                          |
 |van categorie         |Fruit                  |kies filtercategorie          |Land van Herkomst      |in label            |Frankrijk|
+|wis filter                                                                                                                          |
 |van categorie         |Dranken                |kies filtercategorie          |Inhoud                 |in label            |1000 ml  |
+|wis filter                                                                                                                          |
 |Controleer of er artikelen in winkelmand zitten B2 B                                                                                |
 |Bestelling plaatsen B2 B                                                                                                            |
 |Inloggen Backoffice                                                                                                                 |
