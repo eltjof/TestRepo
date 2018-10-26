@@ -2,19 +2,19 @@ FRONTEND
 
 1 
 
-|scenario|Open Frontstore|
+|scenario|open Frontstore|
 |open    |${URL_FRONTEND}|
 |check pending requests  |
 
 2       
 
-|scenario  |Inloggen Frontstore            |
+|scenario  |inloggen Frontstore            |
 |hover over|Mijn Coop|in|css=.header-navbar|
 |click     |Inloggen |in|css=.navbar-sub   |
 
 3
 
-|scenario|Gebruikersnaam    |gebruikersnaam|Wachtwoord|wachtwoord|inloggen|
+|scenario|gebruikersnaam    |gebruikersnaam|wachtwoord|wachtwoord|inloggen|
 |enter   |@gebruikersnaam   |as            |xpath=//*[@id="email"]        |
 |enter   |@wachtwoord       |as            |xpath=//*[@id="wachtwoord"]   |
 |press   |Tab                                                             |
@@ -65,7 +65,7 @@ FRONTEND
 
 10
 
-|scenario|Waarde teller lister|lister                  |van artikel|volgnr                  |Waarde teller basket|basket|
+|scenario|waarde teller lister|lister                  |van artikel|volgnr                  |waarde teller basket|basket|
 |check   |value of            |css=[data-quantityinput]|in         |xpath=//article[@volgnr]|@lister                    |
 |check   |value of            |css=.icon-basket        |@basket                                                         |
 
@@ -79,7 +79,7 @@ FRONTEND
 
 12
 
-|scenario              |Controleer of er boodschappen in winkelmandje zitten en verwijder ze|
+|scenario              |controleer of er boodschappen in winkelmandje zitten en verwijder ze|
 |click                 |Mijn boodschappen      |in                   |css=.header-navbar    |
 |$timeout=             |seconds before timeout                                              |
 |seconds before timeout|5                                                                   |
@@ -136,12 +136,10 @@ FRONTEND
 
 21
 
-|scenario                                      |wijzig winkel in storeselectorpopup stap 1                |
-|artikel                                       |cola           |product        |Markant Cola|in winkelmand|
-|kies een postcode in storeselectorpopup stap 1|6883ew         |kies een winkel|Arnhem Hanzestraat        |
-|click                                         |css=.storeSelector__step2 [data-targetstep='1']           |
-|kies een postcode in storeselectorpopup stap 1|6883ew         |kies een winkel|Velp                      |
-|show                                          |take screenshot|winkel velp                               |
+|scenario                                      |wijzig winkel in storeselectorpopup stap 1     |
+|click                                         |css=.storeSelector__step2 [data-targetstep='1']|
+|kies een postcode in storeselectorpopup stap 1|6883ew             |kies een winkel    |Velp   |
+|show                                          |take screenshot    |winkel velp popup          |
 
 22
 
@@ -149,7 +147,7 @@ FRONTEND
 |kies een service in storeselectorpopup stap 2|Bezorgen                                       |
 |click                                        |css=.storeSelector__step3 [data-targetstep='2']|
 |kies een service in storeselectorpopup stap 2|Ophalen                                        |
-|show                                         |take screenshot            |Ophalen            |
+|show                                         |take screenshot         |Ophalen popup         |
 
 23
 
@@ -157,7 +155,7 @@ FRONTEND
 |kies servicedag in  storeselectorpopup stap 3|2              |kies servicetijdslot in storeselectorpopup stap 3|2|
 |click                                        |css=.storeSelector__step4 [data-targetstep='3']                    |
 |kies servicedag in  storeselectorpopup stap 3|3              |kies servicetijdslot in storeselectorpopup stap 3|3|
-|show                                         |take screenshot|derde bezorgdag derde tijdslot                     |
+|show                                         |take screenshot|derde bezorgdag derde tijdslot popup               |
 
 24
 
@@ -187,26 +185,29 @@ FRONTEND
 
 28
 
-|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel|winkel|
-
-
+|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel     |winkel     |
+|enter   |@postcode                             |as      |css=.storeSelector__userLocation|
+|click   |css=.btn--submitLocation                                                        |
+|check pending requests                                                                   |
+|ensure  |is visible                            |@winkel                                  |
+|click   |@winkel                                                                         |
+|click   |Kies deze winkel                                                                |
 
 29
 
-|scenario|kies een service in winkelmand stap2|service|
-
-
+|scenario      |kies een service in winkelmand stap2        |service       |
+|execute script|document.querySelector('[data-service="@service"]').click()|
 
 30
 
 |scenario|kies servicedag in winkelmand stap 3|dagvolgnr|kies servicetijdslot in storeselectorpopup stap3|tijdslotvolgnr|
-
+|click   |xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                               |
+|click   |xpath=//select[@id="OrderData_DeliveryTime"]/option[@tijdslotvolgnr]                                          |
 
 31
 
 |scenario|controleer melding in winkelmand  stap 3   |
 |check   |is visible on page|Rond je bestelling af op|
-
 
 32
 
@@ -216,7 +217,7 @@ FRONTEND
 33
 
 |scenario|ga door naar reservering in winkelmand stap 3|
-
+|click   |css=.btn--submitReservation                  |
 
 
 34
@@ -231,48 +232,80 @@ FRONTEND
 
 36
 
-|scenario|wijzig winkel in winkelmand stap 1|
-
+|scenario                              |wijzig winkel in winkelmand stap 1             |
+|click                                 |css=.storeSelector__step2 [data-targetstep='1']|
+|kies een postcode in winkelmand stap 1|6883ew             |kies een winkel    |Velp   |
+|show                                  |take screenshot    |winkel velp basket         |
 
 37
 
-|scenario|wijzig service in winkelmand stap 2|
-
+|scenario                            |wijzig service in winkelmand stap 2            |
+|kies een service in winkelmand stap2|Bezorgen                                       |
+|click                               |css=.storeSelector__step3 [data-targetstep='2']|
+|kies een service in winkelmand stap2|Ophalen                                        |
+|show                                |take screenshot         |Ophalen popup         |
 
 38
 
-|scenario|wijzig servicedag en serviceslot in winkelmand stap 3|
+|scenario                            |wijzig servicedag en serviceslot in winkelmand stap 3             |
+|kies servicedag in winkelmand stap 3|2              |kies servicetijdslot in storeselectorpopup stap3|2|
+|click                               |css=.storeSelector__step4 [data-targetstep='3']                   |
+|kies servicedag in winkelmand stap 3|3              |kies servicetijdslot in storeselectorpopup stap3|3|
+|show                                |take screenshot|derde bezorgdag derde tijdslot basket             |
 
 
 39
 
-|scenario|ga verder naar bestellen     |
-|click   |Verder naar bestellen        |
-|check pending requests                |
-|ensure  |is visible|Aanvullende opties|
+|scenario|ga verder naar bestellen ingelogd|
+|click   |Verder naar bestellen            |
+|check pending requests                    |
+|ensure  |is visible  |Aanvullende opties  |
+
+39a
+
+|scenario|ga verder naar bestellen niet ingelogd|
+|click   |Verder naar bestellen                 |
+|check pending requests                         |
+|ensure  |is visible          |Gegevens         |
 
 40
 
-|scenario|ga verder als bestaande klant|
-
-
+|scenario|ga verder als bestaande klant|gebruikersnaam|wachtwoord   |wachtwoord   |
+|enter   |@gebruikersnaam              |as            |css=#ShopLoginForm_Login   |
+|enter   |@wachtwoord                  |as            |css=#ShopLoginForm_Password|
+|press   |Tab                                                                     |
+|click   |css=a[data-pageview='bestaandeklant/inloggen']                          |
 
 41
 
-|scenario|ga verder als nieuwe klant|
-
-
+|scenario      |vul checkout in en plaats bestelling als bestaande klant                        |
+|ensure        |value of attribute|checked|on|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
+|check         |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
+|check         |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
+|enter         |Testorder bestaand|as     |Uw opmerking                                         |
+|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()         |
+|click         |Bestelling plaatsen                                                             |
+|check pending requests                                                                         |
 
 42
 
-|scenario      |vul checkout in en plaats bestelling                                                               |
-|ensure        |value of attribute|checked           |on     |xpath=//*[@id="OrderData_DeliverySimilarProducts"]   |
-|              |check             |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
-|              |check             |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
-|enter         |Testorder         |as                |Uw opmerking                                                 |
-|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()                            |
-|click         |Bestelling plaatsen                                                                                |
-|check pending requests                                                                                            |
+|scenario|ga verder als nieuwe klant|emailadres                              |
+|enter   |@emailadres               |as|css=#RegisterNewCustomer_EmailAddress|
+|press   |Tab                                                                |
+|click   |css=a[data-pageview='nieuwe-klant']                                |
+
+42a
+
+|scenario|vul checkout in en plaats bestelling als nieuwe klant                           |
+|ensure  |value of attribute|checked|on|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
+|check   |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
+|check   |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
+|enter   |Testorder nieuw   |as     |Uw opmerking                                         |
+
+
+
+
+
 
 43
 
@@ -293,35 +326,32 @@ FRONTEND
 
 |scenario|wis browsergeschiedenis|
 
+
 46
-
-|scenario|sluit browsersessie|
-
-47
 
 |scenario|zoek postcode van winkel die niet bezorgt in storeselectorpopup stap 1|postcode                            |
 |        |selecteer                                                                                                  |
 |check   |is visible on page                                                    |Deze winkel bezorgt niet op postcode|
 
-48
+47
 
 |scenario|kies winkel die niet bezorgt in storeselectorpopup stap 1|winkel                              |
 |        |kies                                                                                          |
 |check   |is visible on page                                       |Deze winkel bezorgt niet op postcode|
 
-49
+48
 
 |scenario|zoek postcode van winkel die niet bezorgt in winkelmand stap 1|postcode                            |
 |        |selecteer                                                                                          |
 |check   |is visible on page                                            |Deze winkel bezorgt niet op postcode|
 
-50
+49
 
 |scenario|kies winkel die niet bezorgt in winkelmand stap 1|winkel                              |
 |        |kies                                                                                  |
 |check   |is visible on page                               |Deze winkel bezorgt niet op postcode|
 
-51
+50
 
 |scenario          |van categorie|categorie|kies filtercategorie|filtercategorie|in label|label|
 |hover over        |Boodschappen |in       |id=header-mainnav                                  |
@@ -331,44 +361,44 @@ FRONTEND
 |is visible on page|@label       |in       |xpath=//span[text()='Jouw selectie']/..            |
 |is visible on page|Wis alles    |in       |xpath=//span[text()='Jouw selectie']/..            |
 
-52
+51
 
 |scenario              |wis filter                                          |
 |click                 |Wis alles|in|xpath=//span[text()='Jouw selectie']/..|
 |is not visible on page|xpath=//span[text()='Jouw selectie']/..             |
 
-53
+52
 
 |scenario|check pending requests twice|
 |check pending requests               |
 |wait    |1          |seconds         |
 |check pending requests               |
 
-B2b
+B2 B
 
 90
 
-|scenario|Log in als B2 B klant zonder account                            |
+|scenario|log in als B2 B klant zonder account                            |
 |open    |${URL_B2B_zonder_account}                                       |
 |ensure  |is visible|Let op u bent uitgelogd!|in|css=.featherlight-content|
 
 91
 
-|scenario|Log in als B2 B klant                                      |
+|scenario|log in als B2 B klant                                      |
 |open    |${URL_B2B_met_account}                                     |
 |ensure  |is visible|Winsum (frl), Meamerterdyk|in|css=.header-navbar|
 |ensure  |is visible|Welkom Eltjo Folkersma    |in|css=.header-navbar|
 
 92
 
-|scenario|Controleer of er artikelen in winkelmand zitten B2 B|
+|scenario|controleer of er artikelen in winkelmand zitten B2 B|
 |click   |Mijn boodschappen  |in      |css=.header-navbar     |
 |ensure  |is visible         |Alle boodschappen verwijderen   |
 |ensure  |is visible         |Bestelling laten bezorgen       |
 
 93
 
-|scenario|Bestelling plaatsen B2 B                                                                    |
+|scenario|bestelling plaatsen B2 B                                                                    |
 |click   |xpath=//*[@id="OrderData_DeliveryDate"]                                                     |
 |click   |xpath=//*[@id="OrderData_DeliveryDate"]/option[3]|in|xpath=//*[@id="OrderData_DeliveryDate"]|
 |click   |xpath=//*[@id="OrderData_Remarks"]                                                          |
@@ -382,12 +412,12 @@ BACKEND
 
 100
 
-|scenario|Open Backoffice|
+|scenario|open Backoffice|
 |open    |${URL_BACKEND} |
 
 101
 
-|scenario|Inloggen Backoffice                                               |
+|scenario|inloggen Backoffice                                               |
 |enter   |${GN_BACKEND}    |as|xpath=//*[@id="LoginForm_Login"]             |
 |enter   |${WW_BACKEND}    |as|xpath=//*[@id="LoginForm_Password"]          |
 |enter   |${DOMAIN_BACKEND}|as|xpath=//*[@id="LoginForm_RegistrationDomain"]|
@@ -395,7 +425,7 @@ BACKEND
 
 102
 
-|scenario|Zoek laatste bestelnummer in Backoffice                                                                                                                           |
+|scenario|zoek laatste bestelnummer in Backoffice                                                                                                                           |
 |open    |https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=|
 |show    |take screenshot                                                                   |laatste order                                                                  |
 
@@ -404,13 +434,13 @@ MAIL
 
 200
 
-|scenario|Maak screenshot nieuwste mail klantbevestiging|
+|scenario|maak screenshot nieuwste mail klantbevestiging|
 |open    |${URL_GOOGLEMAIL}                             |
 
 
 201
 
-|scenario |Maak screenshot nieuwste mail mailtrap                              |
+|scenario |maak screenshot nieuwste mail mailtrap                              |
 |open     |${URL_MAILTRAP}                                                     |
 |click    |css=.google-signup                                                  |
 |enter    |${GN_GOOGLEMAIL}     |as  |name=identifier                          |
