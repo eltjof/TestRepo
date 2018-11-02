@@ -1,5 +1,5 @@
 ---
-Help: Testen herhaalbestellingen
+Help: Testen bestaande klant
 Suite
 ---
 !1 Test suite X

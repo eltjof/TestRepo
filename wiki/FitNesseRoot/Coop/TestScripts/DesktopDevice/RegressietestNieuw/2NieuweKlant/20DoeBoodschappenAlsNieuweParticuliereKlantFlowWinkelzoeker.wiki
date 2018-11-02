@@ -2,4 +2,13 @@
 Help: Testen Flow via Winkelzoeker, als nieuwe particuliere klant
 Test
 ---
-<test page>
+|script                                                                                           |
+|open Frontstore                                                                                  |
+|zoek supermarkt                              |Velp                                               |
+|Kies hier boodschappen doen                  |2110           |Is Zichtbaar |Velp                 |
+|artikel                                      |3              |van categorie|Dranken|in winkelmand|
+|kies een service in storeselectorpopup stap 2|Bezorgen                                           |
+|show                                         |take screenshot|bezorgen zonder postcode           |
+|sluit storeselectorpopup  zonder actie                                                           |
+|controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt     |
+|wait                                         |10             |seconds                            |
