@@ -1,5 +1,5 @@
 ---
-Help: Testen Scenarios
+Help: Algemeen
 Suite
 ---
 !1 Test suite X

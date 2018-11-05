@@ -11,4 +11,3 @@ Test
 |show                                         |take screenshot|bezorgen zonder postcode           |
 |sluit storeselectorpopup  zonder actie                                                           |
 |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt     |
-|wait                                         |10             |seconds                            |

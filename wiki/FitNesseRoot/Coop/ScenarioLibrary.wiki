@@ -33,14 +33,14 @@ FRONTEND
 
 |scenario|Kies hier boodschappen doen|storeID|Is Zichtbaar|winkel          |
 |click   |Hier boodschappen doen     |in     |css=#store_@storeID          |
-|ensure  |is visible                 |@winkel|in          |css=.navbar-item|
+|ensure  |is visible on page         |@winkel|in          |css=.navbar-item|
 
 6
 
-|scenario|artikel         |artikelzoeknaam|product|productnaam|in winkelmand|
-|enter   |@artikelzoeknaam|as             |id=SearchTerm                    |
-|click   |@productnaam    |in             |css=.searchResultList            |
-|click   |Toevoegen                                                         |
+|scenario|artikel via zoekterm               |artikelzoeknaam               |in winkelmand               |
+|enter   |@artikelzoeknaam                   |as                            |id=SearchTerm               |
+|click   |css=#ui-id-1 > li:nth-child(2) > ul > li:nth-child(1) > a > div:nth-child(2) > div.productTitle|
+|click   |xpath=//article//span[@data-plusbutton]                                                        |
 
 7
 
@@ -60,13 +60,13 @@ FRONTEND
 
 9
 
-|scenario          |van categorie|categorie|kies filtercategorie|filtercategorie|in label|label|
-|hover over        |Boodschappen |in       |id=header-mainnav                                  |
-|click             |@categorie                                                                 |
-|click             |@label       |in       |xpath=//span[text()='@filtercategorie']/..         |
-|is visible on page|Jouw selectie                                                              |
-|is visible on page|@label       |in       |xpath=//span[text()='Jouw selectie']/..            |
-|is visible on page|Wis alles    |in       |xpath=//span[text()='Jouw selectie']/..            |
+|scenario  |van categorie     |categorie|kies filtercategorie|filtercategorie   |in label   |label   |
+|hover over|Boodschappen      |in       |id=header-mainnav                                           |
+|click     |@categorie                                                                               |
+|click     |@label            |in       |xpath=//span[text()='@filtercategorie']/..                  |
+|ensure    |is visible on page|Jouw selectie                                                         |
+|ensure    |is visible on page|@label   |in                  |xpath=//span[text()='Jouw selectie']/..|
+|ensure    |is visible on page|Wis alles|in                  |xpath=//span[text()='Jouw selectie']/..|
 
 10
 
@@ -102,10 +102,10 @@ FRONTEND
 
 15
 
-|scenario          |controleer notificatie en winkellink als je geen winkel gekozen hebt                                                                                                                 |
-|check             |value of                   |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
-|click             |xpath=.//a[text()='winkel']|in                      |css=.alertMessage--error                                                                                                        |
-|is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                                             |
+|scenario|controleer notificatie en winkellink als je geen winkel gekozen hebt                                                                                                        |
+|check   |value of          |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
+|click   |xpath=(//a[text()='winkel'])[last()]                                                                                                                                        |
+|ensure  |is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                 |
 
 16
 
@@ -115,19 +115,19 @@ FRONTEND
 
 17
 
-|scenario          |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
-|is visible on page|is geselecteerd als jouw winkel.                                                            |
-|is visible on page|De reservering is nog niet voltooid.                                                        |
-|                  |click                 |Velp                                                                 |
-|                  |click                 |xpath=.//a[text()='Velp']          |in   |css=.alertMessage--error   |
-|                  |is visible on page    |Jouw winkel:                                                         |
-|                  |is visible on page    |is geselecteerd als jouw winkel.                                     |
-|                  |is visible on page    |De reservering is nog niet voltooid.                                 |
-|                  |click                 |Winkelmand                                                           |
-|                  |click                 |xpath=.//a[text()='Winkelmand']    |in   |css=.alertMessage--error   |
-|                  |is visible on page    |Alle boodschappen verwijderen                                        |
-|                  |is visible on page    |is geselecteerd als jouw winkel.                                     |
-|                  |is visible on page    |De reservering is nog niet voltooid.                                 |
+|scenario|controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
+|ensure  |is visible on page    |is geselecteerd als jouw winkel.                                     |
+|ensure  |is visible on page    |De reservering is nog niet voltooid.                                 |
+|        |click                 |Velp                                                                 |
+|        |click                 |xpath=.//a[text()='Velp']          |in   |css=.alertMessage--error   |
+|        |is visible on page    |Jouw winkel:                                                         |
+|        |is visible on page    |is geselecteerd als jouw winkel.                                     |
+|        |is visible on page    |De reservering is nog niet voltooid.                                 |
+|        |click                 |Winkelmand                                                           |
+|        |click                 |xpath=.//a[text()='Winkelmand']    |in   |css=.alertMessage--error   |
+|        |is visible on page    |Alle boodschappen verwijderen                                        |
+|        |is visible on page    |is geselecteerd als jouw winkel.                                     |
+|        |is visible on page    |De reservering is nog niet voltooid.                                 |
 
 18
 
@@ -154,7 +154,7 @@ FRONTEND
 |enter   |@postcode                                     |as      |css=.storeSelector__userLocation|
 |click   |css=.btn--submitLocation                                                                |
 |check pending requests                                                                           |
-|ensure  |is visible                                    |@winkel                                  |
+|ensure  |is visible on page                            |@winkel                                  |
 |click   |@winkel                                                                                 |
 |click   |Kies deze winkel                                                                        |
 
@@ -162,6 +162,16 @@ FRONTEND
 
 |scenario      |kies een service in storeselectorpopup stap 2   |service   |
 |execute script|document.querySelector('[data-service="@service"]').click()|
+
+22a
+
+|scenario|kies Bezorgen in storeselectorpopup stap 2                                                                                                                                                                                                                                            |
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step2._is_active > section > div > div.storeSelector__service.storeSelector__service--delivery > a > span.btn.btn--submitService.storeSelector__serviceButton.storeSelector__sectionTargetLink|
+
+22b
+
+|scenario|kies Ophalen in storeselectorpopup stap 2                                                                                                                                                                                                                                           |
+|click   |css=#wrapper > div.storeSelector > section > section.storeSelector__step.storeSelector__step2._is_active > section > div > div.storeSelector__service.storeSelector__service--pickup > a > span.btn.btn--submitService.storeSelector__serviceButton.storeSelector__sectionTargetLink|
 
 23
 
@@ -172,27 +182,29 @@ FRONTEND
 24
 
 |scenario|controleer melding in storeselector popup stap 3                                     |
-|check   |is visible on page|Je reservering is terug te vinden en te wijzigen in de winkelmand.|
+|ensure  |is visible on page|Je reservering is terug te vinden en te wijzigen in de winkelmand.|
 
 25
 
 |scenario|controleer melding in storeselector popup stap 3 half uur voor cutofftime |
-|check   |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
+|ensure  |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
 
 26
 
-|scenario|ga door naar reservering in storeselectorpopup stap 3|
-|click   |css=.btn--submitReservation                          |
+|scenario |ga door naar reservering in storeselectorpopup stap 3|
+|check pending requests                                         |
+|scroll to|top                                                  |
+|click    |css=.btn--submitReservation                          |
 
 27
 
 |scenario|controleer melding in storeselector popup stap 4                                     |
-|check   |is visible on page|Je reservering is terug te vinden en te wijzigen in de winkelmand.|
+|ensure  |is visible on page|Je reservering is terug te vinden en te wijzigen in de winkelmand.|
 
 28
 
 |scenario|controleer melding in storeselector popup stap 4 half uur voor cutofftime |
-|check   |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
+|ensure  |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
 
 29
 
@@ -221,31 +233,46 @@ FRONTEND
 
 |scenario|zoek postcode van winkel die niet bezorgt in storeselectorpopup stap 1|postcode                            |
 |        |selecteer                                                                                                  |
-|check   |is visible on page                                                    |Deze winkel bezorgt niet op postcode|
+|ensure  |is visible on page                                                    |Deze winkel bezorgt niet op postcode|
 
 33
 
 |scenario|kies winkel die niet bezorgt in storeselectorpopup stap 1|winkel                              |
-|        |kies                                                                                          |
-|check   |is visible on page                                       |Deze winkel bezorgt niet op postcode|
+|enter   |6883ew                                                   |as |css=.storeSelector__userLocation|
+|click   |css=.btn--submitLocation                                                                      |
+|check pending requests                                                                                 |
+|ensure  |is visible on page                                       |@winkel                             |
+|click   |@winkel                                                                                       |
+|click   |Kies deze winkel                                                                              |
+|ensure  |is visible on page                                       |Deze winkel bezorgt niet op postcode|
 
 34
 
 |scenario|ga door naar winkelmand in storeselectorpopup stap 4 reservering|
 |click   |css=.btn--redirect                                              |
-|ensure  |is visible            |Alle boodschappen verwijderen            |
+|ensure  |is visible on page        |Alle boodschappen verwijderen        |
 
 35
 
-|scenario|controleer of er artikelen in winkelmand zitten|
-|click   |Mijn boodschappen|in    |css=.header-navbar    |
-|ensure  |is visible       |Alle boodschappen verwijderen|
+|scenario|controleer of er artikelen in winkelmand zitten |
+|click   |Mijn boodschappen |in    |css=.header-navbar    |
+|ensure  |is visible on page|Alle boodschappen verwijderen|
 
 36
 
-|scenario|controleer of bestelgrens is bereikt    |
-|ensure  |is visible        |css=.orderMessage    |
-|        |click if available|Verder naar bestellen|
+|scenario|controleer of bestelgrens is bereikt                                 |
+|ensure  |is visible on page    |Alle boodschappen verwijderen                 |
+|ensure  |is not visible on page|css=.orderMessage                             |
+|check   |value of attribute    |disabled|on|css=.storeSelector__btn-order|null|
+
+
+36
+
+|scenario|controleer of bestelgrens niet is bereikt                            |
+|ensure  |is visible on page|Alle boodschappen verwijderen                     |
+|ensure  |is visible on page|css=.orderMessage                                 |
+|check   |value of attribute|disabled|on|css=.storeSelector__btn-order|disabled|
+|        |click             |Verder naar bestellen                             |
 
 37
 
@@ -257,13 +284,15 @@ FRONTEND
 
 38
 
-|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel     |winkel     |
-|enter   |@postcode                             |as      |css=.storeSelector__userLocation|
-|click   |css=.btn--submitLocation                                                        |
-|check pending requests                                                                   |
-|ensure  |is visible                            |@winkel                                  |
-|click   |@winkel                                                                         |
-|click   |Kies deze winkel                                                                |
+|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel|winkel                        |
+|enter   |@postcode                             |as      |css=.storeSelector__userLocation              |
+|click   |css=.btn--submitLocation                                                                      |
+|check pending requests                                                                                 |
+|ensure  |is visible on page                    |@winkel                                                |
+|        |click                                 |@winkel |in             |css=.storeSelector__storesList|
+|click   |Kies deze winkel                                                                              |
+
+
 
 39
 
@@ -272,19 +301,20 @@ FRONTEND
 
 40
 
-|scenario|kies servicedag in winkelmand stap 3|dagvolgnr|kies servicetijdslot in storeselectorpopup stap3|tijdslotvolgnr|
-|click   |xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                               |
-|click   |xpath=//select[@id="OrderData_DeliveryTime"]/option[@tijdslotvolgnr]                                          |
+|scenario |kies servicedag in winkelmand stap 3|dagvolgnr|kies servicetijdslot in storeselectorpopup stap3|tijdslotvolgnr|
+|scroll to|xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                               |
+|click    |xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                               |
+|click    |xpath=//select[@id="OrderData_DeliveryTime"]/option[@tijdslotvolgnr]                                          |
 
 41
 
 |scenario|controleer melding in winkelmand  stap 3   |
-|check   |is visible on page|Rond je bestelling af op|
+|ensure  |is visible on page|Rond je bestelling af op|
 
 42
 
 |scenario|controleer melding in winkelmand  stap 3 half uur voor cutofftime         |
-|check   |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
+|ensure  |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
 
 43
 
@@ -294,12 +324,12 @@ FRONTEND
 44
 
 |scenario|controleer melding in winkelmand stap 4    |
-|check   |is visible on page|Rond je bestelling af op|
+|ensure  |is visible on page|Rond je bestelling af op|
 
 45
 
 |scenario|controleer melding in winkelmand stap 4 half uur voor cutofftime          |
-|check   |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
+|ensure  |is visible on page|Wil je de boodschappen ontvangen op het gekozen moment,|
 
 46
 
@@ -328,27 +358,27 @@ FRONTEND
 
 |scenario|zoek postcode van winkel die niet bezorgt in winkelmand stap 1|postcode                            |
 |        |selecteer                                                                                          |
-|check   |is visible on page                                            |Deze winkel bezorgt niet op postcode|
+|ensure  |is visible on page                                            |Deze winkel bezorgt niet op postcode|
 
 50
 
 |scenario|kies winkel die niet bezorgt in winkelmand stap 1|winkel                              |
 |        |kies                                                                                  |
-|check   |is visible on page                               |Deze winkel bezorgt niet op postcode|
+|ensure  |is visible on page                               |Deze winkel bezorgt niet op postcode|
 
 51
 
-|scenario|ga verder naar bestellen ingelogd|
-|click   |Verder naar bestellen            |
-|check pending requests                    |
-|ensure  |is visible  |Aanvullende opties  |
+|scenario|ga verder naar bestellen ingelogd    |
+|click   |Verder naar bestellen                |
+|check pending requests                        |
+|ensure  |is visible on page|Aanvullende opties|
 
 52
 
 |scenario|ga verder naar bestellen niet ingelogd|
 |click   |Verder naar bestellen                 |
 |check pending requests                         |
-|ensure  |is visible          |Gegevens         |
+|ensure  |is visible on page      |Gegevens     |
 
 53
 
@@ -484,23 +514,23 @@ B2 B
 
 90
 
-|scenario|log in als B2 B klant zonder account                            |
-|open    |${URL_B2B_zonder_account}                                       |
-|ensure  |is visible|Let op u bent uitgelogd!|in|css=.featherlight-content|
+|scenario|log in als B2 B klant zonder account                                    |
+|open    |${URL_B2B_zonder_account}                                               |
+|ensure  |is visible on page|Let op u bent uitgelogd!|in|css=.featherlight-content|
 
 91
 
-|scenario|log in als B2 B klant                                      |
-|open    |${URL_B2B_met_account}                                     |
-|ensure  |is visible|Winsum (frl), Meamerterdyk|in|css=.header-navbar|
-|ensure  |is visible|Welkom Eltjo Folkersma    |in|css=.header-navbar|
+|scenario|log in als B2 B klant                                              |
+|open    |${URL_B2B_met_account}                                             |
+|ensure  |is visible on page|Winsum (frl), Meamerterdyk|in|css=.header-navbar|
+|ensure  |is visible on page|Welkom Eltjo Folkersma    |in|css=.header-navbar|
 
 92
 
 |scenario|controleer of er artikelen in winkelmand zitten B2 B|
-|click   |Mijn boodschappen  |in      |css=.header-navbar     |
-|ensure  |is visible         |Alle boodschappen verwijderen   |
-|ensure  |is visible         |Bestelling laten bezorgen       |
+|click   |Mijn boodschappen   |in     |css=.header-navbar     |
+|ensure  |is visible on page  |Alle boodschappen verwijderen  |
+|ensure  |is visible on page  |Bestelling laten bezorgen      |
 
 93
 
@@ -509,10 +539,10 @@ B2 B
 |click   |xpath=//*[@id="OrderData_DeliveryDate"]/option[3]|in|xpath=//*[@id="OrderData_DeliveryDate"]|
 |click   |xpath=//*[@id="OrderData_Remarks"]                                                          |
 |enter   |b2b testorder                                    |as|Uw opmerking                           |
-|ensure  |is visible                                       |WINSUM (FRL) Meamerterdyk 5               |
-|ensure  |is visible                                       |Bestelling afronden                       |
+|ensure  |is visible on page                               |WINSUM (FRL) Meamerterdyk 5               |
+|ensure  |is visible on page                               |Bestelling afronden                       |
 |click   |Bestelling afronden                                                                         |
-|ensure  |is visible                                       |procare                                   |
+|ensure  |is visible on page                               |procare                                   |
 
 BACKEND
 
