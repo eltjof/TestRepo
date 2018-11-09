@@ -36,14 +36,13 @@ Test
 |ga door naar reservering in winkelmand stap 3                                                                                                                                       |
 |check                                                    pending requests                                                                                                           |
 |ga verder naar bestellen niet ingelogd                                                                                                                                              |
+|ga verder als nieuwe klant                               |coopecommerce.testen+9112018@gmail.com                                                                                    |
+|vul checkout in en plaats bestelling als nieuwe zakelijke klant                                                                                                                     |
+|controleer bestelling en leg bestelnummer vast                                                                                                                                      |
+|uitloggen frontstore                                     |Welkom Lowie                                                                                                              |
 |wait                                                     |3                |seconds                                                                                                 |
-
-|ga verder als nieuwe klant|coopecommerce.testen+5112018@gmail.com|
-|vul checkout in en plaats bestelling als nieuwe zakelijke klant  |
-|controleer bestelling en leg bestelnummer vast                   |
-|uitloggen frontstore                                             |
-|open Backoffice                                                  |
-|inloggen Backoffice                                              |
-|zoek laatste bestelnummer in Backoffice                          |
-|maak screenshot nieuwste mail klantbevestiging                   |
-|maak screenshot nieuwste mail mailtrap                           |
+|open Backoffice                                                                                                                                                                     |
+|inloggen Backoffice                                                                                                                                                                 |
+|zoek laatste bestelnummer in Backoffice                                                                                                                                             |
+|maak screenshot nieuwste mail klantbevestiging                                                                                                                                      |
+|maak screenshot nieuwste mail mailtrap                                                                                                                                              |

@@ -115,19 +115,20 @@ FRONTEND
 
 17
 
-|scenario|controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
-|ensure  |is visible on page    |is geselecteerd als jouw winkel.                                     |
-|ensure  |is visible on page    |De reservering is nog niet voltooid.                                 |
-|        |click                 |Velp                                                                 |
-|        |click                 |xpath=.//a[text()='Velp']          |in   |css=.alertMessage--error   |
-|        |is visible on page    |Jouw winkel:                                                         |
-|        |is visible on page    |is geselecteerd als jouw winkel.                                     |
-|        |is visible on page    |De reservering is nog niet voltooid.                                 |
-|        |click                 |Winkelmand                                                           |
-|        |click                 |xpath=.//a[text()='Winkelmand']    |in   |css=.alertMessage--error   |
-|        |is visible on page    |Alle boodschappen verwijderen                                        |
-|        |is visible on page    |is geselecteerd als jouw winkel.                                     |
-|        |is visible on page    |De reservering is nog niet voltooid.                                 |
+|scenario          |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt                                                     |
+|ensure            |is visible on page|is geselecteerd als jouw winkel.                                                                                              |
+|ensure            |is visible on page|De reservering is nog niet voltooid.                                                                                          |
+|                  |click             |Velp                           |in                                 |css=.alertMessage--success                                |
+|click             |Velp              |in                             |css=#main > div.notificationWrapper.container > div.alertMessage.alertMessage--success > p > a|
+|is visible on page|Jouw winkel:                                                                                                                                     |
+|is visible on page|is geselecteerd als jouw winkel.                                                                                                                 |
+|is visible on page|De reservering is nog niet voltooid.                                                                                                             |
+|                  |click             |xpath=.//a[text()='winkelmand']|in                                 |css=.alertMessage--warning                                |
+|click             |winkelmand        |in                             |css=#main > div.notificationWrapper.container > div.alertMessage.alertMessage--warning > p > a|
+|is visible on page|Alle boodschappen verwijderen                                                                                                                    |
+|is visible on page|is geselecteerd als jouw winkel.                                                                                                                 |
+|is visible on page|De reservering is nog niet voltooid.                                                                                                             |
+
 
 18
 
@@ -284,13 +285,13 @@ FRONTEND
 
 38
 
-|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel|winkel                        |
-|enter   |@postcode                             |as      |css=.storeSelector__userLocation              |
-|click   |css=.btn--submitLocation                                                                      |
-|check pending requests                                                                                 |
-|ensure  |is visible on page                    |@winkel                                                |
-|        |click                                 |@winkel |in             |css=.storeSelector__storesList|
-|click   |Kies deze winkel                                                                              |
+|scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel     |winkel     |
+|enter   |@postcode                             |as      |css=.storeSelector__userLocation|
+|click   |css=.btn--submitLocation                                                        |
+|check pending requests                                                                   |
+|ensure  |is visible on page                    |@winkel                                  |
+|click   |@winkel                               |in      |css=.storeSelector__storesList  |
+|click   |Kies deze winkel                                                                |
 
 
 
@@ -433,59 +434,61 @@ FRONTEND
 
 57
 
-|scenario|vul accountgegevens in zakelijk                                  |
-|click   |css=#OrderData_CustomerType_Business                             |
-|ensure  |is visible on page        |css=#OrderData_CompanyName            |
-|ensure  |is visible on page        |css=#OrderData_Industry               |
-|ensure  |is visible on page        |css=#OrderData_TaxationID             |
-|enter   |Kinderdagverblijf Heijmans|as|css=#OrderData_Industry            |
-|click   |css=#OrderData_Industry > option:nth-child(3)                    |
-|        |click                     |kinderdagverblijf                     |
-|enter   |123456                    |as|css=#OrderData_TaxationID          |
-|enter   |Munnikendreef             |as|css=#OrderData_Street              |
-|enter   |19                        |as|css=#OrderData_HouseNumber         |
-|enter   |a                         |as|css=##OrderData_HouseNumberAddition|
-|enter   |4254 DN                   |as|css=#OrderData_PostalCode          |
-|enter   |Sleeuwijk                 |as|css=#OrderData_City                |
-|click   |css=#OrderData_ReceiveCustomerCard                               |
-|click   |css=#OrderData_Gender_Dhr                                        |
-|enter   |Lowie                     |as|css=#OrderData_FirstName           |
-|ensure  |is visible on page        |css=#OrderData_LastNamePrefix         |
-|enter   |Heijmans                  |as|css=#OrderData_LastName            |
-|enter   |TEST1234                  |as|css=#OrderData_Password            |
-|enter   |TEST1234                  |as|css=#OrderData_RetypedPassword     |
-|enter   |06-12345678               |as|css=#OrderData_PhoneNumber         |
-|click   |css=#OrderData_BirthDate_Day > option:nth-child(17)              |
-|        |click                     |16                                    |
-|click   |css=#OrderData_BirthDate_Month > option:nth-child(11)            |
-|        |click                     |10                                    |
-|click   |#OrderData_BirthDate_Year > option:nth-child(53)                 |
-|        |click                     |1967                                  |
-|click   |css=#OrderData_ReceiveNewsletter                                 |
+|scenario |vul accountgegevens in zakelijk                                         |
+|scroll to|Zakelijk                                                                |
+|click    |Zakelijk                                                                |
+|         |click                     |css=#OrderData_CustomerType_Business         |
+|ensure   |is visible on page        |css=#OrderData_CompanyName                   |
+|ensure   |is visible on page        |css=#OrderData_Industry                      |
+|ensure   |is visible on page        |css=#OrderData_TaxationID                    |
+|enter    |Kinderdagverblijf Heijmans|as     |css=#OrderData_CompanyName           |
+|select   |Kinderdagverblijf         |for    |css=#OrderData_Industry              |
+|         |click                     |css=#OrderData_Industry > option:nth-child(3)|
+|enter    |123456                    |as     |css=#OrderData_TaxationID            |
+|enter    |Munnikendreef             |as     |css=#OrderData_Street                |
+|enter    |19                        |as     |css=#OrderData_HouseNumber           |
+|enter    |a                         |as     |css=#OrderData_HouseNumberAddition   |
+|enter    |4254 DN                   |as     |css=#OrderData_PostalCode            |
+|enter    |Sleeuwijk                 |as     |css=#OrderData_City                  |
+|         |click                     |css=#OrderData_ReceiveCustomerCard           |
+|click    |Ik wil graag een Coop klantenkaart ontvangen                            |
+|         |click                     |css=#OrderData_Gender_Dhr                    |
+|click    |Dhr.                                                                    |
+|enter    |Lowie                     |as     |css=#OrderData_FirstName             |
+|ensure   |is visible on page        |css=#OrderData_LastNamePrefix                |
+|enter    |Heijmans                  |as     |css=#OrderData_LastName              |
+|enter    |TEST1234                  |as     |css=#OrderData_Password              |
+|enter    |TEST1234                  |as     |css=#OrderData_RetypedPassword       |
+|enter    |06-12345678               |as     |css=#OrderData_PhoneNumber           |
+|select   |16                        |for    |css=#OrderData_BirthDate_Day         |
+|select   |10                        |for    |css=#OrderData_BirthDate_Month       |
+|select   |1967                      |for    |css=#OrderData_BirthDate_Year        |
+|click    |Ik wil graag de Coop nieuwsbrief ontvangen                              |
+|         |click                     |css=#OrderData_ReceiveNewsletter             |
 
 58
 
-|scenario      |vul checkout in en plaats bestelling als nieuwe particuliere klant                       |
-|ensure        |value of attribute         |checked|on|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
-|check         |value of attribute         |checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
-|check         |value of attribute         |checked|on|xpath=//*[@id="fc_coupon"]                   |null|
-|enter         |Testorder nieuw particulier|as     |Uw opmerking                                         |
-|vul accountgegevens in particulier                                                                      |
-|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()                  |
-|click         |Bestelling plaatsen                                                                      |
-|check pending requests                                                                                  |
+|scenario      |vul checkout in en plaats bestelling als nieuwe particuliere klant                                          |
+|ensure        |value of attribute         |checked           |on     |xpath=//*[@id="OrderData_DeliverySimilarProducts"]   |
+|              |check                      |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
+|              |check                      |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
+|enter         |Testorder nieuw particulier|as                |Uw opmerking                                                 |
+|vul accountgegevens in particulier                                                                                         |
+|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()                                     |
+|click         |Bestelling plaatsen                                                                                         |
+|check pending requests                                                                                                     |
 
 59
 
-|scenario      |vul checkout in en plaats bestelling als nieuwe zakelijke klant                       |
-|ensure        |value of attribute      |checked|on|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
-|check         |value of attribute      |checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
-|check         |value of attribute      |checked|on|xpath=//*[@id="fc_coupon"]                   |null|
-|enter         |Testorder nieuw zakelijk|as     |Uw opmerking                                         |
-|vul accountgegevens in zakelijk                                                                      |
-|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()               |
-|click         |Bestelling plaatsen                                                                   |
-|check pending requests                                                                               |
+|scenario      |vul checkout in en plaats bestelling als nieuwe zakelijke klant                                          |
+|ensure        |value of attribute      |checked           |on     |xpath=//*[@id="OrderData_DeliverySimilarProducts"]   |
+|              |check                   |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
+|              |check                   |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
+|enter         |Testorder nieuw zakelijk|as                |Uw opmerking                                                 |
+|vul accountgegevens in zakelijk                                                                                         |
+|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()                                  |
+|click         |Bestelling plaatsen                                                                                      |
+|check pending requests                                                                                                  |
 
 60
 
@@ -499,9 +502,9 @@ FRONTEND
 
 61
 
-|scenario  |uitloggen frontstore           |
-|hover over|Mijn Coop|in|css=.header-navbar|
-|click     |Uitloggen|in|css=.navbar-sub   |
+|scenario  |uitloggen frontstore|accountnaam          |
+|hover over|@accountnaam        |in|css=.header-navbar|
+|click     |Uitloggen           |in|css=.navbar-sub   |
 
 62
 
