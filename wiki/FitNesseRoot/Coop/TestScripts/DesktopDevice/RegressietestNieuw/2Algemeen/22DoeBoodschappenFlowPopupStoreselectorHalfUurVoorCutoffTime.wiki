@@ -1,5 +1,0 @@
----
-Help: Testen flow via pop-up storeselector half uur voor cutoff time
-Test
----
-<test page>

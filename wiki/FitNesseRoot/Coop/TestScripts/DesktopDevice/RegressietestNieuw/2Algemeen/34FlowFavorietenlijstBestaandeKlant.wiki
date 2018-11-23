@@ -1,5 +1,5 @@
 ---
-Help: Testen Flow via Favorietenlijst, als bestaande particuliere klant
+Help: Testen flow favorietenlijst als bestaande klant
 Test
 ---
 |script                                                                                                                                                                           |

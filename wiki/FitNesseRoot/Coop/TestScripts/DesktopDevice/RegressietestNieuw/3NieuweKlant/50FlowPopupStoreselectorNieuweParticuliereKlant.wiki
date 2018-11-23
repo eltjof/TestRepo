@@ -1,5 +1,5 @@
 ---
-Help: Testen flow via Pop-up storeselector als nieuwe zakelijke klant
+Help: Testen flow pop-up storeselector als nieuwe particuliere klant
 Test
 ---
 |script                                                                                                                                                                              |

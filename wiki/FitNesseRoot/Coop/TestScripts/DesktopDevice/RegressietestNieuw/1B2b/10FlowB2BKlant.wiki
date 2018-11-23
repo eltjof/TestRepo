@@ -1,5 +1,5 @@
 ---
-Help: Testen Flow als B2B klant
+Help: Testen Flow B2B klant
 Test
 ---
 |script                                                                                                                              |

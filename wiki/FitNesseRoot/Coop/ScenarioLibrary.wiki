@@ -106,8 +106,7 @@ FRONTEND
 |check   |value of          |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
 |click   |xpath=(//a[text()='winkel'])[last()]                                                                                                                                        |
 |ensure  |is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                 |
-
-16
+|check   |value of          |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
 
 |scenario                                      |sluit storeselectorpopup na kiezen winkel|
 |kies een postcode in storeselectorpopup stap 1|6883ew     |kies een winkel     |Velp    |
@@ -115,20 +114,17 @@ FRONTEND
 
 17
 
-|scenario          |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt                                                     |
-|ensure            |is visible on page|is geselecteerd als jouw winkel.                                                                                              |
-|ensure            |is visible on page|De reservering is nog niet voltooid.                                                                                          |
-|                  |click             |Velp                           |in                                 |css=.alertMessage--success                                |
-|click             |Velp              |in                             |css=#main > div.notificationWrapper.container > div.alertMessage.alertMessage--success > p > a|
-|is visible on page|Jouw winkel:                                                                                                                                     |
-|is visible on page|is geselecteerd als jouw winkel.                                                                                                                 |
-|is visible on page|De reservering is nog niet voltooid.                                                                                                             |
-|                  |click             |xpath=.//a[text()='winkelmand']|in                                 |css=.alertMessage--warning                                |
-|click             |winkelmand        |in                             |css=#main > div.notificationWrapper.container > div.alertMessage.alertMessage--warning > p > a|
-|is visible on page|Alle boodschappen verwijderen                                                                                                                    |
-|is visible on page|is geselecteerd als jouw winkel.                                                                                                                 |
-|is visible on page|De reservering is nog niet voltooid.                                                                                                             |
-
+|scenario          |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
+|ensure            |is visible on page                     |is geselecteerd als jouw winkel.                    |
+|ensure            |is visible on page                     |De reservering is nog niet voltooid.                |
+|click             |Velp                                   |in        |css=.alertMessage--success > p > a       |
+|is visible on page|Jouw winkel:                                                                                |
+|is visible on page|is geselecteerd als jouw winkel.                                                            |
+|is visible on page|De reservering is nog niet voltooid.                                                        |
+|click             |xpath=.//a[text()='winkelmand']        |in        |css=.alertMessage--warning > p > a       |
+|click             |winkelmand                             |in        |css=.alertMessage--warning > p > a       |
+|is visible on page|De reservering is nog niet voltooid.                                                        |
+|is visible on page|Alle boodschappen verwijderen                                                               |
 
 18
 
@@ -147,7 +143,14 @@ FRONTEND
 
 20
 
-|scenario|controleer notificatie en winkellink als je reservering gemaakt hebt|
+|scenario          |controleer notificatie en winkellink als je reservering gemaakt hebt|
+|ensure            |is visible on page    |is geselecteerd als jouw winkel.             |
+|ensure            |is visible on page    |De reservering is gemaakt.                   |
+|click             |Velp                  |in    |css=.alertMessage--success > p > a    |
+|is visible on page|Jouw winkel:                                                        |
+|is visible on page|is geselecteerd als jouw winkel.                                    |
+|is visible on page|De reservering is gemaakt.                                          |
+
 
 21
 

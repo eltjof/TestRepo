@@ -1,5 +1,5 @@
 ---
-Help: Testen Flow via Winkelzoeker
+Help: Testen flow winkelzoeker
 Test
 ---
 |script                                                                                           |
