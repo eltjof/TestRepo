@@ -1,5 +1,5 @@
 ---
-Help: Testen flow pop-up storeselector kies  winkel, service en timeslot, bevestig WEL,  en sluit popup (reservering)
+Help: Testen flow pop-up storeselector kies  winkel, service en timeslot, bevestig WEL,  en sluit popup (Res.)
 Test
 ---
 |script                                                                                                             |

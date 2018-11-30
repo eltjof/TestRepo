@@ -1,5 +1,5 @@
 ---
-Help: Testen Flow Pop up en Winkelmand Storeselector
+Help: Testen Mijn Coop
 Suite
 ---
 !1 Test suite X

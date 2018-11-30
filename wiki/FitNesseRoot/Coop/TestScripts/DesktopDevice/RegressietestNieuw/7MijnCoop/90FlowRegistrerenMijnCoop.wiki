@@ -1,0 +1,5 @@
+---
+Help: Testen registeren Mijn Coop
+Test
+---
+<test page>

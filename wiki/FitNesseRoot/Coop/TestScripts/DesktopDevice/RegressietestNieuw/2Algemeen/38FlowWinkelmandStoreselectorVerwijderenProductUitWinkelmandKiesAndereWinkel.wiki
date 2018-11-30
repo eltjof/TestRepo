@@ -1,0 +1,5 @@
+---
+Help: Testen flow winkelmand storeselector verwijderen product uit winkelmand door andere winkel te kiezen
+Test
+---
+<test page>

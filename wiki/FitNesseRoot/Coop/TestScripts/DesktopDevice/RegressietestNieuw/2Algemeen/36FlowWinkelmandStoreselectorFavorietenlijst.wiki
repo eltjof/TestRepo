@@ -1,5 +1,5 @@
 ---
-Help: Testen flow favorietenlijst als bestaande klant
+Help: Testen flow winkelmand storeselector favorietenlijst
 Test
 ---
 |script                                                                                                                                                                           |
