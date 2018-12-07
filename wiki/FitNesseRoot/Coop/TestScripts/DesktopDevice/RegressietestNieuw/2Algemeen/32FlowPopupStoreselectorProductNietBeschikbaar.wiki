@@ -2,4 +2,20 @@
 Help: Testen flow pop-up storeselector product wat niet beschikbaar is
 Test
 ---
-<test page>
+|script                                                                                                                               |
+|open Frontstore                                                                                                                      |
+|enter                                         |8710725015617     |as                                              |id=SearchTerm     |
+|check pending requests                                                                                                               |
+|click                                         |Snoeptomaten                                                                          |
+|click                                         |xpath=//article//span[@data-plusbutton]                                               |
+|kies een postcode in storeselectorpopup stap 1|6883ew            |kies een winkel                                 |Arnhem Hanzestraat|
+|kies een service in storeselectorpopup stap 2 |Bezorgen                                                                              |
+|kies servicedag in  storeselectorpopup stap 3 |2                 |kies servicetijdslot in storeselectorpopup stap3|2                 |
+|ga door naar reservering in storeselectorpopup stap 3                                                                                |
+|click                                         |css=.btn--redirect                                                                    |
+|ensure                                        |is visible on page|Helaas, er zit momenteel niets in je winkelmand!                   |
+|ensure                                        |is visible on page|Er zijn één of meerdere producten                                  |
+|show                                          |take screenshot   |winkelmand is leeg en melding                                      |
+|delete all cookies                                                                                                                   |
+|clear local storage                                                                                                                  |
+|clear session storage                                                                                                                |

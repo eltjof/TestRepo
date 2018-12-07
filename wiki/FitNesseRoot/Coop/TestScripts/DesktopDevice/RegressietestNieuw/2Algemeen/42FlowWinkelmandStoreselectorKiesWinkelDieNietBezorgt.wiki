@@ -1,5 +1,5 @@
 ---
-Help: Testen flow winkelmand storeselector kies een winkel die niet bezorgt
+Help: Testen flow winkelmand storeselector kies een winkel die niet bezorgt Geitenkamp Arnhem
 Test
 ---
 <test page>

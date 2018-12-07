@@ -2,4 +2,11 @@
 Help: Testen flow pop-up storeselector wijzig winkel in stap 1
 Test
 ---
-<test page>
+|script                                                                                  |
+|open Frontstore                                                                         |
+|artikel via zoekterm                          |cola  |in winkelmand                     |
+|kies een postcode in storeselectorpopup stap 1|6883ew|kies een winkel|Arnhem Hanzestraat|
+|wijzig winkel in storeselectorpopup stap 2                                              |
+|delete all cookies                                                                      |
+|clear local storage                                                                     |
+|clear session storage                                                                   |

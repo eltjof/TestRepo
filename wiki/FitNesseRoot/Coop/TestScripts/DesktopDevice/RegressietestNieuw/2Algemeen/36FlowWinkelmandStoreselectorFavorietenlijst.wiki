@@ -2,48 +2,28 @@
 Help: Testen flow winkelmand storeselector favorietenlijst
 Test
 ---
-|script                                                                                                                                                                           |
-|open          |${URL_FRONTEND}                                                                                                                                                   |
-|click         |Mijn Coop                                      |in                                |css=.header-navbar                                                             |
-|enter         |${GN_ACCOUNTCHROME}                            |as                                |xpath=//*[@id="email"]                                                         |
-|enter         |${WW_TESTACCOUNT}                              |as                                |xpath=//*[@id="wachtwoord"]                                                    |
-|click         |css=.actions .btn                                                                                                                                                 |
-|check pending requests                                                                                                                                                           |
-|hover over    |Welkom                                         |in                                |css=.header-navbar                                                             |
-|click         |Favorietenlijsten                                                                                                                                                 |
-|enter         |6883 ew                                        |as                                |id=fc_search                                                                   |
-|click         |id=btnSearch                                                                                                                                                      |
-|check         |value of                                       |xpath=(//h2/a)[1]                 |Velp                                                                           |
-|click         |Hier boodschappen doen                         |in                                |css=#store_2110                                                                |
-|ensure        |is visible                                     |Velp                                                                                                              |
-|ensure        |is visible                                     |Welkom                            |in                            |css=.header-navbar                              |
-|ensure        |is visible                                     |Regressie                         |in                            |css=.productLineInner                           |
-|click         |In winkelmand                                  |in                                |xpath=//a[text() = 'Regressie']/../..                                          |
-|click         |Mijn boodschappen                              |in                                |css=.header-navbar                                                             |
-|#             |click                                          |xpath=//*[@data-service='Bezorgen']/..                                                                            |
-|execute script|document.querySelector('[data-service="Bezorgen"]').click()                                                                                                       |
-|scroll to     |css=.crumbs                                                                                                                                                       |
-|click         |xpath=//*[@id="OrderData_DeliveryDate"]/option[1]                                                                                                                 |
-|click         |xpath=//*[@id="OrderData_DeliveryTime"]/option[3]                                                                                                                 |
-|scroll to     |css=.crumbs                                                                                                                                                       |
-|click         |Bevestigen                                                                                                                                                        |
-|scroll to     |css=.crumbs                                                                                                                                                       |
-|click         |Verder naar bestellen                                                                                                                                             |
-|scroll to     |css=.crumbs                                                                                                                                                       |
-|enter         |bezorgorder particulier Chrome                 |as                                |Uw opmerking                                                                   |
-|ensure        |is visible on page                             |Bestelling plaatsen                                                                                               |
-|click         |Bestelling plaatsen                                                                                                                                               |
-|scroll to     |Geboortedatum                                                                                                                                                     |
-|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()                                                                                           |
-|click         |Bestelling plaatsen                            |                                                                                                                  |
-|wait          |10                                             |seconds                                                                                                           |
-|open          |${URL_BACKEND}                                                                                                                                                    |
-|enter         |admin                                          |as                                |xpath=//*[@id="LoginForm_Login"]                                               |
-|enter         |!InterShop00!                                  |as                                |xpath=//*[@id="LoginForm_Password"]                                            |
-|enter         |COOP                                           |as                                |xpath=//*[@id="LoginForm_RegistrationDomain"]                                  |
-|click         |css=.loginbutton                                                                                                                                                  |
-|open          |https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=|
-|show          |take screenshot                                |order bestaande klant favorietenlijst                                                                             |
+|script                                                                                                                                                 |
+|open Frontstore                                                                                                                                        |
+|inloggen Frontstore                                                                                                                                    |
+|gebruikersnaam                               |${GN_ACCOUNTCHROME}     |wachtwoord                              |${WW_TESTACCOUNT}|inloggen             |
+|click                                        |Favorietenlijsten                                                                                        |
+|check pending requests                                                                                                                                 |
+|enter                                        |6883 ew                 |as                                      |id=fc_search                           |
+|click                                        |id=btnSearch                                                                                             |
+|Kies hier boodschappen doen                  |2110                    |Is Zichtbaar                            |Velp                                   |
+|ensure                                       |is visible              |Velp                                                                            |
+|ensure                                       |is visible              |Welkom Marthijs                         |in               |css=.header-navbar   |
+|ensure                                       |is visible              |Regressie                               |in               |css=.productLineInner|
+|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                   |
+|hover over                                   |css=.navbar-item.has-sub|in                                      |css=.header-navbar                     |
+|click                                        |Favorietenlijsten                                                                                        |
+|click                                        |In winkelmand           |in                                      |xpath=//a[text() = 'Regressie']/../..  |
+|click                                        |Mijn boodschappen       |in                                      |css=.header-navbar                     |
+|scroll to                                    |css=.crumbs                                                                                              |
+|kies een service in winkelmand stap2         |Bezorgen                                                                                                 |
+|kies servicedag in winkelmand stap 3         |2                       |kies servicetijdslot in winkelmand stap3|2                                      |
+|ga door naar reservering in winkelmand stap 3|                                                                                                         |
+|ga verder naar bestellen ingelogd                                                                                                                      |
 
 
 
