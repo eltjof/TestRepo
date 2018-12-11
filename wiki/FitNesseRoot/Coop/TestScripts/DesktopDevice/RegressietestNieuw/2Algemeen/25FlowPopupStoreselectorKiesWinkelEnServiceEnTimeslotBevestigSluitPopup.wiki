@@ -3,8 +3,8 @@ Help: Testen flow pop-up storeselector kies  winkel, service en timeslot, bevest
 Test
 ---
 |script                                                                                                             |
-|open Frontstore                                                                                                    |
-|artikel via zoekterm                          |cola     |in winkelmand                                             |
+|open                                          |${URL_COLA}                                                         |
+|click                                         |xpath=//article//span[@data-plusbutton]                             |
 |kies een postcode in storeselectorpopup stap 1|6883ew   |kies een winkel                                    |Velp  |
 |kies een service in storeselectorpopup stap 2 |Bezorgen                                                            |
 |kies servicedag in  storeselectorpopup stap 3 |2        |kies servicetijdslot in storeselectorpopup stap3   |2     |

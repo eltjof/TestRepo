@@ -42,11 +42,12 @@ FRONTEND
 
 6
 
-|scenario|artikel via zoekterm               |artikelzoeknaam               |in winkelmand               |
-|enter   |@artikelzoeknaam                   |as                            |id=SearchTerm               |
-|click   |css=#ui-id-1 > li:nth-child(2) > ul > li:nth-child(1) > a > div:nth-child(2) > div.productTitle|
-|click   |xpath=//article//span[@data-plusbutton]                                                        |
-|show    |take screenshot                    |artikel op zoeknaam                                        |
+|scenario|artikel via zoekterm   |artikelzoeknaam  |in winkelmand  |
+|enter   |@artikelzoeknaam       |as               |id=SearchTerm  |
+|click   |css=#ui-id-1 > li:nth-child(2) > ul > li:nth-child(1) > a|
+|click   |xpath=//article//span[@data-plusbutton]                  |
+|show    |take screenshot        |artikel op zoeknaam              |
+
 
 7
 
@@ -318,12 +319,13 @@ FRONTEND
 |ensure  |is visible on page                    |@winkel                                  |
 |click   |@winkel                               |in      |css=.storeSelector__storesList  |
 |click   |Kies deze winkel                                                                |
+|check pending requests                                                                   |
 |show    |take screenshot                       |winkel gekozen                           |
 
 
 39
 
-|scenario      |kies een service in winkelmand stap2    |service           |
+|scenario      |kies een service in winkelmand stap 2   |service           |
 |execute script|document.querySelector('[data-service="@service"]').click()|
 |show          |take screenshot                         |service gekozen   |
 
@@ -369,37 +371,59 @@ FRONTEND
 
 46
 
-|scenario                              |wijzig winkel in winkelmand stap 1             |
-|click                                 |css=.storeSelector__step2 [data-targetstep='1']|
-|kies een postcode in winkelmand stap 1|6883ew             |kies een winkel    |Velp   |
-|show                                  |take screenshot    |winkel velp basket         |
+|scenario|wijzig winkel in winkelmand stap 1|postcode|kies een winkel     |winkel     |
+|click   |css=.storeSelector__step2 [data-targetstep='1']                             |
+|enter   |@postcode                         |as      |css=.storeSelector__userLocation|
+|click   |css=.btn--submitLocation                                                    |
+|check pending requests                                                               |
+|click   |@winkel                                                                     |
+|click   |Kies deze winkel                                                            |
+|check pending requests                                                               |
+|show    |take screenshot                   |gewijzigde winkel basket                 |
 
 47
 
-|scenario                            |wijzig service in winkelmand stap 2            |
-|kies een service in winkelmand stap2|Bezorgen                                       |
-|click                               |css=.storeSelector__step3 [data-targetstep='2']|
-|kies een service in winkelmand stap2|Ophalen                                        |
-|show                                |take screenshot         |Ophalen popup         |
+|scenario      |wijzig service in winkelmand stap 2|service                  |
+|click         |css=.storeSelector__step3 [data-targetstep='2']              |
+|execute script|document.querySelector('[data-service="@service"]').click()  |
+|check pending requests                                                      |
+|wait          |4                                  |seconds                  |
+|show          |take screenshot                    |gewijzigde service basket|
 
 48
 
-|scenario                            |wijzig servicedag en serviceslot in winkelmand stap 3             |
-|kies servicedag in winkelmand stap 3|2              |kies servicetijdslot in storeselectorpopup stap3|2|
-|click                               |css=.storeSelector__step4 [data-targetstep='3']                   |
-|kies servicedag in winkelmand stap 3|3              |kies servicetijdslot in storeselectorpopup stap3|3|
-|show                                |take screenshot|derde bezorgdag derde tijdslot basket             |
+|scenario                            |wijzig servicedag en serviceslot in winkelmand stap 3     |
+|click                               |css=.storeSelector__step4 [data-targetstep='3']           |
+|kies servicedag in winkelmand stap 3|3              |kies servicetijdslot in winkelmand stap3|3|
+|show                                |take screenshot|derde bezorgdag derde tijdslot basket     |
 
 49
 
 |scenario|kies een postcode in winkelmand stap 1|postcode|kies een winkel die niet bezorgt|winkel|
 |enter   |@postcode                             |as      |css=.storeSelector__userLocation       |
 |click   |css=.btn--submitLocation                                                               |
+|check pending requests                                                                          |
 |click   |@winkel                                                                                |
-|ensure  |is visible on page                    |Deze winkel bezorgt niet op postcode            |
 |click   |Kies deze winkel                                                                       |
+|check pending requests                                                                          |
 |ensure  |is visible on page                    |Deze winkel bezorgt niet op postcode            |
 |show    |take screenshot                       |winkel bezorgt niet                             |
+
+50
+
+|scenario|melding winkelmand artikel niet in assortiment bij kiezen winkel                                                                              |
+|ensure  |is visible on page|Wil je deze winkel kiezen                                                                                                  |
+|ensure  |is visible on page|Onderstaande product(en) worden uit je winkelmandje verwijderd, omdat de gekozen winkel deze niet in het assortiment heeft.|
+|ensure  |is visible on page|Ja, kies deze winkel                                                                                                       |
+|ensure  |is visible on page|Nee, kies een andere winkel                                                                                                |
+
+50a
+
+|scenario|melding winkelmand artikel niet in assortiment bij wijzigen winkel|
+|ensure  |is visible on page         |Wil je van winkel wisselen            |
+|ensure  |is visible on page         |Je gaat van winkel wisselen.          |
+|ensure  |is visible on page         |Ja, kies deze winkel                  |
+|ensure  |is visible on page         |Nee, niet van winkel wisselen         |
 
 51
 
@@ -556,7 +580,7 @@ FRONTEND
 
 |scenario|check pending requests twice|
 |check pending requests               |
-|wait    |1          |seconds         |
+|wait    |2          |seconds         |
 |check pending requests               |
 
 B2 B

@@ -13,7 +13,8 @@ SymbolicLinks
 !define URL_MIJNCOOP {!-http://testmijn.coop.nl/mijncoop/inloggen-!}
 !define URL_SUPERMARKT {!-https://acceptatie.coop.nl/supermarkten-!}
 !define URL_GROENTEN {!-https://acceptatie.coop.nl/boodschappen/groenten-en-aardappelen-!}
-!define URL_SNOEPTOMATEN {!-https://acceptatie.coop.nl/snoeptomaten/product/8710725015617Fro
+!define URL_COLA {!-https://acceptatie.coop.nl/pepsi-cola/product/4060800109507-!}
+!define URL_SNOEPTOMATEN {!-https://acceptatie.coop.nl/snoeptomaten/product/8710725015617-!}
 !define URL_SPERCIEBONEN {!-https://acceptatie.coop.nl/sperziebonen/product/2135410000000-!}
 !define URL_KRUIMIG {!-https://acceptatie.coop.nl/kruimige-aardappelen/product/8710725006950-!}
 !define URL_MINIKRIEL {!-https://acceptatie.coop.nl/coop-minikrieltjes/product/8710624251130-!}
@@ -28,3 +29,4 @@ SymbolicLinks
 !define GN_BACKEND {!-admin-!}
 !define WW_BACKEND {!-!InterShop00!-!}
 !define DOMAIN_BACKEND {!-COOP-!}
+

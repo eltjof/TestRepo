@@ -1,8 +1,0 @@
----
-Help: Testen flow winkelmand storeselector verwijderen product uit winkelmand
-Test
----
-|script                                 |
-|open Frontstore                        |
-|artikel via zoekterm|cola|in winkelmand|
-|sluit storeselectorpopup  zonder actie |

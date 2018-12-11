@@ -24,6 +24,9 @@ Test
 |kies servicedag in winkelmand stap 3         |2                       |kies servicetijdslot in winkelmand stap3|2                                      |
 |ga door naar reservering in winkelmand stap 3|                                                                                                         |
 |ga verder naar bestellen ingelogd                                                                                                                      |
+|delete all cookies                                                                                                                                     |
+|clear local storage                                                                                                                                    |
+|clear session storage                                                                                                                                  |
 
 
 

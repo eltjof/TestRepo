@@ -3,10 +3,7 @@ Help: Testen flow pop-up storeselector product wat niet beschikbaar is
 Test
 ---
 |script                                                                                                                               |
-|open Frontstore                                                                                                                      |
-|enter                                         |8710725015617     |as                                              |id=SearchTerm     |
-|check pending requests                                                                                                               |
-|click                                         |Snoeptomaten                                                                          |
+|open                                          |${URL_SNOEPTOMATEN}                                                                   |
 |click                                         |xpath=//article//span[@data-plusbutton]                                               |
 |kies een postcode in storeselectorpopup stap 1|6883ew            |kies een winkel                                 |Arnhem Hanzestraat|
 |kies een service in storeselectorpopup stap 2 |Bezorgen                                                                              |
