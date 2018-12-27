@@ -8,6 +8,7 @@ SymbolicLinks
 !define URL_B2B_met_account {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-COOPBusiness-Site/nl_NL/-/EUR/ViewOCICatalog-Start?&USERNAME=eltjof@specialisterren.nl&PASSWORD=Coop2018&HOOK_URL=http://Procare/ProCare/net/Order/ProcessCallOCI/64/ProqWindowFB903C2CE3614B9483262F04C89000D8/10045/80.aspx&StoreID=3319&CustomerID=3319-00001-!}
 !define URL_FRONTEND {!-https://acceptatie.coop.nl/-!}
 !define URL_BACKEND {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/SLDSystem-!}
+!define URL_BESTELLINGEN {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=-!}
 !define URL_FRONTENDEDIT {!-https://acceptatie-staging.coop.nl/-}
 !define URL_BACKENDEDIT {!-https://acceptatie-staging.coop.nl/INTERSHOP/web/WFS/SLDSystem-!}
 !define URL_MIJNCOOP {!-http://testmijn.coop.nl/mijncoop/inloggen-!}
@@ -18,12 +19,13 @@ SymbolicLinks
 !define URL_SPERCIEBONEN {!-https://acceptatie.coop.nl/sperziebonen/product/2135410000000-!}
 !define URL_KRUIMIG {!-https://acceptatie.coop.nl/kruimige-aardappelen/product/8710725006950-!}
 !define URL_MINIKRIEL {!-https://acceptatie.coop.nl/coop-minikrieltjes/product/8710624251130-!}
+!define URL_HERTOGJAN {!-https://acceptatie.coop.nl/hertog-jan-pils-krat-24-x-30-cl/product/8710956101158-!}
 !define GN_ACCOUNTCHROME {!-coopecommerce.testen+CHP001@gmail.com-!}
 !define GN_ACCOUNTIPAD {!-coopecommerce.testen+IPPP001@gmail.com-!}
 !define GN_ACCOUNTGALAXYS7 {!-coopecommerce.testen+S7P001@gmail.com-!}
 !define WW_TESTACCOUNT {!-TEST1234-!}
 !define URL_MAILTRAP {!-https://mailtrap.io/inboxes/220733/messages-!}
-!define URL_GOOGLEMAIL {!-https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin-!}
+!define URL_GOOGLEMAIL {!-https://gmail.com-!}
 !define GN_GOOGLEMAIL {!-Coopecommerce.testen@gmail.com-!}
 !define WW_GOOGLEMAIL {!-Jots!gml2016-!}
 !define GN_BACKEND {!-admin-!}

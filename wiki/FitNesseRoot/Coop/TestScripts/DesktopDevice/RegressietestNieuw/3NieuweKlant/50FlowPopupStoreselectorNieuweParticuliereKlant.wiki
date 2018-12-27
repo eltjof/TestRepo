@@ -2,47 +2,51 @@
 Help: Testen flow pop-up storeselector als nieuwe particuliere klant
 Test
 ---
-|script                                                                                                                                                                              |
-|open Frontstore                                                                                                                                                                     |
-|artikel                                                  |1                |van categorie                                   |Groenten en aardappelen|in winkelmand                  |
-|sluit storeselectorpopup  zonder actie                                                                                                                                              |
-|                                                         |wait             |3                                               |seconds                                                |
-|                                                         |show             |take screenshot                                 |notificatie 1                                          |
-|controleer notificatie en winkellink als je geen winkel gekozen hebt                                                                                                                |
-|delete all cookies                                                                                                                                                                  |
-|clear local storage                                                                                                                                                                 |
-|clear session storage                                                                                                                                                               |
-|refresh                                                                                                                                                                             |
-|artikel via zoekterm                                     |cola             |in winkelmand                                                                                           |
-|kies winkel die niet bezorgt in storeselectorpopup stap 1|Geitenkamp Arnhem                                                                                                         |
-|wijzig winkel in storeselectorpopup stap 1                                                                                                                                          |
-|kies een service in storeselectorpopup stap 2            |Bezorgen                                                                                                                  |
-|kies servicedag in  storeselectorpopup stap 3            |2                |kies servicetijdslot in storeselectorpopup stap3|2                                                      |
-|controleer melding in storeselector popup stap 3                                                                                                                                    |
-|ga door naar reservering in storeselectorpopup stap 3                                                                                                                               |
-|controleer melding in storeselector popup stap 4                                                                                                                                    |
-|ga door naar winkelmand in storeselectorpopup stap 4 reservering                                                                                                                    |
-|check                                                    pending requests                                                                                                           |
-|controleer of er artikelen in winkelmand zitten                                                                                                                                     |
-|pas aantal aan om bestelgrens te bereiken                |5                |van artikel                                     |3                      |van categorie|Dranken|in lister|
-|click                                                    |Mijn boodschappen|in                                              |css=.header-navbar                                     |
-|controleer of bestelgrens is bereikt                                                                                                                                                |
-|click                                                    |css=.storeSelector__step4 [data-targetstep='1']                                                                           |
-|kies een postcode in winkelmand stap 1                   |6883ew           |kies een winkel                                 |Velp                                                   |
-|wait                                                     |3                |seconds                                                                                                 |
-|show                                                     |take screenshot  |winkel velp basket                                                                                      |
-|kies een service in winkelmand stap2                     |Ophalen                                                                                                                   |
-|kies servicedag in winkelmand stap 3                     |2                |kies servicetijdslot in storeselectorpopup stap3|1                      |                               |
-|ga door naar reservering in winkelmand stap 3                                                                                                                                       |
-|check                                                    pending requests                                                                                                           |
-|ga verder naar bestellen niet ingelogd                                                                                                                                              |
-|ga verder als nieuwe klant                               |coopecommerce.testen+9112018@gmail.com                                                                                    |
-|vul checkout in en plaats bestelling als nieuwe zakelijke klant                                                                                                                     |
-|controleer bestelling en leg bestelnummer vast                                                                                                                                      |
-|uitloggen frontstore                                     |Welkom Lowie                                                                                                              |
-|wait                                                     |3                |seconds                                                                                                 |
-|open Backoffice                                                                                                                                                                     |
-|inloggen Backoffice                                                                                                                                                                 |
-|zoek laatste bestelnummer in Backoffice                                                                                                                                             |
-|maak screenshot nieuwste mail klantbevestiging                                                                                                                                      |
-|maak screenshot nieuwste mail mailtrap                                                                                                                                              |
+|script                                                                                                                                                                                       |
+|open Frontstore                                                                                                                                                                              |
+|artikel                                       |1                                     |van categorie                                   |Groenten en aardappelen                 |in winkelmand|
+|sluit storeselectorpopup  zonder actie                                                                                                                                                       |
+|wait                                          |3                                     |seconds                                                                                                |
+|show                                          |take screenshot                       |notificatie 1                                                                                          |
+|controleer notificatie en winkellink als je geen winkel gekozen hebt                                                                                                                         |
+|delete all cookies                                                                                                                                                                           |
+|clear local storage                                                                                                                                                                          |
+|clear session storage                                                                                                                                                                        |
+|refresh                                                                                                                                                                                      |
+|artikel via zoekterm                          |cola                                  |in winkelmand                                                                                          |
+|kies een postcode in storeselectorpopup stap 1|6883ew                                |kies een winkel die niet bezorgt                |Geitenkamp Arnhem                                     |
+|wijzig winkel in storeselectorpopup stap 2                                                                                                                                                   |
+|kies een service in storeselectorpopup stap 2 |Bezorgen                                                                                                                                      |
+|kies servicedag in  storeselectorpopup stap 3 |4                                     |kies servicetijdslot in storeselectorpopup stap3|4                                                     |
+|controleer melding in storeselector popup stap 3                                                                                                                                             |
+|ga door naar reservering in storeselectorpopup stap 3                                                                                                                                        |
+|controleer melding in storeselector popup stap 4                                                                                                                                             |
+|ga door naar winkelmand in storeselectorpopup stap 4 reservering                                                                                                                             |
+|check                                                    pending requests                                                                                                                    |
+|controleer of er artikelen in winkelmand zitten                                                                                                                                              |
+|pas aantal aan om bestelgrens te bereiken                                                                                                                                                    |
+|click                                         |Mijn boodschappen                     |in                                              |css=.header-navbar                                    |
+|controleer of bestelgrens is bereikt                                                                                                                                                         |
+|                                              |click                                 |css=.storeSelector__step4 [data-targetstep='1']                                                        |
+|                                              |kies een postcode in winkelmand stap 1|6883ew                                          |kies een winkel                         |velp         |
+|                                              |wait                                  |3                                               |seconds                                               |
+|                                              |show                                  |take screenshot                                 |winkel velp basket                                    |
+|                                              |kies een service in winkelmand stap2  |Ophalen                                                                                                |
+|                                              |kies servicedag in winkelmand stap 3  |4                                               |kies servicetijdslot in winkelmand stap3|4            |
+|                                              |ga door naar reservering in winkelmand stap 3                                                                                                 |
+|                                              |check                                                    pending requests                                                                     |
+|ga verder naar bestellen niet ingelogd                                                                                                                                                       |
+|ga verder als nieuwe klant                    |coopecommerce.testen+7122018@gmail.com                                                                                                        |
+|vul checkout in en plaats bestelling als nieuwe zakelijke klant                                                                                                                              |
+|controleer bestelling en leg bestelnummer vast                                                                                                                                               |
+{{{
+|uitloggen frontstore     |Welkom Lowie        |
+|wait                     |3      |seconds     |
+|open Backoffice                               |
+|inloggen Backoffice                           |
+|zoek laatste bestelnummer in Backoffice       |
+|maak screenshot nieuwste mail klantbevestiging|
+|maak screenshot nieuwste mail mailtrap        |
+
+}}}
+

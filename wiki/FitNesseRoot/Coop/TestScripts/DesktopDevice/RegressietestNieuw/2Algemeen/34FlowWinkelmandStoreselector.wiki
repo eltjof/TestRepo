@@ -2,23 +2,26 @@
 Help: Testen flow winkelmand storeselector
 Test
 ---
-|script                                                                                                                     |
-|open                                     |${URL_COLA}                                                                      |
-|click                                    |xpath=//article//span[@data-plusbutton]                                          |
-|sluit storeselectorpopup  zonder actie                                                                                     |
-|controleer of er artikelen in winkelmand zitten                                                                            |
-|kies een postcode in winkelmand stap 1   |6883ew|kies een winkel                         |Velp                             |
-|check pending requests                                                                                                     |
-|kies een service in winkelmand stap2     |Bezorgen                                                                         |
-|kies servicedag in winkelmand stap 3     |2     |kies servicetijdslot in winkelmand stap3|2                                |
-|controleer melding in winkelmand  stap 3                                                                                   |
-|ga door naar reservering in winkelmand stap 3                                                                              |
-|controleer melding in winkelmand stap 4                                                                                    |
-|controleer of bestelgrens niet is bereikt                                                                                  |
-|pas aantal aan om bestelgrens te bereiken|4     |van artikel                             |4|van categorie|Dranken|in lister|
-|controleer of er artikelen in winkelmand zitten                                                                            |
-|controleer of bestelgrens is bereikt                                                                                       |
-|ga verder naar bestellen niet ingelogd                                                                                     |
-|delete all cookies                                                                                                         |
-|clear local storage                                                                                                        |
-|clear session storage                                                                                                      |
+|script                                                                                                   |
+|open                                  |${URL_COLA}                                                       |
+|click                                 |xpath=//article//span[@data-plusbutton]                           |
+|sluit storeselectorpopup  zonder actie                                                                   |
+|controleer of er artikelen in winkelmand zitten                                                          |
+|kies een postcode in winkelmand stap 1|6883ew        |kies een winkel                         |Velp      |
+|check pending requests                                                                                   |
+|kies een service in winkelmand stap2  |Bezorgen                                                          |
+|kies servicedag in winkelmand stap 3  |2             |kies servicetijdslot in winkelmand stap3|2         |
+|controleer melding in winkelmand  stap 3                                                                 |
+|ga door naar reservering in winkelmand stap 3                                                            |
+|controleer melding in winkelmand stap 4                                                                  |
+|controleer of bestelgrens niet is bereikt                                                                |
+|pas aantal aan om bestelgrens te bereiken                                                                |
+|controleer of er artikelen in winkelmand zitten                                                          |
+|controleer of bestelgrens is bereikt                                                                     |
+|ga verder naar bestellen niet ingelogd                                                                   |
+|ga verder als bestaande klant         |gebruikersnaam|wachtwoord                              |wachtwoord|
+|vul checkout in en plaats bestelling als bestaande klant                                                 |
+|controleer bestelling en leg bestelnummer vast                                                           |
+|delete all cookies                                                                                       |
+|clear local storage                                                                                      |
+|clear session storage                                                                                    |

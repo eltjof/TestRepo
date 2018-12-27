@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>nl.hsac</groupId>
 			<artifactId>hsac-fitnesse-pdf</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4</version>
 		</dependency>
 
         <dependency>

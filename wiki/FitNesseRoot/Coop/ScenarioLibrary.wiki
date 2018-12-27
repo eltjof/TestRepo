@@ -303,12 +303,14 @@ FRONTEND
 
 37
 
-|scenario  |pas aantal aan om bestelgrens te bereiken|aantal|van artikel |artikelvolgnr |van categorie |categorie |in lister|
-|hover over|Boodschappen                             |in    |id=header-mainnav                                              |
-|click     |@categorie                                                                                                      |
-|enter     |@aantal                                  |as    |xpath=//article[@artikelvolgnr]//input[!-@data-quantityinput-!]|
-|check pending requests                                                                                                     |
-|show      |take screenshot                          |toevoegen tot boven bestelgrens                                       |
+|scenario|pas aantal aan om bestelgrens te bereiken      |
+|open    |${URL_HERTOGJAN}                               |
+|click   |xpath=//article//span[@data-plusbutton]        |
+|click   |xpath=//article//span[@data-plusbutton]        |
+|click   |xpath=//article//span[@data-plusbutton]        |
+|click   |xpath=//article//span[@data-plusbutton]        |
+|check pending requests                                  |
+|show    |take screenshot|toevoegen tot boven bestelgrens|
 
 38
 
@@ -334,8 +336,34 @@ FRONTEND
 |scenario |kies servicedag in winkelmand stap 3|dagvolgnr|kies servicetijdslot in winkelmand stap3|tijdslotvolgnr|
 |scroll to|xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                       |
 |click    |xpath=//select[@id="OrderData_DeliveryDate"]/option[@dagvolgnr]                                       |
+|check pending requests                                                                                          |
 |click    |xpath=//select[@id="OrderData_DeliveryTime"]/option[@tijdslotvolgnr]                                  |
 |show     |take screenshot                     |timeslot gekozen                                                 |
+
+40a
+
+|scenario|sla servicedatum op in|datum                                       |
+|$tmp=   |value of              |xpath=//select[@id="OrderData_DeliveryDate"]|
+|$@datum=|replace all           |(\D+)(\d+) (\D+)  |in  |$tmp  |with  |$2 $3 |
+
+
+40b
+
+|scenario   |sla servicetijdslot op in|tijdslot                                    |
+|$@tijdslot=|value of                 |xpath=//select[@id="OrderData_DeliveryTime"]|
+
+40c
+
+|scenario|controleer in de reservering winkelmand servicedatum|datum    |en servicetijdslot|tijdslot                               |
+|ensure  |is visible on page                                  |@datum   |in                |css=.storeSelector__selectedDateAndTime|
+|ensure  |is visible on page                                  |@tijdslot|in                |css=.storeSelector__selectedDateAndTime|
+
+40d
+
+|scenario|controleer in de checkout servicedatum|datum    |en servicetijdslot|tijdslot                        |
+|ensure  |is visible on page                    |@datum   |in                |css=.storeSelector__selectedDate|
+|ensure  |is visible on page                    |@tijdslot|in                |css=.storeSelector__selectedDate|
+
 
 41
 
@@ -561,13 +589,11 @@ FRONTEND
 
 60
 
-|scenario|controleer bestelling en leg bestelnummer vast                    |
-|ensure  |is visible on page          |Bedankt voor je bestelling!          |
-|show    |value of                    |css=.orderInfo                       |
-|        |vastleggen Je bestelling met nummer 211000017259 wordt bezorgd op:|
-|        |vastleggen vrijdag 19 oktober tussen 09:00-12:00 uur              |
-|        |vastleggen Zeskant 108 108, 5044 jj, Tilburg                      |
-|show    |take screenshot             |bestelling frontend                  |
+|scenario      |controleer bestelling en leg bestelnummer vast                |
+|ensure        |is visible on page|Bedankt voor je bestelling!                |
+|$bestelString=|value of          |xpath=//div[@class='orderInfo']/div[1]/span|
+|$bestelnummer=|replace all       |(\D+)(\d+)(\D+) |in |$bestelString |with|$2|
+|show          |take screenshot   |bestelling frontend                        |
 
 61
 
@@ -641,24 +667,25 @@ BACKEND
 
 102
 
-|scenario|zoek laatste bestelnummer in Backoffice                                                                                                                           |
-|open    |https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=|
-|show    |take screenshot                                                                   |laatste order                                                                  |
+|scenario|zoek laatste bestelnummer in Backoffice|
+|open    |${URL_BESTELLINGEN}                    |
+|show    |take screenshot     |laatste order     |
 
 
 MAIL
 
 200
 
-|scenario|maak screenshot nieuwste mail klantbevestiging|
-|open    |${URL_GOOGLEMAIL}                             |
-|enter   |${GN_GOOGLEMAIL}    |as    |name=identifier   |
-|click   |Volgende                                      |
-|enter   |${WW_GOOGLEMAIL}    |as    |name=password     |
-|click   |Volgende                                      |
-|        |click               |css=.login-action        |
-|click   |css=.WaidBe                                   |
-|show    |take screenshot     |klantbevestiging         |
+|scenario        |maak screenshot nieuwste mail klantbevestiging|
+|open            |${URL_GOOGLEMAIL}                             |
+|enter           |${GN_GOOGLEMAIL}    |as    |name=identifier   |
+|click           |Volgende                                      |
+|enter           |${WW_GOOGLEMAIL}    |as    |name=password     |
+|click           |Volgende                                      |
+|                |click               |css=.login-action        |
+|                |click               |css=.WaidBe              |
+|wait for visible|Inbox                                         |
+|show            |take screenshot     |klantbevestiging         |
 
 201
 
@@ -677,6 +704,7 @@ MAIL
 |$url=    |value of attribute   |href|on|css=.attachments_list_region .data-row|
 |$pdfFile=|download content from|$url                                          |
 |show     |pdf text             |$pdfFile                                      |
+|show     |pdf text formatted   |$pdfFile                                      |
 |show     |take screenshot      |PDF                                           |
 
 
@@ -691,7 +719,7 @@ MAIL
 
 
 
-{{{
+{{{ 
 |check|value of|css=[data-quantityinput]|in|xpath=//article[@artikelvolgnr]|@hoeveelheidNaToevoegenLister|
 |check|value of|css=.icon-basket        |@hoeveelheidNaToevoegenBasket                                   |
 
