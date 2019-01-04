@@ -484,6 +484,7 @@ FRONTEND
 |ensure        |value of attribute|checked|on|xpath=//*[@id="OrderData_DeliverySimilarProducts"]|
 |check         |value of attribute|checked|on|xpath=//*[@id="OrderData_HandInEmptyBottles"]|null|
 |check         |value of attribute|checked|on|xpath=//*[@id="fc_coupon"]                   |null|
+|scroll to     |css=#OrderData_Remarks                                                          |
 |enter         |Testorder bestaand|as     |Uw opmerking                                         |
 |execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()         |
 |click         |Bestelling plaatsen                                                             |
@@ -647,7 +648,7 @@ B2 B
 |ensure  |is visible on page                               |procare                                   |
 |show    |take screenshot                                  |procare b2b                               |
 
-BACKEND
+BACKOFFICE
 
 100
 
@@ -663,6 +664,7 @@ BACKEND
 |enter   |${WW_BACKEND}    |as|xpath=//*[@id="LoginForm_Password"]          |
 |enter   |${DOMAIN_BACKEND}|as|xpath=//*[@id="LoginForm_RegistrationDomain"]|
 |click   |css=.loginbutton                                                  |
+|wait    |5                |seconds                                         |
 |show    |take screenshot  |ingelogd Backoffice                             |
 
 102
@@ -676,39 +678,54 @@ MAIL
 
 200
 
-|scenario        |maak screenshot nieuwste mail klantbevestiging|
-|open            |${URL_GOOGLEMAIL}                             |
-|enter           |${GN_GOOGLEMAIL}    |as    |name=identifier   |
-|click           |Volgende                                      |
-|enter           |${WW_GOOGLEMAIL}    |as    |name=password     |
-|click           |Volgende                                      |
-|                |click               |css=.login-action        |
-|                |click               |css=.WaidBe              |
-|wait for visible|Inbox                                         |
-|show            |take screenshot     |klantbevestiging         |
+|scenario        |leg nieuwste mail klantbevestiging vast|
+|open in new tab |${URL_GOOGLEMAIL}                      |
+|check pending requests                                  |
+|enter           |${GN_GOOGLEMAIL}  |as |name=identifier |
+|click           |Volgende                               |
+|enter           |${WW_GOOGLEMAIL}  |as |name=password   |
+|click           |Volgende                               |
+|wait for visible|Inbox                                  |
+|show            |take screenshot   |klantbevestiging    |
+|click           |Google-account: coop de Tester         |
+|click           |css=.gb_Aa.gb_qg.gb_xg.gb_9e.gb_Mb     |
+|delete all cookies                                      |
+|clear local storage                                     |
+|clear session storage                                   |
+|close tab                                               |
 
 201
 
-|scenario |maak screenshot nieuwste mail mailtrap                              |
-|open     |${URL_MAILTRAP}                                                     |
-|click    |css=.google-signup                                                  |
-|enter    |${GN_GOOGLEMAIL}     |as  |name=identifier                          |
-|click    |Volgende                                                            |
-|enter    |${WW_GOOGLEMAIL}     |as  |name=password                            |
-|click    |Volgende                                                            |
-|         |click                |css=.login-action                             |
-|         |click                |css=.icon--shared-inbox                       |
-|         |click                |COOP                                          |
-|click    |css=ul.messages_list li:nth-child(1)                                |
-|show     |take screenshot      |Mailtrap                                      |
-|$url=    |value of attribute   |href|on|css=.attachments_list_region .data-row|
-|$pdfFile=|download content from|$url                                          |
-|show     |pdf text             |$pdfFile                                      |
-|show     |pdf text formatted   |$pdfFile                                      |
-|show     |take screenshot      |PDF                                           |
+|scenario        |leg nieuwste mail winkelbevestiging vast (Mailtrap)                 |
+|open in new tab |${URL_MAILTRAP}                                                     |
+|check pending requests                                                               |
+|click           |Google account                                                      |
+|enter           |${GN_GOOGLEMAIL}     |as  |name=identifier                          |
+|click           |Volgende                                                            |
+|enter           |${WW_GOOGLEMAIL}     |as  |name=password                            |
+|click           |Volgende                                                            |
+|wait for visible|Shared Inboxes                                                      |
+|click           |css=ul.messages_list li:nth-child(1)                                |
+|show            |take screenshot      |Mailtrap                                      |
+|$url=           |value of attribute   |href|on|css=.attachments_list_region .data-row|
+|$pdfFile=       |download content from|$url                                          |
+|show            |pdf text             |$pdfFile                                      |
+|show            |pdf text formatted   |$pdfFile                                      |
+|click           |css=.username_info.username.mobile-off                              |
+|click           |css=ul.dropdown_menu_block.account-dropdown li:nth-child(4) > a     |
+|delete all cookies                                                                   |
+|clear local storage                                                                  |
+|clear session storage                                                                |
+|close tab                                                                            |
 
+202
 
-
+|scenario      |Controleer de aangemaakte order     |
+|open Backoffice                                    |
+|inloggen Backoffice                                |
+|zoek laatste bestelnummer in Backoffice            |
+|leg nieuwste mail klantbevestiging vast            |
+|leg nieuwste mail winkelbevestiging vast (Mailtrap)|
 
 
 
@@ -720,37 +737,10 @@ MAIL
 
 
 {{{ 
-|check|value of|css=[data-quantityinput]|in|xpath=//article[@artikelvolgnr]|@hoeveelheidNaToevoegenLister|
-|check|value of|css=.icon-basket        |@hoeveelheidNaToevoegenBasket                                   |
-
-stepper plus
-//*[@id="productListContainer"]/article[1]/div/footer/div/div[2]/div[2]/span[2]/span
-|click|+|in|xpath=//article[1]//span[!-@data-plusbutton-!]|
-
-waarde product LISTER (aantal)
-
-
-
-
-//*[@id="productListContainer"]/article[1]/div/footer/div/div[2]/div[2]/input
-
-
-
-waarde product BASKET (aantal)
-
-//*[@id="main"]/div[1]/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/div/ul[1]/li/div/div/div/div/div/div[3]/div/input
-
-$x("//div[@class='gi b0_06 b3_06']/div/input")
-
-
-waarde basket Subtotaal incl. btw
-//*[@id="main"]/div[1]/div/div/div/div[1]/div/div/div[2]/fieldset/section/fieldset/footer/div[1]/div[2]/div
-
 Checkout algemene voorwaarden aanklikken
 
 |execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()|
 
 |in|css=.storeSelector__storesList|
-
 
 }}}
