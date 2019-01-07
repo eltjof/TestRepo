@@ -2,58 +2,27 @@
 Help: Testen flow winkelmand storeselector als particuliere klant
 Test
 ---
-|script                                                                                                                                                                   |
-|open Frontstore                                                                                                                                                          |
-|inloggen Frontstore                                                                                                                                                      |
-|gebruikersnaam                                      |coopecommerce.testen+CHP001@gmail.com|wachtwoord                              |TEST1234               |inloggen     |
-|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                                     |
-|zoek supermarkt                                     |Velp                                                                                                                |
-|Kies hier boodschappen doen                         |2110                                 |Is Zichtbaar                            |Velp                                 |
-|artikel                                             |1                                    |van categorie                           |Groenten en aardappelen|in winkelmand|
-|click                                               |css=.storeSelector__closeButton                                                                                     |
-|controleer of er artikelen in winkelmand zitten                                                                                                                          |
-|pas aantal aan om bestelgrens te bereiken                                                                                                                                |
-|click                                               |Mijn boodschappen                    |in                                      |css=.header-navbar                   |
-|kies een service in winkelmand stap 2               |Ophalen                                                                                                             |
-|kies servicedag in winkelmand stap 3                |2                                    |kies servicetijdslot in winkelmand stap3|2                                    |
-|ga door naar reservering in winkelmand stap 3                                                                                                                            |
-|sla servicedatum op in                              |datum                                                                                                               |
-|sla servicetijdslot op in                           |tijdslot                                                                                                            |
-|controleer of bestelgrens is bereikt                                                                                                                                     |
-|controleer in de reservering winkelmand servicedatum|datum                                |en servicetijdslot                      |tijdslot                             |
-|ga verder naar bestellen ingelogd                                                                                                                                        |
-|ga verder als bestaande klant|gebruikersnaam|wachtwoord   |wachtwoord   |
-|controleer in de checkout servicedatum|datum|en servicetijdslot|tijdslot|
-
-
-|Controleer de aangemaakte order|
-
-
-{{{
-|artikel|1       |van categorie           |Groenten en aardappelen|in winkelmand       |
-|check  |value of|css=[data-quantityinput]|in                     |xpath=//article[1]|1|
-|check  |value of|css=.icon-basket        |1                                           |
-|click  |xpath=/html/body/div[2]/span                                                  |
-  
-
-|click                 |Mijn boodschappen |in                      |css=.header-navbar                          |
-|$timeout=             |seconds before timeout                                                                  |
-|seconds before timeout|5                                                                                       |
-|$tmp=                 |click if available|Alle boodschappen verwijderen                                        |
-|seconds before timeout|$timeout                                                                                |
-|artikel               |1                 |van categorie           |Groenten en aardappelen|in winkelmand       |
-|check                 |value of          |css=[data-quantityinput]|in                     |xpath=//article[1]|1|
-|check                 |value of          |css=.icon-basket        |1                                           |
-|scroll to             |css=.crumbs                                                                             |
-
-
-
-
-}}}
-//*[@id="OrderData_DeliveryTime"]
-//*[@id="OrderData_DeliveryDate"]
-//*[@id="OrderData_DeliveryDate"]/option[3]
-//*[@id="OrderData_DeliveryDate"]/option[1]
- /html/body/div[2]/span                                                                         
-
-    /html/body/div[2]/span                                                                                                                              
+|script                                                                                                                                      |
+|open Frontstore                                                                                                                             |
+|inloggen Frontstore                                                                                                                         |
+|gebruikersnaam                                      |${GN_ACCOUNTCHROME}|wachtwoord                              |${WW_TESTACCOUNT}|inloggen|
+|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                        |
+|pas aantal aan om bestelgrens te bereiken                                                                                                   |
+|sluit storeselectorpopup zonder actie                                                                                                       |
+|controleer of er artikelen in winkelmand zitten                                                                                             |
+|ensure                                              |is visible on page |Velp                                                               |
+|ensure                                              |is visible on page |Marthijs                                                           |
+|kies een service in winkelmand stap 2               |Ophalen                                                                                |
+|kies servicedag in winkelmand stap 3                |2                  |kies servicetijdslot in winkelmand stap3|2                         |
+|ga door naar reservering in winkelmand stap 3                                                                                               |
+|sla servicedatum op in                              |datum                                                                                  |
+|sla servicetijdslot op in                           |tijdslot                                                                               |
+|controleer of bestelgrens is bereikt                                                                                                        |
+|controleer in de reservering winkelmand servicedatum|datum              |en servicetijdslot                      |tijdslot                  |
+|ga verder naar bestellen ingelogd                                                                                                           |
+|controleer in de checkout servicedatum              |datum              |en servicetijdslot                      |tijdslot                  |
+|vul checkout in en plaats bestelling als bestaande klant                                                                                    |
+|controleer bestelling en leg bestelnummer vast                                                                                              |
+|uitloggen frontstore                                |Welkom Marthijs                                                                        |
+|wait                                                |3                  |seconds                                                            |
+|controleer de aangemaakte order                                                                                                             |

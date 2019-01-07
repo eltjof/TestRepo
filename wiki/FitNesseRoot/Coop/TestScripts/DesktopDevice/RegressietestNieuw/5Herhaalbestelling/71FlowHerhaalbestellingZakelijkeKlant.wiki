@@ -2,4 +2,15 @@
 Help: Testen flow herhaalbestelling zakelijke klant
 Test
 ---
-<test page>
+|script                                                                                     |
+|open Frontstore                                                                            |
+|inloggen Frontstore                                                                        |
+|gebruikersnaam          |${GN_ACCOUNTCHROME_ZAKELIJK}|wachtwoord|${WW_TESTACCOUNT}|inloggen|
+|plaats herhaalbestelling|voornaam                    |maand     |4                |order|14|
+|controleer of er artikelen in winkelmand zitten                                            |
+|ensure                  |is visible on page          |Velp                                 |
+|ensure                  |is visible on page          |Ching                                |
+|uitloggen frontstore    |Ching                                                             |
+
+
+|gebruikersnaam|${GN_ACCOUNTCHROME}|wachtwoord||inloggen|

@@ -21,6 +21,7 @@ SymbolicLinks
 !define URL_MINIKRIEL {!-https://acceptatie.coop.nl/coop-minikrieltjes/product/8710624251130-!}
 !define URL_HERTOGJAN {!-https://acceptatie.coop.nl/hertog-jan-pils-krat-24-x-30-cl/product/8710956101158-!}
 !define GN_ACCOUNTCHROME {!-coopecommerce.testen+CHP001@gmail.com-!}
+!define GN_ACCOUNTCHROME_ZAKELIJK {!-coopecommerce.testen+CHRZ001@gmail.com-!}
 !define GN_ACCOUNTIPAD {!-coopecommerce.testen+IPPP001@gmail.com-!}
 !define GN_ACCOUNTGALAXYS7 {!-coopecommerce.testen+S7P001@gmail.com-!}
 !define WW_TESTACCOUNT {!-TEST1234-!}

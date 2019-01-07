@@ -14,7 +14,51 @@ FRONTEND
 |click     |Inloggen       |in|css=.navbar-sub   |
 |show      |take screenshot|inloggen             |
 
-3
+2a 
+
+|scenario|maak particulier account aan                                                                 |
+|click   |Maak een nieuw account aan                                                                   |
+|click   |Particulier                                                                                  |
+|#       |click                 |xpath=//*[@id="cust_type"]/ul/li[1]/div/ul/li[1]/div/label/span/text()|
+|enter   |Georgina              |as            |as            |css=#UpdateProfile_FirstName            |
+|enter   |de                    |as            |css=#UpdateProfile_LastNamePrefix                      |
+|enter   |Storte                |as            |css=#UpdateProfile_LastName                            |
+|click   |css=#UpdateProfile_BirthDate_Day > option:nth-child(7)                                       |
+|click   |css=#UpdateProfile_BirthDate_Month > option:nth-child(3)                                     |
+|click   |css=#UpdateProfile_BirthDate_Year > option:nth-child(64)                                     |
+|enter   |7272                  |as            |css=#UpdateProfile_ZIP                                 |
+|enter   |TN                    |as            |css=#UpdateProfile_ZIPSuffix                           |
+|enter   |130                   |as            |css=#UpdateProfile_HouseNr                             |
+|enter   |Korte Kampen          |as            |css=#UpdateProfile_Street                              |
+|enter   |Dalfsen               |as            |css=#UpdateProfile_City                                |
+|check   |is not visible on page|Vul eerst je postcode in                                              |
+|enter   |06-78204336           |as            |css=#UpdateProfile_Phone                               |
+{{{
+
+E-mail volgens kolom devices	
+Wachtwoord	TEST1234
+Bevestig Wachtwoord	TEST1234
+Algemene nieuwsbrief	Aanvinken
+Wijnen nieuwsbrief	Aanvinken
+Ik wil meteen een (nieuwe) Coop klantenkaart aanvragen	Aanvinken
+Ik ga akkoord met de algemene voorwaarden	Niet aanvinken
+Klik op aanmelden	
+Ik ga akkoord met de algemene voorwaarden	Aanvinken
+Klik op aanmelden	
+Klik op Bekijk bij Mijn gegevens	
+Controleer algemene nieuwsbrief	
+Controleer wijnen nieuwsbrief	
+Controleer mailbox in een ander tabblad	
+	
+Open de bevestigingsmail en klik op de bevestigingslink	
+	
+Ga naar tabblad sessie	
+Klik op Bekijk bij Mijn gegevens	
+Controleer algemene nieuwsbrief	
+Controleer wijnen nieuwsbrief	
+}}}
+
+
 
 |scenario|gebruikersnaam    |gebruikersnaam|wachtwoord|wachtwoord|inloggen|
 |enter   |@gebruikersnaam   |as            |xpath=//*[@id="email"]        |
@@ -111,6 +155,7 @@ FRONTEND
 
 |scenario|sluit storeselectorpopup  zonder actie  |
 |click   |css=.storeSelector__closeButton         |
+|wait    |5              |seconds                 |
 |show    |take screenshot|sluit storeselectorpopup|
 
 15
@@ -281,13 +326,17 @@ FRONTEND
 34
 
 |scenario|controleer of er artikelen in winkelmand zitten |
+|show    |take screenshot   |artikelen in winkelmand      |
 |click   |Mijn boodschappen |in    |css=.header-navbar    |
+|show    |take screenshot   |artikelen in winkelmand      |
+|wait    |5                 |seconds                      |
 |ensure  |is visible on page|Alle boodschappen verwijderen|
 |show    |take screenshot   |artikelen in winkelmand      |
 
 35
 
 |scenario|controleer of bestelgrens niet is bereikt                        |
+|click   |Mijn boodschappen |in      |css=.header-navbar                   |
 |ensure  |is visible on page|Alle boodschappen verwijderen                 |
 |ensure  |is visible on page|css=.orderMessage                             |
 |check   |value of attribute|disabled|on|css=.storeSelector__btn-order|true|
@@ -296,6 +345,7 @@ FRONTEND
 36
 
 |scenario|controleer of bestelgrens is bereikt                                 |
+|click   |Mijn boodschappen     |in      |css=.header-navbar                   |
 |ensure  |is visible on page    |Alle boodschappen verwijderen                 |
 |ensure  |is not visible on page|css=.orderMessage                             |
 |check   |value of attribute    |disabled|on|css=.storeSelector__btn-order|null|
@@ -588,6 +638,16 @@ FRONTEND
 |check pending requests                                                                                                  |
 |show          |take screenshot         |bestelling nieuwe zakelijke klant                                               |
 
+59a
+
+|scenario  |plaats herhaalbestelling|voornaam|maand|maandvolgnr|order|ordervolgnr|
+|hover over|@voornaam                                                            |
+|click     |Bestellingen                                                         |
+|click     |css=.customSelect                                                    |
+|click     |xpath=//*[@id="fiscal-period-start"]/option[@maandvolgnr]            |
+|click     |xpath=//*[@id="list"]/li[@ordervolgnr]/ul/li[5]                      |
+|check               pending requests                                            |
+
 60
 
 |scenario      |controleer bestelling en leg bestelnummer vast                |
@@ -601,6 +661,7 @@ FRONTEND
 |scenario  |uitloggen frontstore|accountnaam          |
 |hover over|@accountnaam        |in|css=.header-navbar|
 |click     |Uitloggen           |in|css=.navbar-sub   |
+|ensure    |is visible on page  |Mijn Coop            |
 |show      |take screenshot     |uitgelogd            |
 
 62
@@ -720,7 +781,7 @@ MAIL
 
 202
 
-|scenario      |Controleer de aangemaakte order     |
+|scenario      |controleer de aangemaakte order     |
 |open Backoffice                                    |
 |inloggen Backoffice                                |
 |zoek laatste bestelnummer in Backoffice            |
