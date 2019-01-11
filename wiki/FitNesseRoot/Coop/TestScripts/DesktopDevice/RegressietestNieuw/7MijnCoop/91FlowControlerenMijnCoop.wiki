@@ -1,5 +1,0 @@
----
-Help: Testen Mijn Coop
-Test
----
-<test page>

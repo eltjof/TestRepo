@@ -1,3 +1,116 @@
+ACCOUNT
+
+1 
+
+|scenario              |maak particulier account aan|emailadres                                                                       |
+|click                 |Maak een nieuw account aan                                                                                    |
+|click                 |css=label[for='UpdateProfile_Type_PRIVATE']                                                                   |
+|click                 |css=label[for='UpdateProfile_Title_WOMAN']                                                                    |
+|enter                 |Georgina                    |as   |css=#UpdateProfile_FirstName                                               |
+|enter                 |de                          |as   |css=#UpdateProfile_LastNamePrefix                                          |
+|enter                 |Storte                      |as   |css=#UpdateProfile_LastName                                                |
+|click                 |css=#UpdateProfile_BirthDate_Day > option:nth-child(7)                                                        |
+|click                 |css=#UpdateProfile_BirthDate_Month > option:nth-child(3)                                                      |
+|click                 |css=#UpdateProfile_BirthDate_Year > option:nth-child(64)                                                      |
+|enter                 |7272                        |as   |css=#UpdateProfile_ZIP                                                     |
+|enter                 |TN                          |as   |css=#UpdateProfile_ZIPSuffix                                               |
+|enter                 |130                         |as   |css=#UpdateProfile_HouseNr                                                 |
+|enter                 |a                           |as   |css=#UpdateProfile_Bus                                                     |
+|wait                  |3                           |seconds                                                                          |
+|enter                 |Korte Kampen                |as   |css=#UpdateProfile_Street                                                  |
+|enter                 |Dalfsen                     |as   |css=#UpdateProfile_City                                                    |
+|is not visible on page|Vul eerst je postcode in                                                                                      |
+|enter                 |06-78204336                 |as   |css=#UpdateProfile_Phone                                                   |
+|enter                 |@emailadres                 |as   |css=#UpdateProfile_Mail                                                    |
+|enter                 |${WW_TESTACCOUNT}           |as   |css=#UpdateProfile_Password                                                |
+|enter                 |${WW_TESTACCOUNT}           |as   |css=#UpdateProfile_PasswordConfirm                                         |
+|show                  |value of                    |css=#UpdateProfile_General                                                       |
+|show                  |value of                    |css=#UpdateProfile_Wine                                                          |
+|click                 |css=label[for='UpdateProfile_General']                                                                        |
+|click                 |css=label[for='UpdateProfile_Wine']                                                                           |
+|show                  |value of                    |css=#UpdateProfile_General                                                       |
+|show                  |value of                    |css=#UpdateProfile_Wine                                                          |
+|click                 |css=label[for='UpdateProfile_CustomerCard']                                                                   |
+|check pending requests                                                                                                               |
+|check                 |value of attribute          |style|on|xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button|opacity: 0.5;|
+|click                 |css=label[for='UpdateProfile_TermsAndConditions']                                                             |
+|check pending requests                                                                                                               |
+|show                  |value of                    |css=#UpdateProfile_TermsAndConditions                                            |
+|check                 |value of attribute          |style|on|xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button|opacity: 1;  |
+|check pending requests                                                                                                               |
+|show                  |take screenshot             |Aanmelden nieuw account                                                          |
+|click                 |xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button                                                    |
+|check pending requests                                                                                                               |
+|ensure                |is  visible on page         |Mijn gegevens                                                                    |
+|ensure                |is  visible on page         |Georgina                                                                         |
+|click                 |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]                                    |
+|show                  |value of                    |css=#UpdateProfile_General                                                       |
+|show                  |value of                    |css=#UpdateProfile_Wine                                                          |
+|uitloggen frontstore  |Georgina                                                                                                      |
+
+2 
+
+|scenario              |maak zakelijk account aan|emailadres                                                                       |
+|click                 |Maak een nieuw account aan                                                                                 |
+|click                 |css=label[for='UpdateProfile_Type_BUSINESS']                                                               |
+|enter                 |Dreamscape Garden Care   |as   |css=#UpdateProfile_CompanyName                                             |
+|select                |Kinderdagverblijf        |for  |css=.hasSelect                                                             |
+|click                 |css=label[for='UpdateProfile_Title_MAN']                                                                   |
+|enter                 |Kwinten                  |as   |css=#UpdateProfile_FirstName                                               |
+|enter                 |de                       |as   |css=#UpdateProfile_LastNamePrefix                                          |
+|enter                 |Vree                     |as   |css=#UpdateProfile_LastName                                                |
+|click                 |css=#UpdateProfile_BirthDate_Day > option:nth-child(7)                                                     |
+|click                 |css=#UpdateProfile_BirthDate_Month > option:nth-child(3)                                                   |
+|click                 |css=#UpdateProfile_BirthDate_Year > option:nth-child(64)                                                   |
+|enter                 |9561                     |as   |css=#UpdateProfile_ZIP                                                     |
+|enter                 |JC                       |as   |css=#UpdateProfile_ZIPSuffix                                               |
+|enter                 |98                       |as   |css=#UpdateProfile_HouseNr                                                 |
+|enter                 |a                        |as   |css=#UpdateProfile_Bus                                                     |
+|wait                  |3                        |seconds                                                                          |
+|enter                 |Hoofdstraat              |as   |css=#UpdateProfile_Street                                                  |
+|enter                 |Ter Apel                 |as   |css=#UpdateProfile_City                                                    |
+|is not visible on page|Vul eerst je postcode in                                                                                   |
+|enter                 |06-31951455              |as   |css=#UpdateProfile_Phone                                                   |
+|enter                 |@emailadres              |as   |css=#UpdateProfile_Mail                                                    |
+|enter                 |${WW_TESTACCOUNT}        |as   |css=#UpdateProfile_Password                                                |
+|enter                 |${WW_TESTACCOUNT}        |as   |css=#UpdateProfile_PasswordConfirm                                         |
+|show                  |value of                 |css=#UpdateProfile_General                                                       |
+|show                  |value of                 |css=#UpdateProfile_Wine                                                          |
+|click                 |css=label[for='UpdateProfile_General']                                                                     |
+|click                 |css=label[for='UpdateProfile_Wine']                                                                        |
+|show                  |value of                 |css=#UpdateProfile_General                                                       |
+|show                  |value of                 |css=#UpdateProfile_Wine                                                          |
+|click                 |css=label[for='UpdateProfile_CustomerCard']                                                                |
+|check pending requests                                                                                                            |
+|check                 |value of attribute       |style|on|xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button|opacity: 0.5;|
+|click                 |css=label[for='UpdateProfile_TermsAndConditions']                                                          |
+|check pending requests                                                                                                            |
+|show                  |value of                 |css=#UpdateProfile_TermsAndConditions                                            |
+|check                 |value of attribute       |style|on|xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button|opacity: 1;  |
+|check pending requests                                                                                                            |
+|show                  |take screenshot          |Aanmelden nieuw account                                                          |
+|click                 |xpath=//*[@id="ProfileData"]/div/fieldset[9]/footer/button                                                 |
+|check pending requests                                                                                                            |
+|ensure                |is  visible on page      |Mijn gegevens                                                                    |
+|ensure                |is  visible on page      |Kwinten                                                                          |
+|click                 |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]                                 |
+|show                  |value of                 |css=#UpdateProfile_General                                                       |
+|show                  |value of                 |css=#UpdateProfile_Wine                                                          |
+|uitloggen frontstore  |                                                                                                           |
+
+3
+
+|scenario  |controleer nieuwsbrieven in accountgegevens|accountnaam                                  |
+|hover over|@accountnaam                               |in                        |css=.header-navbar|
+|click     |Overzicht                                  |in                        |css=.navbar-sub   |
+|ensure    |is  visible on page                        |Mijn gegevens                                |
+|ensure    |is  visible on page                        |@accountnaam                                 |
+|check     |value of                                   |css=#UpdateProfile_General|true              |
+|check     |value of                                   |css=#UpdateProfile_Wine   |true              |
+
+
+
+
 FRONTEND
 
 1 
@@ -14,51 +127,7 @@ FRONTEND
 |click     |Inloggen       |in|css=.navbar-sub   |
 |show      |take screenshot|inloggen             |
 
-2a 
-
-|scenario|maak particulier account aan                                                                 |
-|click   |Maak een nieuw account aan                                                                   |
-|click   |Particulier                                                                                  |
-|#       |click                 |xpath=//*[@id="cust_type"]/ul/li[1]/div/ul/li[1]/div/label/span/text()|
-|enter   |Georgina              |as            |as            |css=#UpdateProfile_FirstName            |
-|enter   |de                    |as            |css=#UpdateProfile_LastNamePrefix                      |
-|enter   |Storte                |as            |css=#UpdateProfile_LastName                            |
-|click   |css=#UpdateProfile_BirthDate_Day > option:nth-child(7)                                       |
-|click   |css=#UpdateProfile_BirthDate_Month > option:nth-child(3)                                     |
-|click   |css=#UpdateProfile_BirthDate_Year > option:nth-child(64)                                     |
-|enter   |7272                  |as            |css=#UpdateProfile_ZIP                                 |
-|enter   |TN                    |as            |css=#UpdateProfile_ZIPSuffix                           |
-|enter   |130                   |as            |css=#UpdateProfile_HouseNr                             |
-|enter   |Korte Kampen          |as            |css=#UpdateProfile_Street                              |
-|enter   |Dalfsen               |as            |css=#UpdateProfile_City                                |
-|check   |is not visible on page|Vul eerst je postcode in                                              |
-|enter   |06-78204336           |as            |css=#UpdateProfile_Phone                               |
-{{{
-
-E-mail volgens kolom devices	
-Wachtwoord	TEST1234
-Bevestig Wachtwoord	TEST1234
-Algemene nieuwsbrief	Aanvinken
-Wijnen nieuwsbrief	Aanvinken
-Ik wil meteen een (nieuwe) Coop klantenkaart aanvragen	Aanvinken
-Ik ga akkoord met de algemene voorwaarden	Niet aanvinken
-Klik op aanmelden	
-Ik ga akkoord met de algemene voorwaarden	Aanvinken
-Klik op aanmelden	
-Klik op Bekijk bij Mijn gegevens	
-Controleer algemene nieuwsbrief	
-Controleer wijnen nieuwsbrief	
-Controleer mailbox in een ander tabblad	
-	
-Open de bevestigingsmail en klik op de bevestigingslink	
-	
-Ga naar tabblad sessie	
-Klik op Bekijk bij Mijn gegevens	
-Controleer algemene nieuwsbrief	
-Controleer wijnen nieuwsbrief	
-}}}
-
-
+3
 
 |scenario|gebruikersnaam    |gebruikersnaam|wachtwoord|wachtwoord|inloggen|
 |enter   |@gebruikersnaam   |as            |xpath=//*[@id="email"]        |
@@ -734,6 +803,16 @@ BACKOFFICE
 |open    |${URL_BESTELLINGEN}                    |
 |show    |take screenshot     |laatste order     |
 
+103
+
+
+|scenario      |controleer de aangemaakte order     |
+|open Backoffice                                    |
+|inloggen Backoffice                                |
+|zoek laatste bestelnummer in Backoffice            |
+|leg nieuwste mail klantbevestiging vast            |
+|leg nieuwste mail winkelbevestiging vast (Mailtrap)|
+
 
 MAIL
 
@@ -749,13 +828,37 @@ MAIL
 |wait for visible|Inbox                                  |
 |show            |take screenshot   |klantbevestiging    |
 |click           |Google-account: coop de Tester         |
-|click           |css=.gb_Aa.gb_qg.gb_xg.gb_9e.gb_Mb     |
+|click           |css=#gb_71                             |
 |delete all cookies                                      |
 |clear local storage                                     |
 |clear session storage                                   |
 |close tab                                               |
 
 201
+
+|scenario        |bevestig nieuwsbriefmail|accountnaam           |
+|open in new tab |${URL_GOOGLEMAIL}                              |
+|check pending requests                                          |
+|enter           |${GN_GOOGLEMAIL}        |as  |name=identifier  |
+|click           |Volgende                                       |
+|enter           |${WW_GOOGLEMAIL}        |as  |name=password    |
+|click           |Volgende                                       |
+|wait for visible|Inbox                                          |
+|wait            |60                      |seconds               |
+|show            |take screenshot         |klantbevestiging      |
+|click           |@accountnaam                                   |
+|ensure          |is visible on page      |Bevestig jouw aanvraag|
+|click           |Ja, ik meld me aan voor de nieuwsbrief         |
+|check pending requests                                          |
+|ensure          |is visible on page      |Zoek supermarkt       |
+|delete all cookies                                              |
+|clear local storage                                             |
+|clear session storage                                           |
+|close tab                                                       |
+
+
+
+205
 
 |scenario        |leg nieuwste mail winkelbevestiging vast (Mailtrap)                 |
 |open in new tab |${URL_MAILTRAP}                                                     |
@@ -779,14 +882,7 @@ MAIL
 |clear session storage                                                                |
 |close tab                                                                            |
 
-202
 
-|scenario      |controleer de aangemaakte order     |
-|open Backoffice                                    |
-|inloggen Backoffice                                |
-|zoek laatste bestelnummer in Backoffice            |
-|leg nieuwste mail klantbevestiging vast            |
-|leg nieuwste mail winkelbevestiging vast (Mailtrap)|
 
 
 

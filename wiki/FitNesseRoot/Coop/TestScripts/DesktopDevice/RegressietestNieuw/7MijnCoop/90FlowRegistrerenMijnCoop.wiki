@@ -1,7 +1,0 @@
----
-Help: Testen registeren Mijn Coop
-Test
----
-|script             |
-|open Frontstore    |
-|inloggen Frontstore|
