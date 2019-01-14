@@ -5,7 +5,7 @@ Test
 !contents -R2 -g -p -f -h
 
 !define TEST_SYSTEM {slim}
-!define BROWSER {chrome}
+!define BROWSER {firefox}
 
 !*> The fixture location 
 standalone:

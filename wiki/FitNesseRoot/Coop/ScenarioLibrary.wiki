@@ -22,6 +22,7 @@ ACCOUNT
 |is not visible on page|Vul eerst je postcode in                                                                                      |
 |enter                 |06-78204336                 |as   |css=#UpdateProfile_Phone                                                   |
 |enter                 |@emailadres                 |as   |css=#UpdateProfile_Mail                                                    |
+|wait                  |3                           |seconds                                                                          |
 |enter                 |${WW_TESTACCOUNT}           |as   |css=#UpdateProfile_Password                                                |
 |enter                 |${WW_TESTACCOUNT}           |as   |css=#UpdateProfile_PasswordConfirm                                         |
 |show                  |value of                    |css=#UpdateProfile_General                                                       |
@@ -844,9 +845,8 @@ MAIL
 |enter           |${WW_GOOGLEMAIL}        |as  |name=password    |
 |click           |Volgende                                       |
 |wait for visible|Inbox                                          |
-|wait            |60                      |seconds               |
 |show            |take screenshot         |klantbevestiging      |
-|click           |@accountnaam                                   |
+|click           |!-Bevestig jouw aanvraag |@accountnaam-!       |
 |ensure          |is visible on page      |Bevestig jouw aanvraag|
 |click           |Ja, ik meld me aan voor de nieuwsbrief         |
 |check pending requests                                          |

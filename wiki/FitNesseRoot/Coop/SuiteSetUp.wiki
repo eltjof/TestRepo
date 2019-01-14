@@ -12,6 +12,5 @@
 *!
 
 !***> Vaste Variabelen
-|#|script                                                         |
-|#|$uniquemail=|stores|Coopecommerce.testen+${timestamp}@gmail.com|
+
 *!
