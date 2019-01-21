@@ -30,3 +30,4 @@ Test: no
 !define GN_BACKEND {!-admin-!}
 !define WW_BACKEND {!-!InterShop00!-!}
 !define DOMAIN_BACKEND {!-COOP-!}
+!define Timestamp {!today (yyyyMMddHHmmssSSS)}

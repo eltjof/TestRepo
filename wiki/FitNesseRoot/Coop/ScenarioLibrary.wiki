@@ -109,7 +109,13 @@ ACCOUNT
 |check     |value of                                   |css=#UpdateProfile_General|true              |
 |check     |value of                                   |css=#UpdateProfile_Wine   |true              |
 
+4
 
+|scenario  |controleer account |accountnaam          |
+|hover over|@accountnaam       |in|css=.header-navbar|
+|click     |Overzicht          |in|css=.navbar-sub   |
+|ensure    |is  visible on page|Mijn gegevens        |
+|ensure    |is  visible on page|@accountnaam         |
 
 
 FRONTEND
@@ -830,33 +836,25 @@ MAIL
 |show            |take screenshot   |klantbevestiging    |
 |click           |Google-account: coop de Tester         |
 |click           |css=#gb_71                             |
-|delete all cookies                                      |
-|clear local storage                                     |
-|clear session storage                                   |
 |close tab                                               |
 
 201
 
-|scenario        |bevestig nieuwsbriefmail|accountnaam           |
-|open in new tab |${URL_GOOGLEMAIL}                              |
-|check pending requests                                          |
-|enter           |${GN_GOOGLEMAIL}        |as  |name=identifier  |
-|click           |Volgende                                       |
-|enter           |${WW_GOOGLEMAIL}        |as  |name=password    |
-|click           |Volgende                                       |
-|wait for visible|Inbox                                          |
-|show            |take screenshot         |klantbevestiging      |
-|click           |!-Bevestig jouw aanvraag |@accountnaam-!       |
-|ensure          |is visible on page      |Bevestig jouw aanvraag|
-|click           |Ja, ik meld me aan voor de nieuwsbrief         |
-|check pending requests                                          |
-|ensure          |is visible on page      |Zoek supermarkt       |
-|delete all cookies                                              |
-|clear local storage                                             |
-|clear session storage                                           |
-|close tab                                                       |
-
-
+|scenario        |bevestig nieuwsbriefmail        |accountnaam                                              |
+|open            |${URL_GOOGLEMAIL}                                                                         |
+|check pending requests                                                                                     |
+|enter           |${GN_GOOGLEMAIL}                |as                    |name=identifier                   |
+|click           |Volgende                                                                                  |
+|enter           |${WW_GOOGLEMAIL}                |as                    |name=password                     |
+|click           |Volgende                                                                                  |
+|wait for visible|Inbox                                                                                     |
+|click           |xpath=!-//*[contains(text(),'Bevestig jouw aanvraag | @accountnaam')]/ancestor::td      -!|
+|show            |take screenshot                 |klantbevestiging                                         |
+|ensure          |is visible on page              |Bevestig jouw aanvraag                                   |
+|click           |Ja, ik meld me aan voor de nieuwsbrief                                                    |
+|check pending requests                                                                                     |
+|show            |take screenshot                 |omgeving geopend na aanmelden nieuwsbrief                |
+|ensure          |is visible on page              |Zoek supermarkt                                          |
 
 205
 
@@ -877,10 +875,8 @@ MAIL
 |show            |pdf text formatted   |$pdfFile                                      |
 |click           |css=.username_info.username.mobile-off                              |
 |click           |css=ul.dropdown_menu_block.account-dropdown li:nth-child(4) > a     |
-|delete all cookies                                                                   |
-|clear local storage                                                                  |
-|clear session storage                                                                |
 |close tab                                                                            |
+
 
 
 
