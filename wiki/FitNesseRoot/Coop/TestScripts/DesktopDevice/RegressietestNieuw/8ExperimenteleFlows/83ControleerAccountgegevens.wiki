@@ -14,44 +14,44 @@ Test
 |click         |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]     |
 |ensure        |is  visible on page      |Zwartbol                                             |
 |ensure        |is  visible on page      |Geboortedatum                                        |
-|back                                                      |
+|back                                                                                          |
 |click         |xpath=//*[@class='accountLatestOrder--container']//a[contains(text(),'Bekijk')]|
 |ensure        |is  visible on page      |Bestelling:                                          |
 |ensure        |is  visible on page      |Besteloverzicht                                      |
-|back                                                        |
+|back                                                                                          |
 |click         |xpath=//*[@class='productSearchForm']//a[contains(text(),'Bekijk')]            |
 |ensure        |is  visible on page      |Mijn Favorietenlijsten                               |
 |ensure        |is  visible on page      |Nieuwe lijst                                         |
-|back                                                       |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn Coop overzicht')]        |
 |ensure        |is  visible on page      |Mijn gegevens                                        |
 |ensure        |is  visible on page      |Marthijs                                             |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn gegevens')]              |
 |ensure        |is  visible on page      |Mijn gegevens                                        |
 |ensure        |is  visible on page      |Marthijs                                             |
-|back                                                        |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Bestellingen')]               |
 |ensure        |is  visible on page      |Mijn Bestellingen                                    |
 |ensure        |is  visible on page      |Orderdatum                                           |
-|back                                                      |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Favorietenlijsten')]          |
 |ensure        |is  visible on page      |Mijn Favorietenlijsten                               |
 |ensure        |is  visible on page      |Nieuwe lijst                                         |
-|back                                                         |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Klantenkaart')]               |
 |ensure        |is  visible on page      |Jouw huidige klantenkaartnummer is:                  |
 |ensure        |is  visible on page      |0000000000001                                        |
-|back                                                        |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Luisterpanel')]               |
 |ensure        |is  visible on page      |Daarom deelnemen!                                    |
-|back                                                                        |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Ledenvoordeel')]              |
 |ensure        |is  visible on page      |Gratis                                               |
 |ensure        |is  visible on page      |Collectief                                           |
-|back                                                                        |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Online sparen')]              |
 |ensure        |is  visible on page      |Hoe werkt het?                                       |
-|back                                                                      |
+|back                                                                                          |
 |click         |xpath=//*[@class='dropdown']//a[contains(text(),'Uitloggen')]                  |
 |ensure        |is  visible on page      |Mijn Coop                                            |
 |inloggen Frontstore                                                                           |

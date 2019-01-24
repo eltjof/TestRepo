@@ -117,6 +117,67 @@ ACCOUNT
 |ensure    |is  visible on page|Mijn gegevens        |
 |ensure    |is  visible on page|@accountnaam         |
 
+5
+
+|scenario      |controleer accountgegevens actieve klantenkaart|gebruikersnaam|voornaam         |voornaam|
+|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen|
+|hover over    |@voornaam                                      |in            |css=.header-navbar        |
+|show          |take screenshot                                |Fly out                                  |
+|ensure        |is visible on page                             |Overzicht                                |
+|click         |Overzicht                                      |in            |css=.navbar-sub           |
+|ensure        |is  visible on page                            |Mijn gegevens                            |
+|ensure        |is  visible on page                            |@voornaam                                |
+|click         |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]               |
+|ensure        |is  visible on page                            |Zwartbol                                 |
+|ensure        |is  visible on page                            |Geboortedatum                            |
+|back                                                                                                    |
+|click         |xpath=//*[@class='accountLatestOrder--container']//a[contains(text(),'Bekijk')]          |
+|ensure        |is  visible on page                            |Bestelling:                              |
+|back                                                                                                    |
+|click         |xpath=//*[@class='productSearchForm']//a[contains(text(),'Bekijk')]                      |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
+|ensure        |is  visible on page                            |Nieuwe lijst                             |
+|back                                                                                                    |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn Coop overzicht')]                  |
+|ensure        |is  visible on page                            |Mijn gegevens                            |
+|ensure        |is  visible on page                            |@voornaam                                |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn gegevens')]                        |
+|ensure        |is  visible on page                            |Mijn gegevens                            |
+|ensure        |is  visible on page                            |Marthijs                                 |
+|back                                                                                                    |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Bestellingen')]                         |
+|ensure        |is  visible on page                            |Mijn Bestellingen                        |
+|ensure        |is  visible on page                            |Orderdatum                               |
+|back                                                                                                    |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Favorietenlijsten')]                    |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
+|ensure        |is  visible on page                            |Nieuwe lijst                             |
+|back                                                                                                    |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Klantenkaart')]                         |
+|ensure        |is  visible on page                            |Jouw huidige klantenkaartnummer is:      |
+|back                                                                                                    |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Uitloggen')]                            |
+|delete all cookies                                                                                      |
+|clear local storage                                                                                     |
+|clear session storage                                                                                   |
+|ensure        |is  visible on page                            |Mijn Coop                                |
+|inloggen Frontstore                                                                                     |
+|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen|
+|hover over    |@voornaam                                      |in            |css=.header-navbar        |
+|ensure        |is visible on page                             |Bestellingen                             |
+|click         |Bestellingen                                   |in            |css=.navbar-sub           |
+|ensure        |is  visible on page                            |Mijn Bestellingen                        |
+|ensure        |is  visible on page                            |Orderdatum                               |
+|hover over    |@voornaam                                      |in            |css=.header-navbar        |
+|ensure        |is visible on page                             |Favorietenlijsten                        |
+|click         |Favorietenlijsten                              |in            |css=.navbar-sub           |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
+|ensure        |is  visible on page                            |Nieuwe lijst                             |
+|hover over    |@voornaam                                      |in            |css=.header-navbar        |
+|ensure        |is visible on page                             |Uitloggen                                |
+|click         |Uitloggen                                      |in            |css=.navbar-sub           |
+|ensure        |is  visible on page                            |Mijn Coop                                |
+
 
 FRONTEND
 
