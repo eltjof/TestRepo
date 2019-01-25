@@ -11,7 +11,7 @@ Test
 |kies een postcode in winkelmand stap 1|6883ew            |kies een winkel       |Arnhem Hanzestraat       |
 |melding winkelmand artikel niet in assortiment bij kiezen winkel                                          |
 |show                                  |take screenshot   |notificatie producten verwijderen               |
-|click                                 |xpath=/html/body/div[4]/section/div/a[1]                           |
+|click                                 |Ja, kies deze winkel                                               |
 |ensure                                |is visible on page|Helaas, er zit momenteel niets in je winkelmand!|
 |show                                  |take screenshot   |winkelmand leeg                                 |
 |delete all cookies                                                                                        |

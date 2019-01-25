@@ -2,27 +2,30 @@
 Help: Testen flow winkelmand storeselector als particuliere klant
 Test
 ---
-|script                                                                                                                                      |
-|open Frontstore                                                                                                                             |
-|inloggen Frontstore                                                                                                                         |
-|gebruikersnaam                                      |${GN_ACCOUNTCHROME}|wachtwoord                              |${WW_TESTACCOUNT}|inloggen|
-|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                        |
-|pas aantal aan om bestelgrens te bereiken                                                                                                   |
-|sluit storeselectorpopup zonder actie                                                                                                       |
-|controleer of er artikelen in winkelmand zitten                                                                                             |
-|ensure                                              |is visible on page |Velp                                                               |
-|ensure                                              |is visible on page |Marthijs                                                           |
-|kies een service in winkelmand stap 2               |Ophalen                                                                                |
-|kies servicedag in winkelmand stap 3                |2                  |kies servicetijdslot in winkelmand stap3|2                         |
-|ga door naar reservering in winkelmand stap 3                                                                                               |
-|sla servicedatum op in                              |datum                                                                                  |
-|sla servicetijdslot op in                           |tijdslot                                                                               |
-|controleer of bestelgrens is bereikt                                                                                                        |
-|controleer in de reservering winkelmand servicedatum|datum              |en servicetijdslot                      |tijdslot                  |
-|ga verder naar bestellen ingelogd                                                                                                           |
-|controleer in de checkout servicedatum              |datum              |en servicetijdslot                      |tijdslot                  |
-|vul checkout in en plaats bestelling als bestaande klant                                                                                    |
-|controleer bestelling en leg bestelnummer vast                                                                                              |
-|uitloggen frontstore                                |Welkom Marthijs                                                                        |
-|wait                                                |3                  |seconds                                                            |
-|controleer de aangemaakte order                                                                                                             |
+|script                                                                                                                                                         |
+|open Frontstore                                                                                                                                                |
+|inloggen Frontstore                                                                                                                                            |
+|gebruikersnaam                       |${GN_ACCOUNTCHROME}                                 |wachtwoord                              |${WW_TESTACCOUNT} |inloggen|
+|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                                                           |
+|pas aantal aan om bestelgrens te bereiken                                                                                                                      |
+|sluit storeselectorpopup zonder actie                                                                                                                          |
+|ensure                               |is visible on page                                  |Marthijs                                                            |
+|controleer of er artikelen in winkelmand zitten                                                                                                                |
+|ensure                               |is visible on page                                  |Velp                                                                |
+|kies een service in winkelmand stap 2|Bezorgen                                                                                                                 |
+|kies servicedag in winkelmand stap 3 |2                                                   |kies servicetijdslot in winkelmand stap3|2                          |
+|ga door naar reservering in winkelmand stap 3                                                                                                                  |
+|#                                    |sla servicedatum op in                              |datum                                                               |
+|#                                    |sla servicetijdslot op in                           |tijdslot                                                            |
+|controleer of bestelgrens is bereikt                                                                                                                           |
+|#                                    |controleer in de reservering winkelmand servicedatum|datum                                   |en servicetijdslot|tijdslot|
+|ga verder naar bestellen ingelogd                                                                                                                              |
+|#                                    |controleer in de checkout servicedatum              |datum                                   |en servicetijdslot|tijdslot|
+|vul checkout in en plaats bestelling als bestaande klant                                                                                                       |
+|#                                    |controleer bestelling en leg bestelnummer vast                                                                           |
+|uitloggen frontstore                 |Welkom Marthijs                                                                                                          |
+|wait                                 |3                                                   |seconds                                                             |
+|controleer de aangemaakte order                                                                                                                                |
+|delete all cookies                                                                                                                                             |
+|clear local storage                                                                                                                                            |
+|clear session storage                                                                                                                                          |

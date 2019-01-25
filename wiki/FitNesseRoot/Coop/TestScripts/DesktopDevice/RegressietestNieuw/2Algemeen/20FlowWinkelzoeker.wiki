@@ -10,7 +10,7 @@ Test
 |kies een service in storeselectorpopup stap 2|Bezorgen                                                                                    |
 |show                                         |take screenshot           |bezorgen zonder postcode                                         |
 |sluit storeselectorpopup  zonder actie                                                                                                    |
-|                                             |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
+|#                                            |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
 |delete all cookies                                                                                                                        |
 |clear local storage                                                                                                                       |
 |clear session storage                                                                                                                     |

@@ -37,3 +37,6 @@ Test
 |uitloggen frontstore                          |Welkom Lowie                                                                                            |
 |wait                                          |3                |seconds                                                                               |
 |Controleer de aangemaakte order                                                                                                                        |
+|delete all cookies                                                                                                                                     |
+|clear local storage                                                                                                                                    |
+|clear session storage                                                                                                                                  |

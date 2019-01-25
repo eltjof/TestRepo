@@ -26,3 +26,6 @@ Test
 |uitloggen frontstore                                |Welkom Ching                                                                                    |
 |wait                                                |3                           |seconds                                                            |
 |controleer de aangemaakte order                                                                                                                      |
+|delete all cookies                                                                                                                                   |
+|clear local storage                                                                                                                                  |
+|clear session storage                                                                                                                                |

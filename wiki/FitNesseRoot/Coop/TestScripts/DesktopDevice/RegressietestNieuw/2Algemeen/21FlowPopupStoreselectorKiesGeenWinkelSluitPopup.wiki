@@ -6,7 +6,7 @@ Test
 |open Frontstore                                                             |
 |artikel|1    |van categorie    |Groenten en aardappelen    |in winkelmand   |
 |sluit storeselectorpopup  zonder actie                                      |
-|       |controleer notificatie en winkellink als je geen winkel gekozen hebt|
+|#      |controleer notificatie en winkellink als je geen winkel gekozen hebt|
 |delete all cookies                                                          |
 |clear local storage                                                         |
 |clear session storage                                                       |

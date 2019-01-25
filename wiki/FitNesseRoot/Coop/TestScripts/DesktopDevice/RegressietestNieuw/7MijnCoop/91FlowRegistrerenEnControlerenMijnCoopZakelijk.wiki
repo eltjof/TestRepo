@@ -11,7 +11,6 @@ Test
 |open Frontstore                                                                              |
 |inloggen Frontstore                                                                          |
 |maak zakelijk account aan                  |$uniquemail                                      |
-|uitloggen frontstore                       |Kwinten                                          |
 |bevestig nieuwsbriefmail                   |Kwinten                                          |
 |open Frontstore                                                                              |
 |inloggen Frontstore                                                                          |

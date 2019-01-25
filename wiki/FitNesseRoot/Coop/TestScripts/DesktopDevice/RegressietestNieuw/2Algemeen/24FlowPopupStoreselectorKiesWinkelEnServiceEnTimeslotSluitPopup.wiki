@@ -10,7 +10,7 @@ Test
 |kies servicedag in  storeselectorpopup stap 3 |2                |kies servicetijdslot in storeselectorpopup stap3           |2             |
 |controleer melding in storeselector popup stap 3                                                                                           |
 |sluit storeselectorpopup  zonder actie                                                                                                     |
-|                                              |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
+|#                                             |controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
 |delete all cookies                                                                                                                         |
 |clear local storage                                                                                                                        |
 |clear session storage                                                                                                                      |

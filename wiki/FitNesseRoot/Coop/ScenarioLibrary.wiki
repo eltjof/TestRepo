@@ -97,86 +97,86 @@ ACCOUNT
 |click                 |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]                                 |
 |show                  |value of                 |css=#UpdateProfile_General                                                       |
 |show                  |value of                 |css=#UpdateProfile_Wine                                                          |
-|uitloggen frontstore  |                                                                                                           |
+|uitloggen frontstore  |Kwinten                                                                                                    |
 
 3
 
-|scenario  |controleer nieuwsbrieven in accountgegevens|accountnaam                                  |
-|hover over|@accountnaam                               |in                        |css=.header-navbar|
+|scenario  |controleer nieuwsbrieven in accountgegevens|voornaamaccount                              |
+|hover over|@voornaamaccount                           |in                        |css=.header-navbar|
 |click     |Overzicht                                  |in                        |css=.navbar-sub   |
 |ensure    |is  visible on page                        |Mijn gegevens                                |
-|ensure    |is  visible on page                        |@accountnaam                                 |
+|ensure    |is  visible on page                        |@voornaamaccount                             |
 |check     |value of                                   |css=#UpdateProfile_General|true              |
 |check     |value of                                   |css=#UpdateProfile_Wine   |true              |
 
 4
 
-|scenario  |controleer account |accountnaam          |
-|hover over|@accountnaam       |in|css=.header-navbar|
+|scenario  |controleer account |voornaamaccount      |
+|hover over|@voornaamaccount   |in|css=.header-navbar|
 |click     |Overzicht          |in|css=.navbar-sub   |
 |ensure    |is  visible on page|Mijn gegevens        |
-|ensure    |is  visible on page|@accountnaam         |
+|ensure    |is  visible on page|@voornaamaccount     |
 
 5
 
-|scenario      |controleer accountgegevens actieve klantenkaart|gebruikersnaam|voornaam         |voornaam|
-|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen|
-|hover over    |@voornaam                                      |in            |css=.header-navbar        |
-|show          |take screenshot                                |Fly out                                  |
-|ensure        |is visible on page                             |Overzicht                                |
-|click         |Overzicht                                      |in            |css=.navbar-sub           |
-|ensure        |is  visible on page                            |Mijn gegevens                            |
-|ensure        |is  visible on page                            |@voornaam                                |
-|click         |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]               |
-|ensure        |is  visible on page                            |Zwartbol                                 |
-|ensure        |is  visible on page                            |Geboortedatum                            |
-|back                                                                                                    |
-|click         |xpath=//*[@class='accountLatestOrder--container']//a[contains(text(),'Bekijk')]          |
-|ensure        |is  visible on page                            |Bestelling:                              |
-|back                                                                                                    |
-|click         |xpath=//*[@class='productSearchForm']//a[contains(text(),'Bekijk')]                      |
-|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
-|ensure        |is  visible on page                            |Nieuwe lijst                             |
-|back                                                                                                    |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn Coop overzicht')]                  |
-|ensure        |is  visible on page                            |Mijn gegevens                            |
-|ensure        |is  visible on page                            |@voornaam                                |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn gegevens')]                        |
-|ensure        |is  visible on page                            |Mijn gegevens                            |
-|ensure        |is  visible on page                            |Marthijs                                 |
-|back                                                                                                    |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Bestellingen')]                         |
-|ensure        |is  visible on page                            |Mijn Bestellingen                        |
-|ensure        |is  visible on page                            |Orderdatum                               |
-|back                                                                                                    |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Favorietenlijsten')]                    |
-|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
-|ensure        |is  visible on page                            |Nieuwe lijst                             |
-|back                                                                                                    |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Klantenkaart')]                         |
-|ensure        |is  visible on page                            |Jouw huidige klantenkaartnummer is:      |
-|back                                                                                                    |
-|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Uitloggen')]                            |
-|delete all cookies                                                                                      |
-|clear local storage                                                                                     |
-|clear session storage                                                                                   |
-|ensure        |is  visible on page                            |Mijn Coop                                |
-|inloggen Frontstore                                                                                     |
-|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen|
-|hover over    |@voornaam                                      |in            |css=.header-navbar        |
-|ensure        |is visible on page                             |Bestellingen                             |
-|click         |Bestellingen                                   |in            |css=.navbar-sub           |
-|ensure        |is  visible on page                            |Mijn Bestellingen                        |
-|ensure        |is  visible on page                            |Orderdatum                               |
-|hover over    |@voornaam                                      |in            |css=.header-navbar        |
-|ensure        |is visible on page                             |Favorietenlijsten                        |
-|click         |Favorietenlijsten                              |in            |css=.navbar-sub           |
-|ensure        |is  visible on page                            |Mijn Favorietenlijsten                   |
-|ensure        |is  visible on page                            |Nieuwe lijst                             |
-|hover over    |@voornaam                                      |in            |css=.header-navbar        |
-|ensure        |is visible on page                             |Uitloggen                                |
-|click         |Uitloggen                                      |in            |css=.navbar-sub           |
-|ensure        |is  visible on page                            |Mijn Coop                                |
+|scenario      |controleer accountgegevens actieve klantenkaart|gebruikersnaam|voornaam         |voornaamaccount|
+|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen       |
+|hover over    |@voornaamaccount                               |in            |css=.header-navbar               |
+|show          |take screenshot                                |Fly out                                         |
+|ensure        |is visible on page                             |Overzicht                                       |
+|click         |Overzicht                                      |in            |css=.navbar-sub                  |
+|ensure        |is  visible on page                            |Mijn gegevens                                   |
+|ensure        |is  visible on page                            |@voornaamaccount                                |
+|click         |xpath=//*[@class='accountDetails__overview']//a[contains(text(),'Bekijk')]                      |
+|ensure        |is  visible on page                            |Zwartbol                                        |
+|ensure        |is  visible on page                            |Geboortedatum                                   |
+|back                                                                                                           |
+|click         |xpath=//*[@class='accountLatestOrder--container']//a[contains(text(),'Bekijk')]                 |
+|ensure        |is  visible on page                            |Bestelling:                                     |
+|back                                                                                                           |
+|click         |xpath=//*[@class='productSearchForm']//a[contains(text(),'Bekijk')]                             |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                          |
+|ensure        |is  visible on page                            |Nieuwe lijst                                    |
+|back                                                                                                           |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn Coop overzicht')]                         |
+|ensure        |is  visible on page                            |Mijn gegevens                                   |
+|ensure        |is  visible on page                            |@voornaamaccount                                |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Mijn gegevens')]                               |
+|ensure        |is  visible on page                            |Mijn gegevens                                   |
+|ensure        |is  visible on page                            |Marthijs                                        |
+|back                                                                                                           |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Bestellingen')]                                |
+|ensure        |is  visible on page                            |Mijn Bestellingen                               |
+|ensure        |is  visible on page                            |Orderdatum                                      |
+|back                                                                                                           |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Favorietenlijsten')]                           |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                          |
+|ensure        |is  visible on page                            |Nieuwe lijst                                    |
+|back                                                                                                           |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Klantenkaart')]                                |
+|ensure        |is  visible on page                            |Jouw huidige klantenkaartnummer is:             |
+|back                                                                                                           |
+|click         |xpath=//*[@class='dropdown']//a[contains(text(),'Uitloggen')]                                   |
+|delete all cookies                                                                                             |
+|clear local storage                                                                                            |
+|clear session storage                                                                                          |
+|ensure        |is  visible on page                            |Mijn Coop                                       |
+|inloggen Frontstore                                                                                            |
+|gebruikersnaam|@gebruikersnaam                                |wachtwoord    |${WW_TESTACCOUNT}|inloggen       |
+|hover over    |@voornaamaccount                               |in            |css=.header-navbar               |
+|ensure        |is visible on page                             |Bestellingen                                    |
+|click         |Bestellingen                                   |in            |css=.navbar-sub                  |
+|ensure        |is  visible on page                            |Mijn Bestellingen                               |
+|ensure        |is  visible on page                            |Orderdatum                                      |
+|hover over    |@voornaamaccount                               |in            |css=.header-navbar               |
+|ensure        |is visible on page                             |Favorietenlijsten                               |
+|click         |Favorietenlijsten                              |in            |css=.navbar-sub                  |
+|ensure        |is  visible on page                            |Mijn Favorietenlijsten                          |
+|ensure        |is  visible on page                            |Nieuwe lijst                                    |
+|hover over    |@voornaamaccount                               |in            |css=.header-navbar               |
+|ensure        |is visible on page                             |Uitloggen                                       |
+|click         |Uitloggen                                      |in            |css=.navbar-sub                  |
+|ensure        |is  visible on page                            |Mijn Coop                                       |
 
 
 FRONTEND
@@ -212,6 +212,7 @@ FRONTEND
 |click   |Zoek supermarkt                |
 |enter   |@postcode      |as|id=fc_search|
 |click   |id=btnSearch                   |
+|check pending requests                  |
 |show    |take screenshot|zoek supermarkt|
 
 5
@@ -275,14 +276,15 @@ FRONTEND
 12
 
 |scenario              |controleer of er boodschappen in winkelmandje zitten en verwijder ze|
-|click                 |Mijn boodschappen      |in                   |css=.header-navbar    |
+|click                 |Mijn boodschappen  |in                     |css=.header-navbar      |
 |$timeout=             |seconds before timeout                                              |
 |seconds before timeout|5                                                                   |
-|$tmp=                 |click if available     |Alle boodschappen verwijderen               |
+|$tmp=                 |click if available |Alle boodschappen verwijderen                   |
 |seconds before timeout|$timeout                                                            |
 |check pending requests twice                                                               |
-|check                 |value of               |css=.icon-basket     |0                     |
-|show                  |take screenshot        |winkelmand leeg                             |
+|check                 |value of           |css=.icon-basket       |0                       |
+|ensure                |is visible on page |Helaas, er zit momenteel niets in je winkelmand!|
+|show                  |take screenshot    |winkelmand leeg                                 |
 
 13
 
@@ -661,7 +663,6 @@ FRONTEND
 |scenario|ga verder als bestaande klant|gebruikersnaam|wachtwoord   |wachtwoord   |
 |enter   |@gebruikersnaam              |as            |css=#ShopLoginForm_Login   |
 |enter   |@wachtwoord                  |as            |css=#ShopLoginForm_Password|
-|press   |Tab                                                                     |
 |click   |css=a[data-pageview='bestaandeklant/inloggen']                          |
 |show    |take screenshot              |checkout bestaande klant                  |
 
@@ -897,6 +898,9 @@ MAIL
 |show            |take screenshot   |klantbevestiging    |
 |click           |Google-account: coop de Tester         |
 |click           |css=#gb_71                             |
+|delete all cookies                                      |
+|clear local storage                                     |
+|clear session storage                                   |
 |close tab                                               |
 
 201
@@ -914,6 +918,7 @@ MAIL
 |ensure          |is visible on page              |Bevestig jouw aanvraag                                   |
 |click           |Ja, ik meld me aan voor de nieuwsbrief                                                    |
 |check pending requests                                                                                     |
+|switch to previous tab                                                                                     |
 |show            |take screenshot                 |omgeving geopend na aanmelden nieuwsbrief                |
 |ensure          |is visible on page              |Zoek supermarkt                                          |
 
@@ -950,11 +955,3 @@ MAIL
 
 
 
-{{{ 
-Checkout algemene voorwaarden aanklikken
-
-|execute script|document.querySelector('[name="OrderData_TermsAndConditions"]').click()|
-
-|in|css=.storeSelector__storesList|
-
-}}}

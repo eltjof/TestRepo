@@ -11,4 +11,6 @@ Test
 |ensure                  |is visible on page |Velp                                  |
 |ensure                  |is visible on page |Marthijs                              |
 |uitloggen frontstore    |Marthijs                                                  |
-
+|delete all cookies                                                                 |
+|clear local storage                                                                |
+|clear session storage                                                              |

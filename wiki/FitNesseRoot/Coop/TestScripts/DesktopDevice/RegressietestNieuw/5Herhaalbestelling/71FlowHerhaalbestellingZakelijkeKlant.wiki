@@ -11,6 +11,7 @@ Test
 |ensure                  |is visible on page          |Velp                                 |
 |ensure                  |is visible on page          |Ching                                |
 |uitloggen frontstore    |Ching                                                             |
+|delete all cookies                                                                         |
+|clear local storage                                                                        |
+|clear session storage                                                                      |
 
-
-|gebruikersnaam|${GN_ACCOUNTCHROME}|wachtwoord||inloggen|
