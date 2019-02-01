@@ -20,6 +20,7 @@ SymbolicLinks
 !define URL_KRUIMIG {!-https://acceptatie.coop.nl/kruimige-aardappelen/product/8710725006950-!}
 !define URL_MINIKRIEL {!-https://acceptatie.coop.nl/coop-minikrieltjes/product/8710624251130-!}
 !define URL_HERTOGJAN {!-https://acceptatie.coop.nl/hertog-jan-pils-krat-24-x-30-cl/product/8710956101158-!}
+!define URL_AANBIEDING {!-https://acceptatie.coop.nl/velp/affligem-blond-bier-fles-4-x-30-cl/product/5411098731274?SearchId=115959-!}
 !define GN_ACCOUNTCHROME {!-coopecommerce.testen+CHP001@gmail.com-!}
 !define GN_ACCOUNTCHROME_ZAKELIJK {!-coopecommerce.testen+CHRZ001@gmail.com-!}
 !define GN_ACCOUNTIPAD {!-coopecommerce.testen+IPPP001@gmail.com-!}
