@@ -1,0 +1,14 @@
+---
+Test
+---
+|script                                                                                          |
+|open Frontstore                                                                                 |
+|van categorie|Groenten en aardappelen|kies filtercategorie|Merken           |in label|Iglo      |
+|wis filter                                                                                      |
+|van categorie|Fruit                  |kies filtercategorie|Land van Herkomst|in label|Costa Rica|
+|wis filter                                                                                      |
+|van categorie|Dranken                |kies filtercategorie|Inhoud           |in label|1000 ml   |
+|wis filter                                                                                      |
+|delete all cookies                                                                              |
+|clear local storage                                                                             |
+|clear session storage                                                                           |

@@ -1,0 +1,33 @@
+---
+Help: Testen flow pop-up storeselector als nieuwe particuliere klant
+Test
+---
+|script                                                                    |
+|$uniquemail=|remove whitespace|Coopecommerce.testen+${Timestamp}@gmail.com|
+
+|script                                                                                                                              |
+|open Frontstore                                                                                                                     |
+|pas aantal aan om bestelgrens te bereiken                                                                                           |
+|kies een postcode in storeselectorpopup stap 1|6883ew           |kies een winkel die niet bezorgt                |Geitenkamp Arnhem |
+|wijzig winkel in storeselectorpopup stap 2                                                                                          |
+|kies een service in storeselectorpopup stap 2 |Bezorgen                                                                             |
+|kies servicedag in  storeselectorpopup stap 3 |4                |kies servicetijdslot in storeselectorpopup stap3|4                 |
+|controleer melding in storeselector popup stap 3                                                                                    |
+|ga door naar reservering in storeselectorpopup stap 3                                                                               |
+|controleer melding in storeselector popup stap 4                                                                                    |
+|ga door naar winkelmand in storeselectorpopup stap 4 reservering                                                                    |
+|check                                                    pending requests                                                           |
+|controleer of er artikelen in winkelmand zitten                                                                                     |
+|click                                         |Mijn boodschappen|in                                              |css=.header-navbar|
+|controleer of bestelgrens is bereikt                                                                                                |
+|ga verder naar bestellen niet ingelogd                                                                                              |
+|ga verder als nieuwe klant                    |$uniquemail                                                                          |
+|vul checkout in en plaats bestelling als nieuwe particuliere klant                                                                  |
+|controleer bestelling en leg bestelnummer vast                                                                                      |
+|uitloggen frontstore                          |Welkom Stéfanie                                                                      |
+|wait                                          |3                |seconds                                                            |
+|Controleer de aangemaakte order                                                                                                     |
+|delete all cookies                                                                                                                  |
+|clear local storage                                                                                                                 |
+|clear session storage                                                                                                               |
+

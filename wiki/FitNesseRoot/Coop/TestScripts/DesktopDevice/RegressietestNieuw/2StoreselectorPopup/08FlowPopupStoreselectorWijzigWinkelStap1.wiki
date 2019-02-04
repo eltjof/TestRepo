@@ -1,0 +1,12 @@
+---
+Help: Testen flow pop-up storeselector wijzig winkel in stap 1
+Test
+---
+|script                                                                                  |
+|open                                          |${URL_COLA}                              |
+|click                                         |xpath=//article//span[@data-plusbutton]  |
+|kies een postcode in storeselectorpopup stap 1|6883ew|kies een winkel|Arnhem Hanzestraat|
+|wijzig winkel in storeselectorpopup stap 2                                              |
+|delete all cookies                                                                      |
+|clear local storage                                                                     |
+|clear session storage                                                                   |

@@ -1,0 +1,13 @@
+---
+Help: Testen flow winkelmand storeselector kies een winkel die niet bezorgt Geitenkamp Arnhem
+Test
+---
+|script                                                                                          |
+|open                                  |${URL_COLA}                                              |
+|click                                 |xpath=//article//span[@data-plusbutton]                  |
+|sluit storeselectorpopup  zonder actie                                                          |
+|controleer of er artikelen in winkelmand zitten                                                 |
+|kies een postcode in winkelmand stap 1|6883ew|kies een winkel die niet bezorgt|Geitenkamp Arnhem|
+|delete all cookies                                                                              |
+|clear local storage                                                                             |
+|clear session storage                                                                           |

@@ -1,0 +1,13 @@
+---
+Help: Testen flow pop-up storeselector kies alleen winkel, en sluit popup
+Test
+---
+|script                                                                                      |
+|open Frontstore                                                                             |
+|artikel via zoekterm                               |cola       |in winkelmand               |
+|kies een postcode in storeselectorpopup stap 1     |6883ew     |kies een winkel    |Velp    |
+|sluit storeselectorpopup  zonder actie                                                      |
+|controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt|
+|delete all cookies                                                                          |
+|clear local storage                                                                         |
+|clear session storage                                                                       |

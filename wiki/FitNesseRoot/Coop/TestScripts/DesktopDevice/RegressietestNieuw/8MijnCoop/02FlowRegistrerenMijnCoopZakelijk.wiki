@@ -1,0 +1,23 @@
+---
+Help: Testen registeren Mijn Coop Zakelijk
+Test
+---
+|script                                                                    |
+|$uniquemail=|remove whitespace|Coopecommerce.testen+${Timestamp}@gmail.com|
+
+
+
+|script                                                                                       |
+|open Frontstore                                                                              |
+|inloggen Frontstore                                                                          |
+|maak zakelijk account aan                  |$uniquemail                                      |
+|bevestig nieuwsbriefmail                   |Kwinten                                          |
+|open Frontstore                                                                              |
+|inloggen Frontstore                                                                          |
+|gebruikersnaam                             |$uniquemail|wachtwoord|${WW_TESTACCOUNT}|inloggen|
+|controleer account                         |Kwinten                                          |
+|controleer nieuwsbrieven in accountgegevens|Kwinten                                          |
+|uitloggen frontstore                       |Kwinten                                          |
+|delete all cookies                                                                           |
+|clear local storage                                                                          |
+|clear session storage                                                                        |

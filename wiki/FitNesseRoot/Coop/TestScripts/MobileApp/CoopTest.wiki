@@ -1,0 +1,8 @@
+|script                 |
+|click|Ontdek onze app  |
+|click|Boodschappen doen|
+|click|Fru              |
+|click|Appels           |
+|click|Zoete appels     |
+|click|Elstar appels    |
+|wait |5    |seconds    |

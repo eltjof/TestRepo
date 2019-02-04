@@ -1,0 +1,15 @@
+---
+Help: Testen flow pop-up storeselector wijzig timeslot in stap 3
+Test
+---
+|script                                                                                                                    |
+|open                                          |${URL_COLA}                                                                |
+|click                                         |xpath=//article//span[@data-plusbutton]                                    |
+|kies een postcode in storeselectorpopup stap 1|6883ew|kies een winkel                                  |Arnhem Hanzestraat|
+|kies een service in storeselectorpopup stap 2 |Bezorgen                                                                   |
+|kies servicedag in  storeselectorpopup stap 3 |2     |kies servicetijdslot in storeselectorpopup stap 3|2                 |
+|ga door naar reservering in storeselectorpopup stap 3                                                                     |
+|wijzig servicedag en serviceslot in  storeselectorpopup stap 4                                                            |
+|delete all cookies                                                                                                        |
+|clear local storage                                                                                                       |
+|clear session storage                                                                                                     |

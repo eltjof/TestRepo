@@ -51,29 +51,29 @@ ACCOUNT
 
 2
 
-|scenario|vul accountgegevens in particulier                     |
-|click   |css=#OrderData_CustomerType_Private                    |
-|enter   |Luttelgeesterweg|as|css=#OrderData_Street              |
-|enter   |37              |as|css=#OrderData_HouseNumber         |
-|enter   |a               |as|css=##OrderData_HouseNumberAddition|
-|enter   |8315 PA         |as|css=#OrderData_PostalCode          |
-|enter   |Luttelgeest     |as|css=#OrderData_City                |
-|click   |css=#OrderData_ReceiveCustomerCard                     |
-|click   |css=#OrderData_Gender_Mevr                             |
-|enter   |Stéfanie        |as|css=#OrderData_FirstName           |
-|enter   |van             |as|css=#OrderData_LastNamePrefix      |
-|enter   |Elemans         |as|css=#OrderData_LastName            |
-|enter   |TEST1234        |as|css=#OrderData_Password            |
-|enter   |TEST1234        |as|css=#OrderData_RetypedPassword     |
-|enter   |06-29376539     |as|css=#OrderData_PhoneNumber         |
-|click   |css=#OrderData_BirthDate_Day > option:nth-child(2)     |
-|        |click           |1                                     |
-|click   |css=#OrderData_BirthDate_Month > option:nth-child(4)   |
-|        |click           |3                                     |
-|click   |css=#OrderData_BirthDate_Year > option:nth-child(81)   |
-|        |click           |1939                                  |
-|click   |css=#OrderData_ReceiveNewsletter                       |
-|show    |take screenshot |account nieuwe klant particulier      |
+|scenario|vul accountgegevens in particulier                       |
+|click   |css=#OrderData_CustomerType_Private                      |
+|enter   |Schuttersbergplein|as|css=#OrderData_Street              |
+|enter   |37                |as|css=#OrderData_HouseNumber         |
+|enter   |a                 |as|css=##OrderData_HouseNumberAddition|
+|enter   |6823 KN           |as|css=#OrderData_PostalCode          |
+|enter   |Arnhem            |as|css=#OrderData_City                |
+|click   |css=#OrderData_ReceiveCustomerCard                       |
+|click   |css=#OrderData_Gender_Mevr                               |
+|enter   |Stéfanie          |as|css=#OrderData_FirstName           |
+|enter   |van               |as|css=#OrderData_LastNamePrefix      |
+|enter   |Elemans           |as|css=#OrderData_LastName            |
+|enter   |TEST1234          |as|css=#OrderData_Password            |
+|enter   |TEST1234          |as|css=#OrderData_RetypedPassword     |
+|enter   |06-29376539       |as|css=#OrderData_PhoneNumber         |
+|click   |css=#OrderData_BirthDate_Day > option:nth-child(2)       |
+|        |click             |1                                     |
+|click   |css=#OrderData_BirthDate_Month > option:nth-child(4)     |
+|        |click             |3                                     |
+|click   |css=#OrderData_BirthDate_Year > option:nth-child(81)     |
+|        |click             |1939                                  |
+|click   |css=#OrderData_ReceiveNewsletter                         |
+|show    |take screenshot   |account nieuwe klant particulier      |
 
 3 
 
@@ -138,11 +138,11 @@ ACCOUNT
 |select   |Kinderdagverblijf         |for    |css=#OrderData_Industry              |
 |         |click                     |css=#OrderData_Industry > option:nth-child(3)|
 |enter    |123456                    |as     |css=#OrderData_TaxationID            |
-|enter    |Munnikendreef             |as     |css=#OrderData_Street                |
+|enter    |Spijkerlaan               |as     |css=#OrderData_Street                |
 |enter    |19                        |as     |css=#OrderData_HouseNumber           |
 |enter    |a                         |as     |css=#OrderData_HouseNumberAddition   |
-|enter    |4254 DN                   |as     |css=#OrderData_PostalCode            |
-|enter    |Sleeuwijk                 |as     |css=#OrderData_City                  |
+|enter    |6828 EC                   |as     |css=#OrderData_PostalCode            |
+|enter    |Arnhem                    |as     |css=#OrderData_City                  |
 |         |click                     |css=#OrderData_ReceiveCustomerCard           |
 |click    |Ik wil graag een Coop klantenkaart ontvangen                            |
 |         |click                     |css=#OrderData_Gender_Dhr                    |
@@ -368,8 +368,6 @@ FRONTEND
 |check   |value of          |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
 |click   |xpath=(//a[text()='winkel'])[last()]                                                                                                                                        |
 |ensure  |is visible on page|OP ZOEK NAAR EEN WINKEL?                                                                                                                                 |
-|check   |value of          |css=.alertMessage--error|Je hebt nog geen winkel geselecteerd. Daarom zie je niet alle aanbiedingen en het volledige assortiment. Kies alsnog een winkel.|
-|show    |take screenshot   |notificatie geen winkel winkelpagina                                                                                                                     |
 
 16
 
@@ -387,10 +385,8 @@ FRONTEND
 |click             |Velp                          |in            |css=.alertMessage--success > p > a            |
 |show              |take screenshot               |popup winkelpagina met popup                                 |
 |is visible on page|Jouw winkel:                                                                                |
-|is visible on page|is geselecteerd als jouw winkel.                                                            |
 |is visible on page|De reservering is nog niet voltooid.                                                        |
 |click             |winkelmand                    |in            |css=.alertMessage--warning > p > a            |
-|is visible on page|De reservering is nog niet voltooid.                                                        |
 |is visible on page|Alle boodschappen verwijderen                                                               |
 |show              |take screenshot               |notificatie winkelmand                                       |
 
@@ -527,6 +523,7 @@ FRONTEND
 
 |scenario|ga door naar winkelmand in storeselectorpopup stap 4 reservering|
 |click   |css=.btn--redirect                                              |
+|check pending requests                                                   |
 |ensure  |is visible on page            |Alle boodschappen                |
 |show    |take screenshot               |winkelmand reservering           |
 
@@ -638,6 +635,7 @@ FRONTEND
 
 |scenario|ga door naar reservering in winkelmand stap 3|
 |click   |css=.btn--submitReservation                  |
+|check pending requests                                |
 |show    |take screenshot         |reservering         |
 
 

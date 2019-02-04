@@ -1,0 +1,16 @@
+---
+Help: Testen flow pop-up storeselector kies  winkel, service en timeslot, bevestig NIET, en sluit popup
+Test
+---
+|script                                                                                                     |
+|open                                          |${URL_COLA}                                                 |
+|click                                         |xpath=//article//span[@data-plusbutton]                     |
+|kies een postcode in storeselectorpopup stap 1|6883ew|kies een winkel                                 |Velp|
+|kies een service in storeselectorpopup stap 2 |Bezorgen                                                    |
+|kies servicedag in  storeselectorpopup stap 3 |2     |kies servicetijdslot in storeselectorpopup stap3|2   |
+|controleer melding in storeselector popup stap 3                                                           |
+|sluit storeselectorpopup  zonder actie                                                                     |
+|controleer notificatie, winkellink en winklmandlink als je winkel en of service gekozen hebt               |
+|delete all cookies                                                                                         |
+|clear local storage                                                                                        |
+|clear session storage                                                                                      |

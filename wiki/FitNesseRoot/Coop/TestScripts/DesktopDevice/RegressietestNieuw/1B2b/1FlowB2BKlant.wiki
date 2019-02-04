@@ -1,0 +1,48 @@
+---
+Help: Testen Flow B2B klant
+Test
+---
+|script                                                                                                                 |
+|log in als B2 B klant zonder account                                                                                   |
+|log in als B2 B klant                                                                                                  |
+|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                   |
+|artikel               |1                 |van categorie                 |Groenten en aardappelen|in winkelmand         |
+|waarde teller lister  |1                 |van artikel                   |1                      |waarde teller basket|1|
+|click                 |Mijn boodschappen |in                            |css=.header-navbar                            |
+|ensure                |is visible        |Bestelling laten bezorgen                                                    |
+|controleer of er boodschappen in winkelmandje zitten en verwijder ze                                                   |
+|$timeout=             |seconds before timeout                                                                          |
+|seconds before timeout|5                                                                                               |
+|$tmp=                 |click if available|!-Winsum (frl), Meamerterdyk-!|in                     |css=.header-navbar    |
+|seconds before timeout|$timeout                                                                                        |
+|ensure                |is visible        |Helaas, er zit momenteel niets in je winkelmand!                             |
+|artikel               |1                 |van categorie                 |Groenten en aardappelen|in winkelmand         |
+|waarde teller lister  |1                 |van artikel                   |1                      |waarde teller basket|1|
+|artikel               |2                 |van categorie                 |Groenten en aardappelen|in winkelmand         |
+|waarde teller lister  |1                 |van artikel                   |2                      |waarde teller basket|2|
+|artikel               |3                 |van categorie                 |Groenten en aardappelen|in winkelmand         |
+|waarde teller lister  |1                 |van artikel                   |3                      |waarde teller basket|3|
+|artikel               |3                 |van categorie                 |Groenten en aardappelen|uit winkelmand        |
+|waarde teller lister  |0                 |van artikel                   |3                      |waarde teller basket|2|
+|controleer of er artikelen in winkelmand zitten B2 B                                                                   |
+|bestelling plaatsen B2 B                                                                                               |
+|open Backoffice                                                                                                        |
+|inloggen Backoffice                                                                                                    |
+|zoek laatste bestelnummer in Backoffice                                                                                |
+|log in als B2 B klant                                                                                                  |
+|controleer of er artikelen in winkelmand zitten B2 B                                                                   |
+|bestelling plaatsen B2 B                                                                                               |
+|open Backoffice                                                                                                        |
+|inloggen Backoffice                                                                                                    |
+|zoek laatste bestelnummer in Backoffice                                                                                |
+|delete all cookies                                                                                                     |
+|clear local storage                                                                                                    |
+|clear session storage                                                                                                  |
+
+
+
+
+
+
+
+

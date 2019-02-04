@@ -1,0 +1,11 @@
+---
+Help: Testen  controleren Mijn Coop
+Test
+---
+|script                                                                               |
+|open Frontstore                                                                      |
+|inloggen Frontstore                                                                  |
+|controleer accountgegevens actieve klantenkaart|${GN_ACCOUNTCHROME}|voornaam|Marthijs|
+|delete all cookies                                                                   |
+|clear local storage                                                                  |
+|clear session storage                                                                |

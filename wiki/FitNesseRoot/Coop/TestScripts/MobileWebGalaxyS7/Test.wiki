@@ -1,0 +1,3 @@
+|script         |
+|open Frontstore|
+|wait|10|seconds|
