@@ -1,0 +1,92 @@
+
+FRONTEND
+
+1 
+
+|scenario|open Frontstore           |
+|open    |${URL_FRONTEND}           |
+|check pending requests             |
+|show    |take screenshot|frontstore|
+
+
+2
+
+|scenario|gebruikersnaam    |gebruikersnaam|wachtwoord|wachtwoord|inloggen|
+|enter   |@gebruikersnaam   |as            |xpath=//*[@id="email"]        |
+|enter   |@wachtwoord       |as            |xpath=//*[@id="wachtwoord"]   |
+|press   |Tab                                                             |
+|click   |Inloggen          |in            |css=.actions.gi               |
+|check pending requests                                                   |
+|ensure  |is visible on page|Welkom                                       |
+|show    |take screenshot   |welkom                                       |
+
+
+3
+
+|scenario  |uitloggen frontstore|accountnaam          |
+|hover over|@accountnaam        |in|css=.header-navbar|
+|click     |Uitloggen           |in|css=.navbar-sub   |
+|ensure    |is visible on page  |Mijn Coop            |
+|show      |take screenshot     |uitgelogd            |
+
+4
+
+|scenario|check pending requests twice|
+|check pending requests               |
+|wait    |2          |seconds         |
+|check pending requests               |
+
+
+
+MAIL
+
+1
+
+|scenario        |leg nieuwste mail klantbevestiging vast|
+|open in new tab |${URL_GOOGLEMAIL}                      |
+|check pending requests                                  |
+|enter           |${GN_GOOGLEMAIL}  |as |name=identifier |
+|click           |Volgende                               |
+|enter           |${WW_GOOGLEMAIL}  |as |name=password   |
+|click           |Volgende                               |
+|wait for visible|Inbox                                  |
+|show            |take screenshot   |klantbevestiging    |
+|click           |Google-account: coop de Tester         |
+|click           |css=#gb_71                             |
+|delete all cookies                                      |
+|clear local storage                                     |
+|clear session storage                                   |
+|close tab                                               |
+
+2
+
+|scenario        |bevestig nieuwsbriefmail        |accountnaam                                              |
+|open            |${URL_GOOGLEMAIL}                                                                         |
+|check pending requests                                                                                     |
+|enter           |${GN_GOOGLEMAIL}                |as                    |name=identifier                   |
+|click           |Volgende                                                                                  |
+|enter           |${WW_GOOGLEMAIL}                |as                    |name=password                     |
+|click           |Volgende                                                                                  |
+|wait for visible|Inbox                                                                                     |
+|click           |xpath=!-//*[contains(text(),'Bevestig jouw aanvraag | @accountnaam')]/ancestor::td      -!|
+|show            |take screenshot                 |klantbevestiging                                         |
+|ensure          |is visible on page              |Bevestig jouw aanvraag                                   |
+|click           |Ja, ik meld me aan voor de nieuwsbrief                                                    |
+|check pending requests                                                                                     |
+|switch to previous tab                                                                                     |
+|show            |take screenshot                 |omgeving geopend na aanmelden nieuwsbrief                |
+|ensure          |is visible on page              |Zoek supermarkt                                          |
+
+
+
+
+
+
+
+
+
+
+
+
+
+

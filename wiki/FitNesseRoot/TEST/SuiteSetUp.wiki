@@ -11,6 +11,3 @@
 |string fixture|
 *!
 
-!***> Vaste Variabelen
-
-*!

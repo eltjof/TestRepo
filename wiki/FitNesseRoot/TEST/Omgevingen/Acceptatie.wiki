@@ -4,13 +4,8 @@ SymbolicLinks
   TestScripts: .Coop.TestScripts
 ---
 !contents -R2 -g -p -f -h
-!define URL_B2B_zonder_account {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-COOPBusiness-Site/nl_NL/-/EUR/ViewHomepage-Start-!}
-!define URL_B2B_met_account {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-COOPBusiness-Site/nl_NL/-/EUR/ViewOCICatalog-Start?&USERNAME=eltjof@specialisterren.nl&PASSWORD=Coop2018&HOOK_URL=http://Procare/ProCare/net/Order/ProcessCallOCI/64/ProqWindowFB903C2CE3614B9483262F04C89000D8/10045/80.aspx&StoreID=3319&CustomerID=3319-00001-!}
 !define URL_FRONTEND {!-https://acceptatie.coop.nl/-!}
 !define URL_BACKEND {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/SLDSystem-!}
-!define URL_BESTELLINGEN {!-https://acceptatie.coop.nl/INTERSHOP/web/WFS/COOP-Site/nl_NL/-/EUR/ViewOrderList-Sort?SortAttribute=CreationDate&SortDirection=desc&SearchType=simple&ChannelUUID=-!}
-!define URL_FRONTENDEDIT {!-https://acceptatie-staging.coop.nl/-}
-!define URL_BACKENDEDIT {!-https://acceptatie-staging.coop.nl/INTERSHOP/web/WFS/SLDSystem-!}
 !define URL_MIJNCOOP {!-http://testmijn.coop.nl/mijncoop/inloggen-!}
 !define URL_SUPERMARKT {!-https://acceptatie.coop.nl/supermarkten-!}
 !define URL_GROENTEN {!-https://acceptatie.coop.nl/boodschappen/groenten-en-aardappelen-!}

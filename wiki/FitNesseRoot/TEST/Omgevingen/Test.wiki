@@ -1,0 +1,8 @@
+---
+Suite
+SymbolicLinks
+  TestScripts: .Coop.TestScripts
+Test: no
+---
+!contents -R2 -g -p -f -h
+!define URL_FRONTEND {!-https://auth.netatmo.com/nl-NL-!}

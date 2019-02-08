@@ -1,7 +1,0 @@
----
-Help: Testen B2B
-Suite
-Suites: AlleenOpAcceptatie
----
-!1 Test suite X
-!contents -R2 -g -p -f -h
